@@ -27,43 +27,16 @@ GENERATED_LIBRARY_SHEET = "生成文案库"
 
 # 开头钩子库 - 用于随机选择
 HOOK_LIBRARY = {
-    "A类-轻松幽默型": [
-        "我发现一个规律：越是老实人，越容易被安排加班。你说气不气？",
-        "昨天算了一笔账，这些年帮别人花的时间，够我学会三门外语了。",
-        "我妈说我最大的优点是善良，我爸说这也是我最大的缺点。好家伙，亲爹。",
-        "朋友说我是'便利店型人格'——24小时营业，随叫随到，还不涨价。",
-        "有人说我脾气好，我笑了笑没说话。其实不是脾气好，是懒得计较。",
-        "我终于明白，为什么'好人卡'发得最多——因为好人最好打发。",
-        "同事问我：'你怎么从来不生气？'我说：'生气要花力气，我选择省着点用。'",
-        "我的人生信条曾经是'吃亏是福'，直到我发现福没来，亏倒是吃了不少。",
-        "别人都在研究怎么赚钱，我在研究怎么不被人当免费劳动力。",
-        "我这人有个毛病，别人一说'就你能帮我'，我就跟中了蛊似的。",
-        "我朋友说我是'人形充电宝'，谁没电了都来找我，充完就走。",
-        "有人问我为什么总是笑，我说：哭也解决不了问题，还费纸巾。",
-        "我发现一个真理：会哭的孩子有糖吃，不会哭的孩子只能自己买。",
-        "我妈问我：'你怎么朋友那么多？'我说：'因为我从不麻烦别人。'",
-        "别人的底线是不能触碰，我的底线是随时可以后退。",
-        "我终于知道为什么我人缘好了——因为我从来不给别人添堵，只给自己添堵。",
-        "有人说我是'海绵体质'，什么委屈都能吸收，还不反弹。",
+    "A类-缘分命定型": [
+        "大千世界，芸芸众生，能看到这段话的人，都不简单",
+        "茫茫人海，你能刷到这条，就说明你跟别人不一样",
+        "万千人中，你停下来看这段文字，这就是缘分",
+        "这世上那么多人，偏偏是你看到了，说明这段话就是说给你听的",
     ],
-    "B类-温暖治愈型": [
-        "嘿，今天想跟你聊点轻松的，关于那些默默付出却不求回报的人。",
-        "你知道吗，这世上有一种人，他们的好，是藏在细节里的。",
-        "我一直觉得，善良的人身上有光，只是有时候这光被辜负了。",
-        "如果你正在看这段话，我想告诉你：你的好，有人看得见。",
-        "今天不讲大道理，就想跟你说说心里话。",
-        "有些人，值得被这个世界温柔以待，比如正在看这段话的你。",
-        "我见过很多人，但像你这样的，真的不多。",
-        "你有没有被人夸过'你人真好'？今天我想认真聊聊这件事。",
-        "这段话，送给每一个在生活里默默扛着的人。",
-        "我相信，看到这里的你，一定是个心里有温度的人。",
-        "你的温柔，不是软弱，是这个世界最稀缺的力量。",
-        "那些你以为没人看见的付出，其实都被时间记住了。",
-        "你不必向任何人证明你的好，懂你的人自然懂。",
-        "愿你的善良，终有一天能被温柔以待。",
-        "你已经很棒了，只是你自己不知道而已。",
-        "这世上总有人在默默爱着你，只是你没发现。",
-        "你的坚强，不是因为你不怕疼，是因为你扛得住。",
+    "B类-好消息喜讯型": [
+        "告诉你一个好消息",
+        "有件喜事想跟你说",
+        "你等的好事要来了",
     ],
     "C类-反转惊喜型": [
         "我曾经以为自己是个'老好人'，后来发现，我是个'聪明的好人'。",
@@ -84,46 +57,17 @@ HOOK_LIBRARY = {
         "那些年我吃的亏，现在都变成了我的铠甲。",
         "我不争，不是因为我怕，是因为我知道时间会给答案。",
     ],
-    "D类-对话引入型": [
-        "他说完这句话，我愣在原地半天没回过神：'你就是太好说话了。'",
-        "有人问我：'你这辈子最后悔的事是什么？'我想了想，说了两个字。",
-        "算了，不争了——你是不是也经常这样跟自己说？",
-        "我爷爷临终前拉着我的手说：'记住，吃亏的人，老天爷都记着账呢。'",
-        "'你怎么这么傻？'这句话，你听过多少次了？",
-        "我妈常说一句话：'人善被人欺，马善被人骑。'我以前不信，现在信了。",
-        "'别太老实了，会吃亏的。'说这话的人，后来怎么样了？",
-        "朋友跟我说：'你知道你最大的问题是什么吗？就是太把别人当回事。'",
-        "'谢谢你'——这三个字，你等了多久才听到？",
-        "有人当面问我：'你是不是傻？人家都欺负到头上了你还忍？'",
-        "我问我爸：'为什么好人总是吃亏？'他沉默了很久才回答我。",
-        "'你变了。'有人这样说我，我笑了笑没解释。",
-        "领导拍着我的肩膀说：'小伙子，你太实在了。'我不知道这是夸还是骂。",
-        "'你就不能为自己想想吗？'这句话，我听了无数遍。",
-        "老婆问我：'你在外面受了委屈，为什么不跟我说？'",
-        "'你这样的人，活该被人欺负。'这话扎心，但我没反驳。",
-        "孩子问我：'爸爸，为什么你总是让着别人？'我不知道怎么回答。",
+    "D类-送礼赠予型": [
+        "今天送你一句话",
+        "把这份祝福送给你",
+        "这段话送给正在看的你",
     ],
-    "E类-生活观察型": [
-        "菜市场大妈的一句话，让我愣了半天：'姑娘，你这么好说话，不怕被人欺负啊？'",
-        "堵在路上，收音机里突然传来一句话，我眼眶一下就红了。",
-        "排队的时候，前面两个人的对话让我心里一惊。",
-        "超市结账时，前面那个人的一个举动，让我看清了人性。",
-        "参加同学聚会，有个人的变化让我震惊了。",
-        "小区门口，两个大妈聊天，聊着聊着说出了一个真相。",
-        "去参加婚礼，新郎的一句话让全场安静了。",
-        "早上买早餐，老板娘的一句话让我想了一整天。",
-        "坐出租车，司机师傅跟我聊了一路，最后一句话让我沉默了。",
-        "地铁上，旁边两个年轻人的对话，让我想起了自己。",
-        "公司茶水间，无意中听到的一段话，让我彻底清醒了。",
-        "深夜的便利店，店员的一句话，让我破防了。",
-        "高铁上，邻座大哥讲的故事，让我一路都在想。",
-        "咖啡店里，隔壁桌两个人的对话，让我若有所思。",
-        "健身房里，教练的一句话，让我重新审视自己。",
-        "书店角落，一个陌生人的举动，让我相信善良还在。",
-        "电梯里，邻居的一句闲聊，让我想了一整天。",
+    "E类-引经据典型": [
+        "古人说得好",
+        "有句老话讲得透",
+        "老祖宗留下一句话",
     ],
     "F类-数字锚定型": [
-        "认识老王二十年了，他教会我一件事：别对谁都掏心掏肺。",
         "被人欺负了三年，我终于想通了一个道理。",
         "用了十年时间，我才学会一个字：不。",
         "三次被人背叛之后，我悟了。",
@@ -141,7 +85,36 @@ HOOK_LIBRARY = {
         "坚持了七年的习惯，彻底改变了我的人生。",
         "二十年的老友，一夜之间形同陌路，原因竟然是这个。",
     ],
-    "G类-金句破题型": [
+    "G类-夸品质型": [
+        "你这种人，心太善了",
+        "像你这么实在的人，现在真不多了",
+    ],
+    "H类-懂你型": [
+        "我知道你这些年有多不容易",
+        "你心里的苦，不说我也懂",
+    ],
+    "I类-预言好结果型": [
+        "像你这样的人，以后一定会越来越好",
+        "你的好日子在后头呢",
+    ],
+    "J类-玄学传讯型": [
+        "宇宙正在给你发射一道强烈信号，千万别划走，这道信息只为你而来",
+        "上面那位早就注意到你了，今天终于托我来告诉你这件事",
+        "道友，既然来了，便听我说几句，有人为你坐不住了",
+        "冥冥之中，你能刷到这里，绝不是偶然，天意让我告诉你一件事",
+    ],
+    "K类-旁观者见证型": [
+        "老天啊，你到底知不知道你这些年悄悄干了一件多大的事？",
+        "我当时就站在旁边，亲眼目睹了整个过程，震到说不出话",
+        "有人托我转告你一句话，就这一句，你听完就明白了",
+        "有人跟了你很多年，今天终于坐不住了，要我来告诉你一件事",
+    ],
+    "L类-大喜讯型": [
+        "特大喜事儿，刚接到信，你这些日子的付出总算有了好结果",
+        "我要向你宣告一个石破天惊的喜讯，你先稳住",
+        "恭喜你，你等的那个人、那件事、那个结果，马上就要来了",
+    ],
+    "M类-金句破题型-来自钩子库": [
         "最傻的事，就是跟烂人讲道理。",
         "千万别做老好人，我吃过这个亏，现在告诉你。",
         "你越忍让，别人越得寸进尺，这是我用十年换来的教训。",
@@ -160,7 +133,7 @@ HOOK_LIBRARY = {
         "真正的强大，是内心的平静，而不是外表的强硬。",
         "你的格局，决定了你的结局。",
     ],
-    "H类-悬念钩子型": [
+    "N类-悬念钩子型-来自钩子库": [
         "有件事我憋了很久，今天必须说出来。",
         "你可能不信，但接下来我说的都是真事。",
         "我要告诉你一个很多人不愿意承认的真相。",
@@ -187,7 +160,7 @@ HOOK_LIBRARY = {
         "你是不是一直在想，为什么自己总是遇人不淑？",
         "你可能从来没想过，你的善良其实是一种天赋。",
     ],
-    "I类-共鸣代入型": [
+    "O类-共鸣代入型-来自钩子库": [
         "那种被人当众下面子的感觉，你是不是也经历过？",
         "明明没做错什么，却总被人针对，你是不是也遇到过？",
         "有些委屈，说出来都没人信，你懂这种感觉吗？",
@@ -213,26 +186,46 @@ HOOK_LIBRARY = {
         "你是不是也曾经，为了维护一段关系，委屈了自己很多次？",
         "你是不是也有过这种时刻：想发脾气，却又怕伤了和气？",
     ],
-    "J类-人物故事型": [
-        "我有个朋友，前两天跟我说了一件事，我听完沉默了很久。",
-        "我爸这辈子只教过我一个道理，我到现在才真正理解。",
-        "单位有个人，大家都不待见他，后来我才知道原因。",
-        "我们小区有个大爷，天天在楼下坐着，有一天他跟我说了一番话。",
-        "我表姐的经历，让我彻底看清了人心。",
-        "我有个同学，当年是班里最老实的人，你猜他现在怎么样了？",
-        "我舅舅年轻时吃过一个大亏，他把这个教训告诉了我。",
-        "我认识一个人，他的经历让我相信：好人终有好报。",
-        "我奶奶活了九十岁，临终前只跟我说了一句话。",
-        "公司有个老员工，干了二十年，最后的结局让所有人唏嘘。",
-        "我发小的故事，让我明白了什么叫'人心隔肚皮'。",
-        "我师傅退休前，把他的看家本领全教给了我。",
-        "我邻居家的孩子，从小被人看不起，现在却让所有人刮目相看。",
-        "我大学室友的经历，让我懂得了什么叫'厚积薄发'。",
-        "我前同事的遭遇，让我看清了职场的残酷。",
-        "我姑姑的人生，是我见过最励志的故事。",
-        "我老板的发家史，颠覆了我对成功的认知。",
+    "P类-喜讯好消息型-来自钩子库": [
+        "哎，有件特大喜事要告诉你，你最近要走运了。",
+        "我要向你宣布一个石破天惊的消息，你先做好心理准备。",
+        "恭喜你，好事来了，而且不止一件。",
+        "悄悄告诉你一个大喜讯，千万别让其他人知道。",
+        "今天有件好事要发生在你身上，我等这一天等很久了。",
+        "你等的那个人、那件事、那个结果，马上就要来了。",
+        "特大喜事！今天要破例告诉你一件事，准备好了吗？",
+        "快告诉你，有件事今天终于有结果了，是好结果。",
+        "好消息，真的是好消息，你做好准备接住了吗？",
     ],
-    "K类-自我剖析型": [
+    "Q类-天命宇宙选中型-来自钩子库": [
+        "茫茫人海，你能刷到这条，绝对不是偶然。",
+        "大千世界，芸芸众生，能停在这里的人，都不简单。",
+        "冥冥之中，有人特意把你引到了这里，你信吗？",
+        "这茫茫红尘里，你我能相逢，本就是一段难得的缘分。",
+        "浩瀚星河之中，有些人生来就带着不同的使命。",
+        "在这片芸芸众生里，你是那个被悄悄标注了的人。",
+        "千万人里，宇宙单独挑了你，让你看见这段话，你觉得是为什么？",
+        "道友，你在这茫茫红尘中修行多年，该到了你发光的时候了。",
+        "浩瀚云海之间，你能看见这段话，是你的气运到了。",
+    ],
+    "R类-旁观者见证型-来自钩子库": [
+        "老天啊，你知不知道你这些年悄悄干了一件多大的事？",
+        "我当时就站在旁边，亲眼看见了你的整个过程，真的震到我了。",
+        "说实话，我观察你很久了，有些话今天必须当面跟你说。",
+        "你不知道，在你看不见的地方，有多少人在悄悄看着你。",
+        "你以为没人注意你，但其实有人早就把你看得清清楚楚。",
+        "你可能不知道，你这一路走来的样子，早就被人看在眼里了。",
+        "我要替你说几句公道话，因为你自己不说，没人说。",
+    ],
+    "S类-紧急叫停型-来自钩子库": [
+        "先别划走，就差你最后这三秒，听我说完。",
+        "等一下，等一下，你先别走，我有句话必须告诉你。",
+        "停！先别滑走，我知道你现在心里乱得很，但你得听我说。",
+        "完蛋了，屏幕前的你，你知道吗，你现在的处境我全看见了。",
+        "别走！划走的这一刻，你可能就错过了一件改变你的事。",
+        "你先等等，我说完这一段你再走，就这一段。",
+    ],
+    "T类-自我剖析型-来自钩子库": [
         "说出来不怕你笑话，我以前也是个傻子。",
         "回头看看这些年，我最后悔的一件事是太心软。",
         "如果能重来，我绝对不会再做老好人。",
@@ -251,7 +244,7 @@ HOOK_LIBRARY = {
         "我用了半辈子，才学会一个字：不。",
         "我以前总怕得罪人，现在我只怕对不起自己。",
     ],
-    "L类-转折反差型": [
+    "U类-转折反差型-来自钩子库": [
         "以前我不信这个道理，直到自己栽了跟头。",
         "年轻的时候觉得这话是废话，现在才知道是真理。",
         "曾经有人跟我说过一句话，我没当回事，后来我后悔了。",
@@ -273,17 +266,12 @@ HOOK_LIBRARY = {
 }
 
 def get_random_hooks(count=3):
-    """随机选择指定数量的不同类型开头，确保至少1个是轻松/温暖/反转类型"""
-    light_types = ["A类-轻松幽默型", "B类-温暖治愈型", "C类-反转惊喜型"]
+    """随机选择指定数量的不同类型开头"""
     all_types = list(HOOK_LIBRARY.keys())
 
-    # 确保至少选1个轻松类型
-    selected_types = [random.choice(light_types)]
-
-    # 从剩余类型中再选(count-1)个
-    remaining = [t for t in all_types if t != selected_types[0]]
-    additional_count = min(count - 1, len(remaining))
-    selected_types.extend(random.sample(remaining, additional_count))
+    # 随机选择count个不同类型
+    selected_count = min(count, len(all_types))
+    selected_types = random.sample(all_types, selected_count)
 
     # 打乱顺序
     random.shuffle(selected_types)
@@ -333,9 +321,9 @@ DEFAULT_CONFIG = {
         ],
         "橱窗引流": [
             "现在你只需要做一件事，点开我的头像，进入主页橱窗，不要带着太多顾虑去挑拣，也不要问哪一件最好，你静静的看。若它让你心有所动，那就是适合你的，切莫错过。",
-            "选一件，是给自己一份小小的犒赏；选两件，是为自己的生活增添一点温暖；若你愿意，选三件，就是给自己一个完整的礼物，让生活多一些美好。",
+            "点开我的头像，进主页橱窗看看。选一件，是给自己一份小小的犒赏；选两件，是为自己的生活增添一点温暖；若你愿意，选三件，就是给自己一个完整的礼物，让生活多一些美好。",
             "去吧，朋友，点开头像进橱窗，去找回那个本该发光的自己。我在那头等着，看你越来越好，自在如风。",
-            "选一件，第一眼入心的就是你接下来全力冲锋的底气；选2件，便是对自己一路隐忍坚持的犒赏；选3件，更代表你不只顾着当下赶路，还在为长远未来布局筹谋。"
+            "现在点我头像，去主页橱窗里看看。选一件，第一眼入心的就是你接下来全力冲锋的底气；选2件，便是对自己一路隐忍坚持的犒赏；选3件，更代表你不只顾着当下赶路，还在为长远未来布局筹谋。"
         ],
         "带货引流": [
             "轻轻一点左下角，它就能到你家。我知道你会犹豫，怕没用，怕白费钱，但我劝你大胆试这一次。这不是消费，是投资，投资你的安稳生活，投资你的人生底气。点击左下角把它请回家...",
@@ -451,6 +439,11 @@ class FangxieApp:
         canvas.bind("<Configure>", on_canvas_configure)
 
         def _on_mousewheel(event):
+            # 如果事件来源是Combobox，不滚动页面
+            widget = event.widget
+            widget_class = widget.winfo_class()
+            if widget_class in ('TCombobox', 'Combobox'):
+                return "break"
             canvas.yview_scroll(int(-1*(event.delta/120)), "units")
         canvas.bind_all("<MouseWheel>", _on_mousewheel)
 
@@ -575,6 +568,13 @@ class FangxieApp:
         self.yinliu_combo = ttk.Combobox(yinliu_combo_frame, width=50, state="readonly")
         self.yinliu_combo.pack(side=tk.LEFT, padx=5)
         self.yinliu_combo.bind("<<ComboboxSelected>>", self.on_yinliu_select)
+
+        # 禁用Combobox的鼠标滚轮事件，防止下拉框打开时整个页面滚动
+        def block_scroll(event):
+            return "break"
+        self.yinliu_combo.bind("<MouseWheel>", block_scroll)
+        self.yinliu_combo.bind("<Button-4>", block_scroll)  # Linux向上滚动
+        self.yinliu_combo.bind("<Button-5>", block_scroll)  # Linux向下滚动
 
         # 话术操作按钮
         yinliu_btn_frame = ttk.Frame(self.yinliu_frame)
@@ -992,8 +992,11 @@ class FangxieApp:
 
     def select_video_audio(self):
         """选择视频配音文件"""
+        current = self.video_audio_path.get()
+        initial_dir = os.path.dirname(current) if current and os.path.exists(os.path.dirname(current)) else None
         file_path = filedialog.askopenfilename(
             title="选择配音文件",
+            initialdir=initial_dir,
             filetypes=[("音频文件", "*.mp3 *.wav *.m4a"), ("所有文件", "*.*")]
         )
         if file_path:
@@ -1001,13 +1004,17 @@ class FangxieApp:
 
     def select_video_source_folder(self):
         """选择视频素材文件夹"""
-        folder_path = filedialog.askdirectory(title="选择视频素材文件夹")
+        current = self.video_source_var.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择视频素材文件夹", initialdir=initial_dir)
         if folder_path:
             self.video_source_var.set(folder_path)
 
     def select_bgm_folder(self):
         """选择BGM文件夹"""
-        folder_path = filedialog.askdirectory(title="选择背景音乐文件夹")
+        current = self.bgm_folder.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择背景音乐文件夹", initialdir=initial_dir)
         if folder_path:
             self.bgm_folder.set(folder_path)
 
@@ -1032,7 +1039,9 @@ class FangxieApp:
 
     def select_video_output_folder(self):
         """选择视频输出文件夹"""
-        folder_path = filedialog.askdirectory(title="选择输出文件夹")
+        current = self.video_output_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择输出文件夹", initialdir=initial_dir)
         if folder_path:
             self.video_output_path.set(folder_path)
 
@@ -1943,30 +1952,51 @@ class FangxieApp:
         # 获取当前类型的话术列表
         templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
 
-        # 构建下拉框选项（显示前20个字）
-        options = ["-- 自定义（在下方输入框填写）--"]
+        # 构建下拉框选项（显示前20个字）- 自定义放在最后
+        options = []
         for i, tpl in enumerate(templates):
             preview = tpl[:20].replace('\n', ' ') + "..." if len(tpl) > 20 else tpl.replace('\n', ' ')
             options.append(f"{i+1}. {preview}")
+        options.append("-- 自定义（在下方输入框填写）--")
 
         self.yinliu_combo['values'] = options
-        self.yinliu_combo.current(0)
+
+        # 根据引流类型设置默认选中
+        if flow_type == "带货引流":
+            # 带货引流默认选中第3条（索引为2）
+            if len(templates) >= 3:
+                self.yinliu_combo.current(2)
+            else:
+                self.yinliu_combo.current(0)
+        else:
+            # 置顶和橱窗引流默认选中第5条（索引为4）
+            if len(templates) >= 5:
+                self.yinliu_combo.current(4)
+            else:
+                self.yinliu_combo.current(0)
 
     def on_yinliu_select(self, event=None):
         """选择话术时填充到文本框"""
         flow_type = self.flow_type.get()
         selection = self.yinliu_combo.current()
 
-        if selection <= 0:  # 选择了"不使用"
+        # 获取对应的话术内容
+        templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
+
+        # 如果选择了"自定义"（现在在最后）
+        if selection >= len(templates):
             return
 
         # 获取对应的话术内容
-        templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
-        if selection - 1 < len(templates):
-            template = templates[selection - 1]
+        if selection < len(templates):
+            template = templates[selection]
             # 填充到文本框
             self.yinliu_text.delete("1.0", tk.END)
             self.yinliu_text.insert("1.0", template)
+
+    def _disable_combobox_scroll(self, combobox):
+        """禁用Combobox下拉列表的滚轮事件传播（已废弃，使用更简单的方法）"""
+        pass
 
     def save_yinliu_template(self):
         """保存当前话术到列表"""
@@ -2034,46 +2064,73 @@ class FangxieApp:
             self.paste_input_frame.pack(fill=tk.X)
 
     def select_input_file(self):
+        current = self.input_path.get()
+        initial_dir = os.path.dirname(current) if current and os.path.exists(os.path.dirname(current)) else None
         file_path = filedialog.askopenfilename(
             title="选择参考文案文件",
+            initialdir=initial_dir,
             filetypes=[("文本文件", "*.txt"), ("所有文件", "*.*")]
         )
         if file_path:
             self.input_path.set(file_path)
 
     def select_input_folder(self):
-        folder_path = filedialog.askdirectory(title="选择参考文案文件夹")
+        current = self.input_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择参考文案文件夹", initialdir=initial_dir)
         if folder_path:
             self.input_path.set(folder_path)
 
     def select_output_folder(self):
-        folder_path = filedialog.askdirectory(title="选择输出保存文件夹")
+        current = self.output_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择输出保存文件夹", initialdir=initial_dir)
         if folder_path:
             self.output_path.set(folder_path)
 
     def select_txt_output_folder(self):
         """选择TXT保存文件夹"""
-        folder_path = filedialog.askdirectory(title="选择TXT保存文件夹")
+        current = self.txt_output_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择TXT保存文件夹", initialdir=initial_dir)
         if folder_path:
             self.txt_output_path.set(folder_path)
 
     def select_voice_input_folder(self):
         """选择语音合成的文案输入目录"""
-        folder_path = filedialog.askdirectory(title="选择文案目录")
+        current = self.voice_input_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择文案目录", initialdir=initial_dir)
         if folder_path:
             self.voice_input_path.set(folder_path)
 
     def select_voice_output_folder(self):
         """选择语音合成的输出目录"""
-        folder_path = filedialog.askdirectory(title="选择配音输出目录")
+        current = self.voice_output_path.get()
+        initial_dir = current if current and os.path.exists(current) else None
+        folder_path = filedialog.askdirectory(title="选择配音输出目录", initialdir=initial_dir)
         if folder_path:
             self.voice_output_path.set(folder_path)
 
-    def log(self, message):
+    def log(self, message, level="normal"):
         """添加日志"""
         timestamp = datetime.now().strftime("%H:%M:%S")
         log_line = f"[{timestamp}] {message}\n"
-        self.log_text.insert(tk.END, log_line)
+
+        # 配置颜色标签
+        if not hasattr(self, '_log_tags_configured'):
+            self.log_text.tag_config("error", foreground="red")
+            self.log_text.tag_config("warn", foreground="orange")
+            self.log_text.tag_config("normal", foreground="")
+            self._log_tags_configured = True
+
+        if level == "error":
+            self.log_text.insert(tk.END, log_line, "error")
+        elif level == "warn":
+            self.log_text.insert(tk.END, log_line, "warn")
+        else:
+            self.log_text.insert(tk.END, log_line)
+
         self.log_text.see(tk.END)
         self.root.update()
 
@@ -2243,8 +2300,12 @@ class FangxieApp:
                 articles = self.parse_articles(content)
                 self.log(f"识别到 {len(articles)} 篇参考文案")
 
-                # 把参考文案追加到素材库
+                # 把参考文案追加到素材库（改写前先检查去重）
                 for article in articles:
+                    # 检查参考文章是否重复
+                    if self.check_reference_duplicate(article):
+                        self.log(f"  跳过重复的参考文案")
+                        continue
                     self.append_reference_to_library(article, flow_type)
 
                 # 保存最后一次生成的信息
@@ -2294,6 +2355,14 @@ class FangxieApp:
             self.update_progress(100)
             self.log("\n" + "="*50)
             self.log("全部处理完成！")
+
+            # 自动替换敏感词
+            if success_count > 0:
+                self.log("\n" + "="*50)
+                self.log("开始替换敏感词...")
+                self.replace_sensitive_words_in_directory(txt_output_path)
+                self.log("敏感词替换完成！")
+
             self.finish_txt_task()
 
         except Exception as e:
@@ -2306,9 +2375,16 @@ class FangxieApp:
     def split_articles_from_result(self, content):
         """把生成的大文案拆分成多篇，返回列表 [(纯正文, [标题列表]), ...]"""
         articles = []
-        # 按【第X篇】分割，支持多种格式
-        pattern = r'═+\s*\n*【第[一二三四五六七八九十\d]+篇】\s*\n*═*'
+        # 按【第X篇】分割，支持多种格式（含或不含═分隔线，含或不含空行）
+        pattern = r'(?:═+\s*\n*)?【第[一二三四五六七八九十\d]+篇】(?:\s*\n*═*)?'
         parts = re.split(pattern, content)
+        # 调试：打印分割结果
+        non_empty_parts = [p for p in parts if p and len(p.strip()) >= 100]
+        if hasattr(self, 'log'):
+            self.log(f"[分篇] 分隔符匹配到 {len(parts)-1} 处，有效分段 {len(non_empty_parts)} 篇")
+            if len(non_empty_parts) == 0:
+                # 打印前200字帮助诊断
+                self.log(f"[分篇] 内容前200字: {content[:200]}")
 
         for part in parts:
             part = part.strip()
@@ -2400,13 +2476,13 @@ class FangxieApp:
             articles = self.split_articles_from_result(content)
 
             if not articles:
-                self.log("警告：未能拆分出文章，保存整个内容")
-                timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
-                filename = f"{timestamp}.txt"
+                self.log("⚠️ 警告：未能拆分出文章，整体保存为一个文件", level="error")
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"分割失败_{timestamp}.txt"
                 filepath = os.path.join(output_path, filename)
                 with open(filepath, 'w', encoding='utf-8') as f:
                     f.write(content)
-                self.log(f"TXT已保存: {filename}")
+                self.log(f"TXT已保存: {filename}", level="error")
                 return [filepath]
 
             saved_files = []
@@ -2424,17 +2500,39 @@ class FangxieApp:
                     # 输出该篇所有标题
                     self.log(f"第{idx+1}篇提取到 {len(titles)} 个标题：")
                     for t_idx, t in enumerate(titles):
-                        self.log(f"  标题{t_idx+1}: {t}")
+                        self.log(f"  标题{t_idx+1}: {t} ({len(t)}字)")
 
-                    # 从标题中随机选一个，避免与本次和历史已用标题重复
-                    available_titles = [t for t in titles if t not in used_titles and t not in existing_titles]
+                    # 先过滤掉超过20字的标题
+                    valid_titles = [t for t in titles if len(t) <= 20]
+
+                    if not valid_titles:
+                        # 如果5个都超过20字，选最短的那个
+                        valid_titles = [min(titles, key=len)]
+                        self.log(f"  ⚠ 所有标题都超过20字，选择最短的: {valid_titles[0]} ({len(valid_titles[0])}字)")
+                    elif len(valid_titles) < len(titles):
+                        self.log(f"  ✓ 过滤掉 {len(titles) - len(valid_titles)} 个超过20字的标题")
+
+                    # 从有效标题中随机选一个，避免与本次和历史已用标题重复
+                    available_titles = [t for t in valid_titles if t not in used_titles and t not in existing_titles]
                     if not available_titles:
-                        available_titles = [t for t in titles if t not in used_titles]
+                        available_titles = [t for t in valid_titles if t not in used_titles]
                     if not available_titles:
-                        available_titles = titles
+                        available_titles = valid_titles
 
                     selected_title = random.choice(available_titles)
-                    self.log(f"  → 随机选中: {selected_title}")
+
+                    # 检查标题是否与历史标题重复
+                    if self.check_title_duplicate(selected_title):
+                        self.log(f"  → 标题重复，尝试选择其他标题")
+                        # 尝试其他标题
+                        for alt_title in titles:
+                            if alt_title != selected_title and not self.check_title_duplicate(alt_title):
+                                selected_title = alt_title
+                                self.log(f"  → 改用标题: {selected_title}")
+                                break
+                    else:
+                        self.log(f"  → 随机选中: {selected_title}")
+
                     used_titles.append(selected_title)
                     existing_titles.add(selected_title)
 
@@ -2496,6 +2594,168 @@ class FangxieApp:
         self.update_status("已停止")
         self.start_btn.config(state=tk.NORMAL)
         self.stop_btn.config(state=tk.DISABLED)
+
+    def replace_sensitive_words_in_directory(self, directory):
+        """批量替换目录下所有txt文件的敏感词"""
+        import glob
+
+        # 标题敏感词替换规则（5个）
+        TITLE_SENSITIVE_WORDS = {
+            "贵人": "大佬",
+            "高层": "上面那位",
+            "福报": "回报",
+            "福气": "福泽",
+            "好运": "吉祥"
+        }
+
+        # 内容敏感词替换规则（61个）
+        CONTENT_SENSITIVE_WORDS = {
+            "点赞": "支持",
+            "红心": "支持",
+            "评论": "交流",
+            "留言": "互动",
+            "收藏": "保存",
+            "好运": "吉祥",
+            "翻身": "翻盘",
+            "福报": "回报",
+            "福气": "祥瑞",
+            "小人": "阻碍",
+            "贵人": "大佬",
+            "高层": "上面那位",
+            "法器": "器物",
+            "施法": "运用",
+            "轮回": "循环",
+            "报应": "后果",
+            "天道": "规律",
+            "命运": "人生",
+            "转运": "改善",
+            "化解": "解决",
+            "保佑": "守护",
+            "显灵": "显现",
+            "灵验": "有效",
+            "财运": "财富",
+            "官运": "事业",
+            "煞气": "负面",
+            "霉运": "困境",
+            "晦气": "不顺",
+            "天机": "规律",
+            "玄学": "学问",
+            "福祉": "幸福",
+            "因果": "结果",
+            "业力": "影响",
+            "修行": "努力",
+            "护身符": "护身物",
+            "命盘": "人生格局",
+            "仙师": "高人",
+            "道友": "朋友",
+            "符咒": "手段",
+            "开光": "准备",
+            "做法": "处理",
+            "作法": "处理",
+            "风水": "环境",
+            "算命": "分析",
+            "占卜": "预测",
+            "卦象": "迹象",
+            "仙缘": "机缘",
+            "佛缘": "缘分",
+            "道法": "方法",
+            "法力": "能力",
+            "神通": "本事",
+            "渡劫": "度过难关",
+            "劫数": "困难",
+            "镇宅": "守护家宅",
+            "辟邪": "避凶",
+            "招财": "聚财",
+            "旺运": "提升",
+            "破财": "损失",
+            "犯太岁": "不顺",
+            "冲喜": "喜事",
+            "老天爷": "上面那位",
+            "上天": "大佬",
+            "佛光": "光芒",
+            "神仙": "高人",
+            "菩萨": "大佬",
+            "鬼神": "神秘力量",
+            "法术": "方法",
+            "阴阳": "平衡"
+        }
+
+        try:
+            # 统计
+            title_replaced_count = 0
+            content_replaced_count = 0
+            total_replacements = 0
+
+            # 获取所有txt文件
+            txt_files = glob.glob(os.path.join(directory, "*.txt"))
+
+            if not txt_files:
+                self.log("  未找到txt文件")
+                return
+
+            self.log(f"  找到 {len(txt_files)} 个txt文件")
+
+            # 1. 先处理标题（文件名）
+            for filepath in txt_files:
+                old_filename = os.path.basename(filepath)
+                new_filename = old_filename
+
+                # 替换标题敏感词
+                for old_word, new_word in TITLE_SENSITIVE_WORDS.items():
+                    if old_word in new_filename:
+                        new_filename = new_filename.replace(old_word, new_word)
+                        total_replacements += 1
+
+                # 如果文件名改变了，重命名文件
+                if new_filename != old_filename:
+                    new_filepath = os.path.join(directory, new_filename)
+                    os.rename(filepath, new_filepath)
+                    title_replaced_count += 1
+                    self.log(f"  重命名: {old_filename} → {new_filename}")
+
+            # 2. 再处理内容
+            # 重新获取文件列表（因为文件名可能已改变）
+            txt_files = glob.glob(os.path.join(directory, "*.txt"))
+
+            for filepath in txt_files:
+                try:
+                    # 读取文件内容
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        content = f.read()
+
+                    original_content = content
+
+                    # 替换内容敏感词
+                    for old_word, new_word in CONTENT_SENSITIVE_WORDS.items():
+                        if old_word in content:
+                            count = content.count(old_word)
+                            content = content.replace(old_word, new_word)
+                            total_replacements += count
+
+                    if content != original_content:
+                        # 打印替换了哪些词
+                        replaced_words = []
+                        for old_word, new_word in CONTENT_SENSITIVE_WORDS.items():
+                            if old_word in original_content:
+                                replaced_words.append(f"{old_word}→{new_word}")
+                        if replaced_words:
+                            self.log(f"  [{os.path.basename(filepath)}] 替换: {', '.join(replaced_words)}")
+                        with open(filepath, 'w', encoding='utf-8') as f:
+                            f.write(content)
+                        content_replaced_count += 1
+
+                except Exception as e:
+                    self.log(f"  处理文件失败 {os.path.basename(filepath)}: {str(e)}")
+
+            # 输出统计
+            self.log(f"  标题替换: {title_replaced_count} 个文件")
+            self.log(f"  内容替换: {content_replaced_count} 个文件")
+            self.log(f"  总替换次数: {total_replacements} 次")
+
+        except Exception as e:
+            self.log(f"  敏感词替换出错: {str(e)}")
+            import traceback
+            self.log(traceback.format_exc())
 
     def regenerate(self):
         """重新生成 - 使用上次的参考文案和当前设置"""
@@ -2629,8 +2889,12 @@ class FangxieApp:
                 articles = self.parse_articles(content)
                 self.log(f"识别到 {len(articles)} 篇参考文案")
 
-                # 把参考文案追加到素材库
+                # 把参考文案追加到素材库（改写前先检查去重）
                 for article in articles:
+                    # 检查参考文章是否重复
+                    if self.check_reference_duplicate(article):
+                        self.log(f"  跳过重复的参考文案")
+                        continue
                     self.append_reference_to_library(article, flow_type)
 
                 # 保存最后一次生成的信息（用于重新生成）
@@ -2688,6 +2952,8 @@ class FangxieApp:
         调用逻辑：
         - 流式模式：主模型用流式调用，备用模型用非流式调用（fallback）
         - 非流式模式：主模型和备用模型都用非流式调用
+        - 3次重试：主模型2次 + 备用模型1次
+        - 如果3次都有结果但字数不够，选择字数最多的
         """
         target_per_article = int(self.word_count.get())
         target_article_count = int(self.article_count.get())
@@ -2745,12 +3011,17 @@ class FangxieApp:
         backup_model = getattr(self, f"{backup_prefix}_model").get().strip()
         backup_max_tokens = int(getattr(self, f"{backup_prefix}_max_tokens").get())
 
+        # 记录所有尝试的结果（用于选择字数最多的）
+        attempts = []
+
         # 第1次：主模型 + 原提示词
         call_mode = "流式" if main_use_stream else "非流式"
         self.log(f"【第1次尝试】主模型 ({main_model}) [{call_mode}]...")
         result = self.call_api(main_url, main_key, main_model, main_max_tokens, prompt, main_use_stream)
-        if self.check_result(result, 1, target_per_article, target_article_count):
+        check_info = self.check_result(result, 1, target_per_article, target_article_count)
+        if check_info['valid'] and check_info['pass']:
             return result
+        attempts.append({'result': result, 'info': check_info})
 
         if not self.is_running:
             return None
@@ -2758,36 +3029,52 @@ class FangxieApp:
         # 第2次：主模型 + 原提示词 + 追加说明
         self.log(f"【第2次尝试】主模型 + 追加说明 [{call_mode}]...")
         result = self.call_api(main_url, main_key, main_model, main_max_tokens, prompt + retry_suffix, main_use_stream)
-        if self.check_result(result, 2, target_per_article, target_article_count):
+        check_info = self.check_result(result, 2, target_per_article, target_article_count)
+        if check_info['valid'] and check_info['pass']:
             return result
+        attempts.append({'result': result, 'info': check_info})
 
         if not self.is_running:
             return None
 
-        # 第3次：备用模型 + 原提示词 + 追加说明
+        # 第3次：备用模型 + 原提示词 + 追加说明（最后一次）
         backup_mode = "流式" if backup_use_stream else "非流式"
-        self.log(f"【第3次尝试】备用模型 ({backup_model}) [{backup_mode}]...")
+        self.log(f"【第3次尝试】备用模型 ({backup_model}) [{backup_mode}]（最后一次）...")
         result = self.call_api(backup_url, backup_key, backup_model, backup_max_tokens, prompt + retry_suffix, backup_use_stream)
-        if self.check_result(result, 3, target_per_article, target_article_count):
+        check_info = self.check_result(result, 3, target_per_article, target_article_count)
+        if check_info['valid'] and check_info['pass']:
             return result
+        attempts.append({'result': result, 'info': check_info})
 
-        if not self.is_running:
+        # 3次都没通过，判断处理方式
+        valid_attempts = [a for a in attempts if a['info']['valid']]
+
+        if not valid_attempts:
+            # 情况1：3次全失败（API返回无效）
+            self.log("⚠️ 3次尝试均返回无效结果，本篇生成失败")
             return None
 
-        # 第4次：备用模型 + 原提示词 + 追加说明
-        self.log(f"【第4次尝试】备用模型（最后一次）[{backup_mode}]...")
-        result = self.call_api(backup_url, backup_key, backup_model, backup_max_tokens, prompt + retry_suffix, backup_use_stream)
-        if self.check_result(result, 4, target_per_article, target_article_count):
-            return result
+        # 情况2：有有效结果但字数都不够，选择字数最多的
+        best_attempt = max(valid_attempts, key=lambda a: a['info']['char_count'])
+        best_count = best_attempt['info']['char_count']
+        min_total = target_per_article * target_article_count
 
-        self.log("4次尝试均失败")
-        return None
+        self.log(f"⚠️ 3次尝试字数均不足{min_total}，选择字数最多的结果（{best_count}字）")
+        return best_attempt['result']
 
     def check_result(self, result, attempt_num, per_article, article_count):
-        """检查结果：有效性 + 字数（根据页面设置的篇数和字数要求）"""
+        """检查结果：有效性 + 字数（根据页面设置的篇数和字数要求）
+
+        返回字典：
+        {
+            'valid': bool,  # API返回是否有效
+            'pass': bool,   # 是否通过所有检查
+            'char_count': int,  # 字数统计
+        }
+        """
         if not result or not self.is_valid_result(result):
             self.log(f"第{attempt_num}次：API返回无效或被拒绝")
-            return False
+            return {'valid': False, 'pass': False, 'char_count': 0}
 
         char_count = self.count_chinese_chars(result)
         self.log(f"第{attempt_num}次：生成总字数 {char_count}")
@@ -2799,13 +3086,13 @@ class FangxieApp:
         max_total = max_per_article * article_count
         if char_count < min_total:
             self.log(f"总字数不足{min_total}（{article_count}篇×{per_article}字），需要重试...")
-            return False
+            return {'valid': True, 'pass': False, 'char_count': char_count}
         if char_count > max_total:
             self.log(f"总字数超出建议区间上限{max_total}，但不拦截")
 
         # 开头反故事化校验：命中故事触发词则重试
         if self.has_story_opening(result, article_count):
-            self.log("检测到故事化开头（如“那天/有一次/有人问我”等），仅提示不拦截")
+            self.log("检测到故事化开头（如\"那天/有一次/有人问我\"等），仅提示不拦截")
 
         # 不因标题缺失重试：标题通过提示词强约束，但校验阶段不拦截
         split_articles = self.split_articles_from_result(result)
@@ -2817,9 +3104,9 @@ class FangxieApp:
         similar, matched_file, sim_score = self.is_too_similar_to_recent(result)
         if similar:
             self.log(f"与近期文案相似度过高（{sim_score:.2f}，参考：{matched_file}），需要重试...")
-            return False
+            return {'valid': True, 'pass': False, 'char_count': char_count}
         self.log(f"字数合格（仅校验总字数下限{min_total}；实际{char_count}，平均每篇{avg_per_article}字），生成成功！")
-        return True
+        return {'valid': True, 'pass': True, 'char_count': char_count}
 
     def normalize_for_similarity(self, text):
         """清洗文本用于相似度比较"""
@@ -2867,6 +3154,61 @@ class FangxieApp:
             return titles
         except Exception:
             return set()
+
+    def check_title_duplicate(self, title, threshold=0.7):
+        """检查标题是否与历史标题重复"""
+        from difflib import SequenceMatcher
+
+        # 获取历史标题集合
+        historical_titles = self.get_generated_title_set()
+
+        if not historical_titles:
+            return False
+
+        # 计算与每个历史标题的相似度
+        for hist_title in historical_titles:
+            similarity = SequenceMatcher(None, title, hist_title).ratio()
+            if similarity >= threshold:
+                self.log(f"  ⚠️ 【标题去重】标题重复（相似度{similarity:.2%}）: {title}")
+                self.log(f"     与历史标题: {hist_title}")
+                return True
+
+        return False
+
+    def check_reference_duplicate(self, reference_content, threshold=0.8):
+        """检查参考文章是否已在爆款素材库中"""
+        from difflib import SequenceMatcher
+        import openpyxl
+
+        try:
+            if not os.path.exists(MATERIAL_LIBRARY_FILE):
+                return False
+
+            wb = openpyxl.load_workbook(MATERIAL_LIBRARY_FILE, read_only=True)
+            ws = wb.active
+
+            # 读取爆款素材库中的所有文章
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                if not row or len(row) < 3:
+                    continue
+
+                material_content = str(row[2] or "").strip()  # 第3列是正文
+                if not material_content:
+                    continue
+
+                # 计算相似度
+                similarity = SequenceMatcher(None, reference_content[:500], material_content[:500]).ratio()
+                if similarity >= threshold:
+                    self.log(f"  ⚠️ 【参考文章去重】参考文章重复（相似度{similarity:.2%}），跳过改写")
+                    wb.close()
+                    return True
+
+            wb.close()
+            return False
+
+        except Exception as e:
+            self.log(f"  检查参考文章去重失败: {str(e)}")
+            return False
 
     def append_generated_to_library(self, flow_type, title, article_content):
         """将本次生成文案（标题+正文）入库Excel"""
@@ -3085,15 +3427,15 @@ class FangxieApp:
         return f"""## 动态改写策略（必须执行，禁止模板化）
 ### 先内部写蓝图（不输出蓝图）
 - 在正式写作前，先在内部完成每篇蓝图：受众处境、痛点、情绪转折、身份抬升句、行动引导句。
-- 蓝图只用于思考，不要在最终答案里输出“蓝图/分析/说明”等字样。
+- 蓝图只用于思考，不要在最终答案里输出"蓝图/分析/说明"等字样。
 
 ### 本次分篇策略
 {chr(10).join(article_plans)}
 
 ### 去模板硬约束
-- 每篇开头句式必须不同，禁止复用“你有没有发现/我想告诉你/这世上”等高频模板句。
-- 每篇中段的论证方式必须不同：至少一篇“拆解误区”，至少一篇“价值抬升”，至少一篇“行动催化”。
-- 引经据典必须按上面的“引经类别”分配，不允许多篇重复同一类。
+- 每篇开头句式必须不同，禁止复用"你有没有发现/我想告诉你/这世上"等高频模板句。
+- 每篇中段的论证方式必须不同：至少一篇"拆解误区"，至少一篇"价值抬升"，至少一篇"行动催化"。
+- 引经据典必须按上面的"引经类别"分配，不允许多篇重复同一类。
 - 标题必须与正文强绑定，不能只换同义词。
 - 下面这些是近期高频短语，禁止原样复用：{forbidden_text}
 """
@@ -3226,37 +3568,208 @@ class FangxieApp:
         flow_instruction = self.get_flow_instruction(flow_type, yinliu_content, product_name, product_material, article_count)
         dynamic_instruction = self.build_dynamic_strategy_instruction(flow_type, article_count)
         strict_output_protocol = f"""## 硬性输出协议（必须严格遵守）
-- 先在内部完成每篇正文，再基于该篇正文提炼5个标题（内部步骤，不要输出“草稿”）。
+- 先在内部完成每篇正文，再基于该篇正文提炼5个标题（内部步骤，不要输出"草稿"）。
 - 必须输出{article_count}篇；每篇先输出【标题】区，再输出正文。
-- 每篇【标题】区必须有且仅有5行标题，每行1个，不要写“标题1：”前缀编号。
+- 每篇【标题】区必须有且仅有5行标题，每行1个，不要写"标题1："前缀编号。
 - 标题区后必须输出单独一行 `---`，再开始正文。
 - 任意一篇缺少标题区/标题不足5个/没有`---`分隔，均视为任务失败。
 """
-        title_positive_protocol = """## 标题风格硬规则（最高优先级）
-- 每篇的5个标题都必须是积极、正向、夸赞、认可、鼓励的语气。
-- 标题必须让读者感到“被理解、被尊重、被肯定、被看见”。
-- 标题可以有“点醒感”和“压迫感”，但压迫感只能针对困局，不得打压读者本人。
-- 禁止负面贬低、羞辱、恐吓、诅咒、讽刺读者的表达。
-- 标题必须和该篇正文内容强绑定，不能空泛套话。
-- 同一篇的5个标题必须明显不同，不得同义改写。
+        title_explosive_protocol = """## 爆款标题硬规则（最高优先级）
+
+【核心原则】
+- 标题必须制造悬念、冲突、事件感，而非直接给结论
+- 用"发生了什么事"代替"你是什么样的人"
+- 短促有力（10-18字），口语化，制造紧迫感
+
+【17大爆款公式】（扩充版）
+1. 悬念冲突型：[注意/发现] + [你/某人] + [动作/状态] + [反转]
+   - 示例结构：注意！你的XX瞒不住了
+2. 身份反转型：[权威/筛选] + [对你的决定] + [意外性]
+   - 示例结构：XX已经把你XX了
+3. 秘密揭露型：[有人/某事] + [隐藏信息] + [关于你]
+   - 示例结构：有人背着你XX
+4. 紧急警告型：[紧急词] + [你的处境] + [时间压力]
+   - 示例结构：XX马上XX了
+5. 第三方视角型：[权威人物] + [对你的态度/行动]
+   - 示例结构：XX发话了：XX
+6. 反差震撼型：[表面认知] + [实际真相] + [反转]
+   - 示例结构：他们以为XX，其实XX
+7. 情感操控型：[情绪动词] + [关键人物] + [意外行为]
+   - 示例结构：他们XX了，你还不知道
+8. 安静沉默型：[你的沉默] + [他们的慌乱] + [反转]
+   - 示例结构：你越安静，他们越慌
+9. 以柔克刚型：[你的不动声色] + [他们坐不住] + [效果]
+   - 示例结构：你一句话不说，全场都在等你表态
+10. 后悔震撼型：[他们的后悔] + [你的转变] + [反转]
+    - 示例结构：他们后悔了，但已经晚了
+11. 看穿揭露型：[XX看穿了] + [关于你的秘密]
+    - 示例结构：XX看穿了你的XX
+12. 镇场压轴型：[你的气场] + [全场反应]
+    - 示例结构：你XX，镇住了全场
+13. 深不见底型：[你的深度] + [他们的震惊]
+    - 示例结构：你XX，深不见底
+14. 窒息震撼型：[你的行为] + [让XX窒息]
+    - 示例结构：你的XX，让他们窒息
+15. 心慌失措型：[你的XX] + [让他们心慌]
+    - 示例结构：你XX，他们开始心慌了
+16. 坐不住型：[你的沉稳] + [他们坐不住]
+    - 示例结构：你不动声色，他们已经坐不住了
+17. 扫地僧型：[你的低调] + [实力震撼]
+    - 示例结构：你像扫地僧，XX都怕了
+18. 宇宙天选型：[宇宙/天选之人/天命人] + [为你安排/选中你/传讯]
+    - 示例结构：宇宙传讯，你将与XX产生意外交集
+    - 示例结构：终极筛选结束，合格者只有你一个
+    - 示例结构：天选之人，你太厉害了，一个人战胜一群人
+19. 喜讯好事型：[悄悄/恭喜/好消息/喜讯] + [好事来了]
+    - 示例结构：悄悄跟你说个大喜事
+    - 示例结构：喜讯，喜讯，宇宙传讯
+    - 示例结构：属于你的安稳顺遂在靠近
+20. 点名喊你型：[你知不知道/你到底知不知道/孩子] + [关于你的惊人事实]
+    - 示例结构：你知不知道，大家找你找疯了
+    - 示例结构：你到底知不知道，你有多值钱
+    - 示例结构：孩子，你可能不知道，你曾经化解了一道劫难
+21. 师傅点化型：[师傅/高人/大佬] + 点化/点拨/传话 + [关于你的真相]
+    - 示例结构：师傅点化：那个一直和你较劲的人，路走偏了
+    - 示例结构：高人点拨：你越冷漠，命就越好
+    - 示例结构：大佬传话：你不争而善胜，惊动了上面
+22. 有缘人型：[有缘人/信善之人] + [专属信息/留步]
+    - 示例结构：有缘人，你不需要讨好任何人
+    - 示例结构：信善之人，请留步片刻
+    - 示例结构：有缘人，整个宇宙都在为你撑腰
+
+**【每篇5个标题必须混合使用不同公式，不能全是同一类型！】**
+
+【标题原创性铁律】
+- 严禁照抄示例！示例仅用于理解公式结构！
+- 每个标题必须基于本篇正文的具体内容原创生成！
+- 同一次生成的所有标题不得重复或高度相似！
+- **字数硬限制：每个标题8-20字，超过20字必须精简，20字以内最佳**
+- **结尾绝对禁止任何标点符号（句号、感叹号、问号、省略号、顿号全部禁止）**
+- **禁止在标题中使用双引号（""）或单引号（''）**
+- 标题可以用逗号作为内部分隔，但结尾不得有任何标点
+
+【第三方角色词库】（扩充到50个）
+- 权威大佬类：大佬、大人物、上面那位、高人、伯乐、长者、智者、明白人、老前辈、行家、师傅、过来人
+- 宇宙天命类：宇宙、天选之人、天命人、上面、天意、冥冥中、宇宙传讯
+- 亲切称呼类：孩子、有缘人、信善之人、道友（可用）
+- 群体类：有人、他们、那些人、所有人、全场、身边人、强者、懂你的人、专家、识货的人
+- 关系类：亲戚、朋友、同事、家人、爱人、恩人、神秘大人物
+
+【情绪动词词库】（爆款高频词）
+- 他们系列：急了、怕了、慌了、傻眼了、愣住了、炸锅了、急坏了、后悔了、嫉妒了、服了、认输了、闭嘴了、急得直冒烟、急死了、嫉妒疯了、沉不住气了、憋不住了、坐不住了、蒙圈了、崩溃了、绷不住了、慌神了、发抖了、失眠了、窒息了、心慌了、瞒不住了
+- 你系列：你被骗了、你稳住了、你被包围了、你被卷进来了、你被低估了、你扛住了、你赢了、你醒了、你看穿了
+- 开头爆破词（标题第一个词，直接制造紧迫感）：完蛋了、炸锅了、不好了、恭喜你、喜讯、悄悄告诉你、注意了、你知不知道、你到底知不知道、宇宙传讯、天选之人
+"""
+
+        # 新增：文风关键词库（用于生成"安静/沉默"风格文案）
+        style_keywords_protocol = """## 文风关键词库（增加多样性）
+
+【安静沉默风格关键词】（约20%的文案使用此风格）
+- 核心词：安静、沉默、不动如山、心如止水、以柔克刚
+- 高级词：大象无形、深不见底、镇住场子、压轴、扫地僧
+- 动作词：不说话、不解释、不辩解、不争辩、不表态
+- 效果词：让他们慌了、让全场安静、让所有人心慌、镇住了全场
+
+【使用场景】
+- 当文案需要强调"你的沉稳"时使用
+- 当文案需要对比"你的安静 VS 他们的慌乱"时使用
+- 当文案需要体现"以柔克刚"、"不动如山"的境界时使用
+
+【示例句式】
+- "你越安静，他们越慌"
+- "你一句话不说，全场都在等你表态"
+- "你的沉默，比任何话都有分量"
+- "你不动声色，他们已经坐不住了"
+"""
+
+        # 根据引流类型动态生成引导话术
+        if flow_type == "置顶引流":
+            flow_guide = "点开我的头像，去主页置顶视频看看"
+        elif flow_type == "橱窗引流":
+            flow_guide = "点开我的头像，去主页橱窗里看看"
+        elif flow_type == "带货引流":
+            flow_guide = f"点开我的头像，去主页橱窗了解这款{product_name}"
+        else:
+            flow_guide = "（纯夸赞，无需引流话术）"
+
+        explosive_content_protocol = f"""## 爆款正文硬规则（8大核心规则）
+
+【规则1：开头钩子（前100字内）】
+5种爆款开头公式（必须二选一）：
+1. 紧急警告型："完蛋了，屏幕前的你！" / "注意了！"
+2. 喜讯通知型："恭喜你！" / "好消息来了！"
+3. 秘密揭露型："有个人背着你..." / "有件事瞒不住了..."
+4. 身份定位型："能刷到这条的，都不是普通人"
+5. 玄学权威型："宇宙已经..." / "大佬说了..."
+
+【规则2：前段（200-400字）：揭示危机/秘密】
+- 引入"他们"（那些看不起你的人）
+- 揭示"他们"的行为（背后说你、算计你）
+- 制造对立（你 VS 他们）
+- 禁止平铺直叙，必须有冲突感
+
+【规则3：中段（400-800字）：反转+认可（情绪高潮）】
+- 反转：其实你不是软弱，你是在憋大招
+- 认可：权威/宇宙/大佬看好你
+- 情绪爆发：他们急了、怕了、后悔了
+- 每150-200字必须有一个情绪爆发点
+
+【规则4：后段（800-1200字）：引经据典+升华】
+- 引用古语（自然，不生硬）
+- 继续制造情绪
+- 禁止引用现代作家、禁止讲心理学
+
+【规则5：结尾（最后200字）：明确引流+玄学加持】
+- 明确引导：{flow_guide}
+- 制造紧迫：不用想太多，跟着感觉走
+- 玄学加持：你的好运，从这一刻开始
+- 禁止只有祝福，必须有引流动作
+
+【规则6：第三方角色使用规则（最重要！）】
+- 每段都必须有第三方视角
+- 平均每150-200字必须出现一次第三方角色
+- 制造"你 VS 他们"的对立
+- 制造"权威认可你"的爽感
+- 降低"他们"使用频率到60%（不是每篇都要有）
+- 降低"你是不是"开头使用率到10%以下
+
+【规则7：语言风格硬规则】
+- 口语化：完蛋了、炸锅了、急死了、傻眼了
+- 短句化：平均句长15-20字
+- 重复强调：重要的话重复3遍
+- 禁止书面化：禁止引用现代作家、禁止讲心理学术语
+- 禁止英文：任何情况下都不得出现英文字母或英文单词
+- 禁止破折号：不得使用破折号（——），用逗号或句号代替
+
+【规则8：情绪节奏控制】
+- 情绪曲线：开头爆发 → 前段紧张 → 中段高潮 → 后段持续 → 结尾拉升
+- 情绪爆发点密度：平均每150-200字一个
+- 禁止温吞水、禁止平缓叙述
 """
 
         # 根据篇数随机选择开头
         random_hooks = get_random_hooks(article_count)
-        hooks_instruction = f"""## 【本次必须使用的开头】（强制执行！）
+        hooks_instruction = f"""## 【开头风格参考库】（灵活运用，不强制）
 
-**本次生成的{article_count}篇文章，必须分别使用以下{article_count}种开头风格，不得更换：**
+**以下是本次随机抽取的{article_count}种开头风格，供AI参考借鉴，不强制照搬：**
+- 可以直接借鉴某种风格
+- 可以融合多种风格
+- 也可以完全自主发挥，只要开头抓人就行
+- 每篇开头风格尽量不同即可
+
+**本次参考风格示例：**
 
 """
         for i, hook in enumerate(random_hooks, 1):
-            hooks_instruction += f"""**第{i}篇必须使用 {hook['type']}**
-（只允许借鉴风格，不要套用固定句式；开头必须原创，且禁止故事叙述型开场）
+            hooks_instruction += f"""**参考{i}：{hook['type']}**
+示例：{hook['example']}
+（只是风格参考，请原创发挥，禁止故事叙述型开场）
 
 """
 
         hotspot_alignment_protocol = """## 爆点保真规则（避免脱离参考文案）
 - 必须先提炼参考文案的爆点清单：核心痛点、情绪触发点、身份抬升点、行动引导点。
-- 正文必须与这4类爆点一一对应，保持“爆点一致、表达重写”。
+- 正文必须与这4类爆点一一对应，保持"爆点一致、表达重写"。
 - 禁止换题、跑题、另起炉灶；只能在同一议题内做深度扩写。
 - 允许结构创新，但爆点语义不能丢。
 """
@@ -3264,13 +3777,13 @@ class FangxieApp:
         opening_hook_protocol = """## 开头钩子硬规则
 - 每篇开头前2句必须出现钩子（痛点钩子/反差钩子/结果钩子/身份钩子四选一）。
 - 开头可以打招呼，也可以直接情绪切入，但必须快速抓住读者注意力。
-- 禁止故事叙述式开场：禁止“那天/有一次/我认识/有人问我/我朋友”这类叙事触发句。
+- 禁止故事叙述式开场：禁止"那天/有一次/我认识/有人问我/我朋友"这类叙事触发句。
 """
 
         prompt = f"""请根据以下参考文案进行仿写，生成{article_count}篇全新的百家号引流文案。
 
 【第一优先级任务】
-每篇文案先在内部写完正文，再提炼5个不同标题，最后按结构输出“标题区 + 正文”。
+每篇文案先在内部写完正文，再提炼5个不同标题，最后按结构输出"标题区 + 正文"。
 如果你漏掉任意一篇的5个标题，这次输出就视为失败。
 
 ## 参考文案：
@@ -3279,7 +3792,9 @@ class FangxieApp:
 {hooks_instruction}
 {dynamic_instruction}
 {strict_output_protocol}
-{title_positive_protocol}
+{title_explosive_protocol}
+{explosive_content_protocol}
+{style_keywords_protocol}
 {hotspot_alignment_protocol}
 {opening_hook_protocol}
 
@@ -3382,13 +3897,80 @@ class FangxieApp:
 - 例如："像你这样的人，以后一定会越来越好"、"你的好日子在后头呢"
 - 效果：给读者希望和信心
 
+**【J类：玄学传讯型】（爆款高频！占爆款35%！）**
+- 以神秘力量/宇宙信号/上面那位传话的角度切入
+- 例如：\"宇宙正在给你发射一道强烈信号，千万别划走，这道信息只为你而来\"
+- 例如：\上面那位早就注意到你了，今天终于托我来告诉你这件事\n- 例如：\"道友，既然来了，便听我说几句，有人为你坐不住了\"
+- 例如：\"冥冥之中，你能刷到这里，绝不是偶然，天意让我告诉你一件事\"
+- 效果：让读者觉得自己被神秘力量关注，命中注定
+- **注意：不用封建迷信词汇，用宇宙/上面那位/天意/大佬代替**
+
+**【K类：旁观者见证型】（爆款高频！占爆款25%！）**
+- 以第三方旁观者角度切入，描述我亲眼看见了你的场景
+- 例如："老天啊，你到底知不知道你这些年悄悄干了一件多大的事？"
+- 例如："我当时就站在旁边，亲眼目睹了整个过程，震到说不出话"
+- 例如："有人托我转告你一句话，就这一句，你听完就明白了"
+- 例如："有人跟了你很多年，今天终于坐不住了，要我来告诉你一件事"
+- 效果：让读者感受到被看见、被关注、有人在默默守护
+
+**【L类：大喜讯型】（占爆款15%！）**
+- 开篇直接宣布好消息，让读者心情愉悦期待
+- 例如："特大喜事儿，刚接到信，你这些日子的付出总算有了好结果"
+- 例如："我要向你宣告一个石破天惊的喜讯，你先稳住"
+- 例如："恭喜你，你等的那个人、那件事、那个结果，马上就要来了"
+- 效果：让读者充满期待，心情瞬间变好
+
+**【N类：金句破题型-来自钩子库】**
+- 用犀利金句直接开篇，一针见血
+- 例如："最傻的事，就是跟烂人讲道理"、"你的善良，要带点锋芒"
+- 效果：直击痛点，引发共鸣
+
+**【O类：悬念钩子型-来自钩子库】**
+- 制造悬念，吊起读者好奇心
+- 例如："有件事我憋了很久，今天必须说出来"、"接下来的话，可能会颠覆你的认知"
+- 效果：让读者想继续看下去
+
+**【P类：共鸣代入型-来自钩子库】**
+- 用"你是不是也..."引发强烈共鸣
+- 例如："那种被人当众下面子的感觉，你是不是也经历过？"
+- 效果：让读者感同身受
+
+**【Q类：喜讯好消息型-来自钩子库】**
+- 用喜讯开头，营造惊喜感
+- 例如："哎，有件特大喜事要告诉你，你最近要走运了"
+- 效果：让读者期待好事发生
+
+**【R类：天命宇宙选中型-来自钩子库】**
+- 强调命运安排，你被选中
+- 例如："茫茫人海，你能刷到这条，绝对不是偶然"
+- 效果：让读者觉得自己特别
+
+**【S类：旁观者见证型-来自钩子库】**
+- 以旁观者视角见证读者的付出
+- 例如："老天啊，你知不知道你这些年悄悄干了一件多大的事？"
+- 效果：让读者感到被看见
+
+**【T类：紧急叫停型-来自钩子库】**
+- 紧急呼叫，制造紧迫感
+- 例如："先别划走，就差你最后这三秒，听我说完"
+- 效果：抓住读者注意力
+
+**【U类：自我剖析型-来自钩子库】**
+- 分享自己的经历教训
+- 例如："说出来不怕你笑话，我以前也是个傻子"
+- 效果：拉近距离，真诚感
+
+**【V类：转折反差型-来自钩子库】**
+- 用前后对比制造反差
+- 例如："以前我不信这个道理，直到自己栽了跟头"
+- 效果：引发思考
+
 **切入角度使用规则：**
 - {article_count}篇文案必须使用{article_count}种不同的切入角度
 - 每篇文案可以混合使用多种角度，但要有一个主要角度
-- 切入角度要与文案内容自然融合，不能生硬
-- **缘分/命定型（A类）很受欢迎，建议至少1篇使用**
-- **禁止直接照搬上面的例子！例子只是说明方向，必须根据文案内容原创全新的表达**
-- **每篇文案的切入方式必须完全不同，禁止雷同**
+- **J类玄学传讯型和K类旁观者见证型很受欢迎，建议多用**
+- 禁止直接照搬上面的例子！例子只是说明方向，必须根据文案内容原创
+- 每篇文案的切入方式必须完全不同，禁止雷同
 
 ### 3. 禁止讲故事（硬性要求！）
 - **绝对禁止讲任何具体故事**
@@ -3527,6 +4109,48 @@ class FangxieApp:
 - "被最信任的人捅刀子，那种滋味，经历过的人都懂。"
 - "明明没做错什么，却总被人针对，这种事我也遇到过。"
 - "有些委屈，说出来都没人信。"
+
+**J类-喜讯好消息型（爆款高频！让读者心情愉悦期待）：**
+- "哎，有件特大喜事要告诉你，你最近要走运了。"
+- "我要向你宣布一个石破天惊的消息，你先做好心理准备。"
+- "恭喜你，好事来了，而且不止一件。"
+- "悄悄告诉你一个大喜讯，千万别让其他人知道。"
+- "今天有件好事要发生在你身上，我等这一天等很久了。"
+- "你等的那个人、那件事、那个结果，马上就要来了。"
+- "特大喜事！今天要破例告诉你一件事，准备好了吗？"
+- "快告诉你，有件事今天终于有结果了，是好结果。"
+
+**K类-天命宇宙选中型（爆款核心套路！制造被选中的使命感）：**
+- "茫茫人海，你能刷到这条，绝对不是偶然。"
+- "大千世界，芸芸众生，能停在这里的人，都不简单。"
+- "冥冥之中，有人特意把你引到了这里，你信吗？"
+- "这茫茫红尘里，你我能相逢，本就是一段难得的缘分。"
+- "浩瀚星河之中，有些人生来就带着不同的使命。"
+- "在这片芸芸众生里，你是那个被悄悄标注了的人。"
+- "千万人里，宇宙单独挑了你，让你看见这段话，你觉得是为什么？"
+- "道友，你在这茫茫红尘中修行多年，该到了你发光的时候了。"
+
+**L类-旁观者见证型（爆款独特视角！让读者感受到被看见）：**
+- "老天啊，你知不知道你这些年悄悄干了一件多大的事？"
+- "我当时就站在旁边，亲眼看见了你的整个过程，真的震到我了。"
+- "说实话，我观察你很久了，有些话今天必须当面跟你说。"
+- "你不知道，在你看不见的地方，有多少人在悄悄看着你。"
+- "你以为没人注意你，但其实有人早就把你看得清清楚楚。"
+- "你可能不知道，你这一路走来的样子，早就被人看在眼里了。"
+
+**M类-紧急叫停型（爆款最强留存钩子！）：**
+- "先别划走，就差你最后这三秒，听我说完。"
+- "等一下，等一下，你先别走，我有句话必须告诉你。"
+- "停！先别滑走，我知道你现在心里乱得很，但你得听我说。"
+- "完蛋了，屏幕前的你，你知道吗，你现在的处境我全看见了。"
+- "别走！划走的这一刻，你可能就错过了一件改变你的事。"
+- "你先等等，我说完这一段你再走，就这一段。"
+
+**I类-共鸣代入型：**
+- "那种被人当众下面子的感觉，我太懂了。"
+- "被最信任的人捅刀子，那种滋味，经历过的人都懂。"
+- "明明没做错什么，却总被人针对，这种事我也遇到过。"
+- "有些委屈，说出来都没人信。"
 - "你是不是也有过这种感觉：付出最多的人，往往最不被珍惜。"
 - "那种心寒的感觉，我懂。就像一盆冷水从头浇到脚。"
 - "有一种苦，叫做'打碎了牙往肚子里咽'。"
@@ -3564,113 +4188,29 @@ class FangxieApp:
 
 ## 引经据典要求（{article_count}篇必须从不同类别中选择！）
 
-**禁止高频使用的引用（太常见了，用了就重写！）：**
-- ❌ 《道德经》"上善若水"
-- ❌ 《增广贤文》"谁人背后无人说"
-- ❌ 曾国藩的任何名言（用太多了）
-- ❌ 杨绛"人生最曼妙的风景"
-- ❌ 王阳明"此心光明"
-- ❌ 莫言的任何名言（用太多了）
-- ❌ 螃蟹效应、破窗效应（用太多了）
+**【强制要求】每篇正文必须至少引用1处古典名句或名人名言，不引用视为不合格！**
 
-**引用类型库（10大类，每篇必须从不同类别中选择！）：**
+**禁止使用的引用（列入黑名单，绝对不能用！）：**
+- ❌ 《菜根谭》任何内容（用烂了，全部禁止）
 
-**类型1-儒家经典：**
-- 《论语》："君子坦荡荡，小人长戚戚"
-- 《论语》："己所不欲，勿施于人"
-- 《孟子》："穷则独善其身，达则兼济天下"
-- 《孟子》："生于忧患，死于安乐"
-- 《大学》："知止而后有定，定而后能静"
-- 《中庸》："君子素其位而行，不愿乎其外"
+**引用方向参考（只给方向，AI自主选择合适的句子，不指定具体名句！）：**
+- 儒家经典：论语、孟子、大学、中庸、荀子、礼记等
+- 道家智慧：道德经、庄子、列子、淮南子等
+- 史书典故：史记、资治通鉴、战国策、左传、汉书、后汉书等
+- 诗词名句：唐宋诗词（李白、杜甫、苏轼、辛弃疾、王维、陆游、白居易等）
+- 处世格言：围炉夜话、小窗幽记、幽梦影、呻吟语等（禁止菜根谭）
+- 明清名人：王阳明、林则徐、于谦、张居正、纪晓岚、左宗棠等
+- 民国大家：鲁迅、梁启超、胡适、林语堂、丰子恺等
+- 兵法谋略：孙子兵法、三十六计、鬼谷子等
+- 佛家禅语：禅宗公案、佛典名句等
+- 古代谚语俗语：民间流传的老话、古语
 
-**类型2-道家智慧：**
-- 《道德经》："知人者智，自知者明"
-- 《道德经》："大直若屈，大巧若拙"
-- 《道德经》："祸兮福之所倚，福兮祸之所伏"
-- 《庄子》："井蛙不可以语于海者，拘于虚也"
-- 《庄子》："相濡以沫，不如相忘于江湖"
-- 《列子》："天地无全功，圣人无全能"
-
-**类型3-处世格言：**
-- 《菜根谭》："宠辱不惊，闲看庭前花开花落"
-- 《菜根谭》："路径窄处，留一步与人行"
-- 《围炉夜话》："十分不耐烦，乃为人大病"
-- 《小窗幽记》："宠辱不惊，看庭前花开花落"
-- 《幽梦影》："少年人须有老成之识见，老成人须有少年之襟怀"
-- 《呻吟语》："轻信轻发，听言之大戒也"
-
-**类型4-史书智慧：**
-- 《史记》："桃李不言，下自成蹊"
-- 《史记》："燕雀安知鸿鹄之志"
-- 《资治通鉴》："兼听则明，偏信则暗"
-- 《战国策》："狡兔三窟，仅得免其死耳"
-- 《左传》："多行不义必自毙"
-- 《汉书》："水至清则无鱼，人至察则无徒"
-
-**类型5-诗词名句：**
-- 苏轼："竹杖芒鞋轻胜马，谁怕？一蓑烟雨任平生"
-- 苏轼："人有悲欢离合，月有阴晴圆缺"
-- 辛弃疾："众里寻他千百度，蓦然回首，那人却在灯火阑珊处"
-- 陆游："山重水复疑无路，柳暗花明又一村"
-- 李白："长风破浪会有时，直挂云帆济沧海"
-- 杜甫："会当凌绝顶，一览众山小"
-- 王维："行到水穷处，坐看云起时"
-- 白居易："试玉要烧三日满，辨材须待七年期"
-
-**类型6-明清名人：**
-- 王阳明《传习录》："破山中贼易，破心中贼难"
-- 王阳明："你未看此花时，此花与汝同归于寂"
-- 张居正："谋之在众，断之在独"
-- 于谦："粉身碎骨浑不怕，要留清白在人间"
-- 左宗棠："好便宜者，不可与之交财"
-- 林则徐："海纳百川，有容乃大"
-- 纪晓岚："事能知足心常惬，人到无求品自高"
-
-**类型7-民国大家：**
-- 鲁迅："真的猛士，敢于直面惨淡的人生"
-- 鲁迅："不在沉默中爆发，就在沉默中灭亡"
-- 胡适："做学问要在不疑处有疑，待人要在有疑处不疑"
-- 梁启超："患难困苦，是磨炼人格之最高学校"
-- 林语堂："人生不过如此，且行且珍惜"
-- 丰子恺："不乱于心，不困于情，不畏将来，不念过往"
-
-**类型8-当代作家：**
-- 杨绛《走到人生边上》："一个人经过不同程度的锻炼，就获得不同程度的修养"
-- 季羡林："人生在世，不如意事十之八九，常想一二，不思八九"
-- 余华《活着》："人是为活着本身而活着，而不是为了活着之外的任何事物所活着"
-- 史铁生："命定的局限尽可永在，不屈的挑战却不可须臾或缺"
-- 路遥《平凡的世界》："生活不能等待别人来安排，要自己去争取和奋斗"
-- 汪曾祺："人间送小温，不要太多，不要太少"
-- 贾平凹："人的一生，苦也罢，乐也罢，最重要的是心间的一泓清泉里不能没有月辉"
-- 三毛："一个人至少拥有一个梦想，有一个理由去坚强"
-
-**类型9-当代名人金句：**
-- 白岩松："一个人的价值，不是看他拥有多少，而是看他能给予多少"
-- 罗翔："一个知识越贫乏的人，越是拥有一种莫名奇怪的勇气和自豪感"
-- 董宇辉："人生就是一场修行，修的是一颗心"
-- 任正非："烧不死的鸟就是凤凰"
-- 曹德旺："人这一辈子，吃亏就是福"
-- 褚时健："人生总有起落，精神终可传承"
-- 稻盛和夫："人生的意义在于提升心性，磨炼灵魂"
-
-**类型10-心理学/哲学概念：**
-- 马斯洛需求层次："人在满足基本需求后，会追求更高层次的自我实现"
-- 沉没成本效应："已经付出的成本不应该影响未来的决策"
-- 幸存者偏差："我们只看到成功者，却忽略了更多失败者"
-- 登门槛效应："先接受小要求，更容易接受大要求"
-- 鸟笼效应："人们会为了一个不需要的东西，再添置更多不需要的东西"
-- 刺猬法则："保持适当距离，才能既温暖又不伤害"
-- 蘑菇定律："新人都要经历一段被忽视的时期，熬过去就好了"
-- 飞轮效应："万事开头难，但一旦转动起来，就会越来越轻松"
-- 延迟满足："能够忍耐当下的诱惑，才能获得更大的回报"
-- 峰终定律："人们对一段经历的评价，取决于高峰和结尾时的感受"
-
-**引用规则（必须严格执行！）：**
-- {article_count}篇文章必须从{article_count}个不同的大类中选择引用
-- 每篇文章至少引用2处，且来自不同来源
-- 禁止连续两次生成使用相同的引用
+**引用规则：**
+- 每篇正文至少引用1处，不引用视为不合格
+- {article_count}篇文章引用来源必须不同，不能每篇都用同一类
 - 引用要自然融入文章，不能生硬堆砌
 - 引用后要有自己的解读和延伸，不能只是引用完就结束
+- 禁止连续两次生成使用相同的引用
 
 ## 内容结构（确保每篇字数在{word_count}~{int(word_count) + 100}字）
 
@@ -3679,245 +4219,11 @@ class FangxieApp:
 3. **道理阐述（约400字）**：引经据典 + 深度分析 + 人生洞察
 4. **收尾引流（约350字）**：总结升华 + 给出希望 + 引流话术
 
-## 标题要求（15个标题必须全新原创！根据文案内容生成！）
-
-**标题核心原则（最重要！）：**
-- **必须根据当前文案内容原创标题**，禁止使用固定模板
-- **标题要用第二人称"你"或共情表达**：让读者觉得说的就是自己
-- **标题要夸赞/肯定/共情读者**：认同、理解、赞美、懂得读者
-- **标题要短**：控制在10-20字
-- **标题要正面积极**：给读者温暖和力量
-- **让读者看了开心、被认可、被理解、被看见**
-- **禁止用悬念、反问、疑问句**
-- **15个标题必须完全不同，每次生成都必须全新，禁止和之前生成的标题雷同**
-
-**爆款标题公式（6大类30种公式，必须混合使用，增加多样性！）：**
-
-**【A类：第二人称夸赞型】**
-公式1：你+品质+肯定词
-- 你的善良，终会被这世界温柔以待
-公式2：你这种人+赞美结果
-- 你这种人，活该被人尊重
-公式3：像你这样的人+肯定
-- 像你这样的人，真的不多了
-公式4：你吃过的苦/扛过的事+好结果
-- 你吃过的苦，都会变成光照亮前路
-公式5：你值得+美好事物
-- 你值得被好好爱着
-
-**【B类：共情理解型】**
-公式6：有一种人+描述+那就是你
-- 有一种人，默默付出从不邀功，说的就是你
-公式7：懂你的人+都知道你的好
-- 懂你的人，都知道你有多不容易
-公式8：不是所有人都能+做到这些
-- 不是所有人都能像你这样扛下来
-公式9：这世上+最[形容词]的人+就是你这样的
-- 这世上最靠谱的人，就是你这样的
-公式10：能做到这些的人+真的很少
-- 能把委屈咽下去还笑着的人，真的很少
-
-**【C类：场景画面型】**
-公式11：当所有人都[负面行为]时+你却[正面行为]
-- 当所有人都在抱怨时，你却在默默努力
-公式12：别人[行为A]+你却[行为B]
-- 别人在享受时，你在扛着
-公式13：那些[时间/场景]+你一个人[行为]
-- 那些深夜里，你一个人扛过了多少
-公式14：[场景描述]+你从不说苦
-- 再难的日子，你从不说苦
-公式15：[困境]+你硬是[结果]
-- 没人帮忙，你硬是撑过来了
-
-**【D类：对话温暖型】**
-公式16：想告诉你+[温暖的话]
-- 想告诉你，你已经很棒了
-公式17：别怕+[鼓励的话]
-- 别怕，你值得被好好对待
-公式18：辛苦了+[肯定的话]
-- 辛苦了，你的付出都被看见了
-公式19：嘿+[亲切的话]
-- 嘿，你比自己想象的更厉害
-公式20：记住+[祝福的话]
-- 记住，好事正在向你走来
-
-**【E类：转折反差型】**
-公式21：你不争不抢+却[好结果]
-- 你不争不抢，却赢得了所有人的尊重
-公式22：你从不炫耀+但[事实]
-- 你从不炫耀，但实力有目共睹
-公式23：表面[A]+其实[B正面]
-- 表面平平无奇，其实你早已不凡
-公式24：看起来[A]+其实[B正面]
-- 看起来普普通通，其实你藏着大智慧
-公式25：不声不响+却[好结果]
-- 不声不响，却活成了别人羡慕的样子
-
-**【F类：结果导向型】**
-公式26：你现在的[付出]+以后都会[回报]
-- 你现在的努力，以后都会变成惊喜
-公式27：那些[经历]+都会成为[正面结果]
-- 那些默默坚持的日子，都会变成礼物
-公式28：时间会证明+[肯定的结果]
-- 时间会证明，你的选择是对的
-公式29：总有一天+[美好结果]
-- 总有一天，你会感谢现在努力的自己
-公式30：属于你的[好事]+[正在/一定会]来
-- 属于你的幸福，正在路上
-
-**【G类：金句哲理型】（不用"你"，用普世道理）**
-公式31：[人生道理]+[正面洞察]
-- 善良的人，日子都不会太差
-公式32：[现象描述]+才是[本质]
-- 不声不响扛下所有的人，才是真正的强者
-公式33：真正的[品质]+是[具体表现]
-- 真正的智慧，是懂得善待自己
-公式34：[名人/古语]+说得好：[金句]
-- 老话说得好：厚德载物，好事自来
-公式35：世上最[形容词]的事+就是[描述]
-- 世上最幸福的事，就是被人懂得
-
-**【H类：故事悬念型】（引发好奇，正面结局）**
-公式36：[人物]+[经历]+[好结果]
-- 那个默默坚持的人，后来都怎样了
-公式37：[数字]+年后+[好变化]
-- 十年后再看，当初的坚持是对的
-公式38：[某类人]+最后都[好结果]
-- 心善的人，最后都过得不错
-公式39：[时间点]+终于等来+[好事]
-- 熬过低谷的人，终于等来了好消息
-公式40：[坚持]+之后+[收获]
-- 默默努力之后，终于迎来了转机
-
-**【I类：现象洞察型】（客观描述，正面共鸣）**
-公式41：越是[特质]的人+越[好现象]
-- 越是善良的人，越过得顺心
-公式42：[某类人]+往往[好特点]
-- 不爱说话的人，往往最靠谱
-公式43：有一种[品质]+叫做[正面描述]
-- 有一种幸福，叫做问心无愧
-公式44：[行为]+的人+[正面评价]
-- 默默付出的人，总会被看见
-公式45：这世上+[正面现象]
-- 这世上，好人终有好报
-
-**【J类：情感共鸣型】（第三人称，正面现象）**
-公式46：有些人+[描述]+[好结果]
-- 有些人不争不抢，却什么都有了
-公式47：最美的+[情感描述]
-- 最美的遇见，是有人懂你的不容易
-公式48：[付出]+终会换来+[好结果]
-- 真心付出的人，终会遇到珍惜你的人
-公式49：[某种人]+活得最[好状态]
-- 心里有光的人，活得最自在
-公式50：宁可+[好选择]+也要+[好结果]
-- 宁可慢一点，也要稳稳地幸福
-
-**【K类：夸赞赞美型】（直接夸赞，混合人称）**
-公式51：能做到[某事]的人+都不简单
-- 能把苦咽下去还笑着的人，都不简单
-公式52：[品质]+是最稀缺的财富
-- 真诚，是这个时代最稀缺的财富
-公式53：像这样的人+[赞美结果]
-- 像这样的人，走到哪里都会发光
-公式54：[某种人]+才是真正的强者
-- 不声不响扛下所有的人，才是真正的强者
-公式55：这份[品质]+让人敬佩
-- 这份隐忍和坚持，让人敬佩
-公式56：世上最[形容词]的人+就是[描述]
-- 世上最了不起的人，就是熬过苦难还心存善良的人
-公式57：[某种品质]+比什么都珍贵
-- 一颗干净的心，比什么都珍贵
-
-**【L类：肯定认可型】（肯定选择和努力，混合人称）**
-公式58：这条路+没有走错
-- 这条路没有走错，只是需要时间证明
-公式59：所有的付出+都是值得的
-- 所有默默的付出，都是值得的
-公式60：已经做得很好了+别再苛责自己
-- 已经做得很好了，别再苛责自己
-公式61：坚持[某事]+是对的
-- 坚持做自己，永远是对的
-公式62：善良+终会有回报
-- 善良的人，终会有回报
-公式63：不是不够好+是[真相]
-- 不是不够好，是有些人不懂珍惜
-公式64：走过的路+[肯定评价]
-- 走过的每一步，都算数
-
-**【M类：期许祝福型】（美好祝愿，混合人称）**
-公式65：愿[某种人]+[美好祝愿]
-- 愿善良的人，都被温柔以待
-公式66：好事+正在路上
-- 好事正在路上，别着急
-公式67：值得+[美好事物]
-- 值得拥有世间所有的美好
-公式68：往后余生+[祝福]
-- 往后余生，不再委屈自己
-公式69：属于[某种人]的幸福+一定会来
-- 属于老实人的幸福，一定会来
-公式70：再等等+[好结果]
-- 再等等，柳暗花明就在前面
-公式71：好日子+还在后头
-- 好日子还在后头，别灰心
-公式72：愿所有[付出]+都能[好结果]
-- 愿所有的坚持，都能开花结果
-
-**【N类：扬眉吐气型】（第三人称衬托，让读者爽）**
-公式73：那些[负面行为]的人+现在[反转结果]
-- 那些笑话你的人，现在都闭嘴了
-公式74：曾经[看不起你的人]+开始[后悔/羡慕]
-- 曾经看不起你的人，开始后悔了
-公式75：他们怕的就是+你[变强的表现]
-- 他们怕的就是你不再忍让
-公式76：那些否定你的人+[反转结果]
-- 那些否定你的人，现在都在羡慕你
-公式77：让[某些人]+看看+[你的厉害]
-- 让那些小瞧你的人，好好看看
-公式78：你的[改变]+让他们[反应]
-- 你的强大，让他们开始害怕了
-公式79：[时间]后+那些人+[反转]
-- 三年后，那些嘲笑你的人都沉默了
-公式80：他们以为你[负面]+没想到你[正面]
-- 他们以为你会认输，没想到你越挫越勇
-
-**标题情感方向（必须让读者感到）：**
-- ✅ 被看见："原来有人懂我"
-- ✅ 被认可："我的付出是值得的"
-- ✅ 被夸赞："原来我还挺厉害的"
-- ✅ 被祝福："好事要来了"
-- ✅ 被理解："终于有人理解我的苦"
-- ✅ 被治愈："心里暖暖的"
-- ✅ 被肯定："我没有白努力"
-- ✅ 扬眉吐气："那些看不起我的人要后悔了"
-
-**标题禁忌：**
-- ❌ 不要用疑问句、反问句
-- ❌ 不要制造悬念
-- ❌ 不要用"为什么""怎么""吗"等疑问词
-- ❌ 不要打击、质疑读者
-- ❌ 不要用负面情绪词汇
-- ❌ 禁止用封建迷信词汇（天选、宇宙、仙师、菩萨、佛祖等）
-- ❌ 禁止照抄示例，必须根据文案内容原创
-
-**标题生成规则：**
-- 根据每篇文案的具体内容，使用上面的公式框架原创5个标题
-- **每篇文章的5个标题必须来自不同的类别（A-N类共14类）**，增加多样性
-- **必须混合使用：至少2个用"你"的标题 + 至少2个不用"你"的标题**
-- {article_count}篇文章共{article_count * 5}个标题，必须全部不同，全部原创
-- **禁止连续使用同一类型的公式**，必须交叉混合
-- G/H/I/J类是不用"你"的标题，K/L/M类是混合人称的夸赞肯定期许类标题，N类是第三人称衬托让读者爽的标题
-- 全部是肯定、夸赞、共情、祝福、洞察、扬眉吐气的语气
-- 标题要与文案内容紧密相关，不能泛泛而谈
-- **每次生成的标题必须与之前生成的标题有明显区别，避免雷同**
-- 禁止出现任何重复、相似、雷同的标题
-- 禁止照抄示例，必须根据文案内容原创
-
 ## 敏感词规避（以下词汇绝对不能出现！）
 
-- 玄学类：仙师、徒儿、为师、天机、命盘、磁场、气运、福报、姻缘、符咒、渡劫、运势、运气、贵人、小人、业障、因果报应、天命、命数、劫难、气场、能量场
+- 玄学类：仙师、天机、命盘、磁场、气运、福报、姻缘、符咒、渡劫、运势、运气、贵人、小人、业障、因果报应、天命、命数、劫难、气场、能量场
 - 迷信类：算命、占卜、风水、转运、开光、法事、神仙、菩萨、鬼神、法术、阴阳、五行、宇宙能量
-- 人设类：为师、贫道、本仙师、师傅、徒儿、道友、有缘人
+- 人设类：仙师、本仙师（其余师傅、道友、有缘人、徒儿、贫道、为师均可正常使用）
 - 承诺类：改运、转运、翻身、暴富
 
 ## 引流类型：{flow_type}
@@ -3969,6 +4275,7 @@ class FangxieApp:
 - 要制造强烈的好奇心和紧迫感
 - 要让读者觉得：不去看就错过了改变人生的机会
 - 引流话术要与前文内容自然衔接，有理有据
+- **【硬性要求】必须明确提到"置顶视频"或"置顶第X条"，不能只说"主页"或"头像"**
 
 **置顶引流的钩子类型（{article_count}篇分别用不同类型）：**
 1. **悬念型**：解决方法/核心秘诀在置顶视频里
@@ -3978,6 +4285,11 @@ class FangxieApp:
 5. **救赎型**：那里有你一直在找的答案
 6. **共鸣型**：我也曾经历过，经验都在置顶
 7. **秘诀型**：关键点太重要了，专门录了视频
+
+**【话术示例格式】：**
+- "点我头像，去看主页**置顶第一条视频**"
+- "进我主页，去看**置顶的那个视频**"
+- "去主页看看**置顶前两条视频**"
 
 **用户提供的参考话术（学习风格，不要照抄！）：**"""
             if yinliu_content:
@@ -3999,6 +4311,13 @@ class FangxieApp:
 3. **犒赏钩子**：你值得对自己好一点
 4. **能量钩子**：一件对的物品能带来力量
 5. **祝福钩子**：送你一份温暖的祝福
+
+**【硬性要求】必须明确提到"橱窗"二字，不能只说"主页"或"头像"**
+
+**【话术示例格式】：**
+- "点开我的头像，进入主页**橱窗**"
+- "点我头像，去主页**橱窗**里看看"
+- "点开头像进**橱窗**"
 
 **结尾话术参考（仅供参考风格，必须原创改写！）：**
 
