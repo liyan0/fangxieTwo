@@ -265,24 +265,69 @@ HOOK_LIBRARY = {
     ],
 }
 
+# 是否使用加权钩子（True=按爆款比例加权，False=原来的平均随机）
+USE_WEIGHTED_HOOKS = True
+
 def get_random_hooks(count=3):
     """随机选择指定数量的不同类型开头"""
-    all_types = list(HOOK_LIBRARY.keys())
-
-    # 随机选择count个不同类型
-    selected_count = min(count, len(all_types))
-    selected_types = random.sample(all_types, selected_count)
-
-    # 打乱顺序
-    random.shuffle(selected_types)
-
-    # 从每个类型中随机选一个示例
-    result = []
-    for t in selected_types:
-        hook = random.choice(HOOK_LIBRARY[t])
-        result.append({"type": t, "example": hook})
-
-    return result
+    if USE_WEIGHTED_HOOKS:
+        # 按爆款数据加权，高频类型权重更高
+        HOOK_WEIGHTS = {
+            "J类-玄学传讯型": 10,
+            "Q类-天命宇宙选中型-来自钩子库": 10,
+            "K类-旁观者见证型": 7,
+            "R类-旁观者见证型-来自钩子库": 7,
+            "N类-悬念钩子型-来自钩子库": 7,
+            "S类-紧急叫停型-来自钩子库": 6,
+            "B类-好消息喜讯型": 5,
+            "L类-大喜讯型": 5,
+            "P类-喜讯好消息型-来自钩子库": 5,
+            "A类-缘分命定型": 4,
+            "G类-夸品质型": 4,
+            "H类-懂你型": 4,
+            "I类-预言好结果型": 4,
+            "C类-反转惊喜型": 3,
+            "M类-金句破题型-来自钩子库": 3,
+            "O类-共鸣代入型-来自钩子库": 3,
+            "T类-自我剖析型-来自钩子库": 3,
+            "U类-转折反差型-来自钩子库": 3,
+            "D类-送礼赠予型": 2,
+            "E类-引经据典型": 2,
+            "F类-数字锚定型": 2,
+        }
+        all_types = list(HOOK_LIBRARY.keys())
+        weights = [HOOK_WEIGHTS.get(t, 3) for t in all_types]
+        selected_count = min(count, len(all_types))
+        selected_types = []
+        remaining_types = all_types[:]
+        remaining_weights = weights[:]
+        for _ in range(selected_count):
+            total = sum(remaining_weights)
+            r = random.uniform(0, total)
+            cumulative = 0
+            for i, w in enumerate(remaining_weights):
+                cumulative += w
+                if r <= cumulative:
+                    selected_types.append(remaining_types[i])
+                    remaining_types.pop(i)
+                    remaining_weights.pop(i)
+                    break
+        result = []
+        for t in selected_types:
+            hook = random.choice(HOOK_LIBRARY[t])
+            result.append({"type": t, "example": hook})
+        return result
+    else:
+        # 原来的平均随机逻辑（回退用）
+        all_types = list(HOOK_LIBRARY.keys())
+        selected_count = min(count, len(all_types))
+        selected_types = random.sample(all_types, selected_count)
+        random.shuffle(selected_types)
+        result = []
+        for t in selected_types:
+            hook = random.choice(HOOK_LIBRARY[t])
+            result.append({"type": t, "example": hook})
+        return result
 
 # 配置文件路径
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "fangxie_config.json")
@@ -1969,11 +2014,8 @@ class FangxieApp:
             else:
                 self.yinliu_combo.current(0)
         else:
-            # 置顶和橱窗引流默认选中第5条（索引为4）
-            if len(templates) >= 5:
-                self.yinliu_combo.current(4)
-            else:
-                self.yinliu_combo.current(0)
+            # 置顶和橱窗引流默认不选（让系统自动随机）
+            self.yinliu_combo.set("")  # 设置为空
 
     def on_yinliu_select(self, event=None):
         """选择话术时填充到文本框"""
@@ -2069,7 +2111,7 @@ class FangxieApp:
         file_path = filedialog.askopenfilename(
             title="选择参考文案文件",
             initialdir=initial_dir,
-            filetypes=[("文本文件", "*.txt"), ("所有文件", "*.*")]
+            filetypes=[("文本文件", "*.txt"), ("Excel文件", "*.xlsx"), ("所有文件", "*.*")]
         )
         if file_path:
             self.input_path.set(file_path)
@@ -2261,9 +2303,19 @@ class FangxieApp:
             else:
                 input_path = self.input_path.get()
                 if os.path.isfile(input_path):
-                    with open(input_path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    files_content = [(os.path.basename(input_path), content)]
+                    if input_path.lower().endswith('.xlsx'):
+                        import openpyxl
+                        wb = openpyxl.load_workbook(input_path)
+                        ws = wb.active
+                        files_content = []
+                        for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                            cell_val = row[0]
+                            if cell_val and str(cell_val).strip():
+                                files_content.append((str(cell_val).strip()[:20], str(cell_val).strip()))
+                    else:
+                        with open(input_path, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                        files_content = [(os.path.basename(input_path), content)]
                 else:
                     files_content = []
                     for fname in os.listdir(input_path):
@@ -2271,6 +2323,15 @@ class FangxieApp:
                             fpath = os.path.join(input_path, fname)
                             with open(fpath, 'r', encoding='utf-8') as f:
                                 files_content.append((fname, f.read()))
+                        elif fname.endswith('.xlsx'):
+                            import openpyxl
+                            fpath = os.path.join(input_path, fname)
+                            wb = openpyxl.load_workbook(fpath)
+                            ws = wb.active
+                            for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                                cell_val = row[0]
+                                if cell_val and str(cell_val).strip():
+                                    files_content.append((str(cell_val).strip()[:20], str(cell_val).strip()))
 
             if not files_content:
                 self.log("错误：没有找到任何文案文件")
@@ -2279,6 +2340,14 @@ class FangxieApp:
 
             # 读取引流素材
             yinliu_content = self.yinliu_text.get("1.0", tk.END).strip()
+
+            # 如果引流话术为空，且是置顶/橱窗引流，则从配置中随机选择
+            if not yinliu_content and flow_type in ["置顶引流", "橱窗引流"]:
+                templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
+                if templates:
+                    import random
+                    yinliu_content = random.choice(templates)
+                    self.log(f"[自动随机] 本次使用引流话术：{yinliu_content[:30]}...")
 
             # 带货信息
             product_name = ""
@@ -2328,9 +2397,18 @@ class FangxieApp:
                     self.log(f"\n--- 处理第 {art_idx+1} 篇参考文案 ---")
                     self.update_status(f"正在生成第 {art_idx+1} 篇...")
 
+                    # 每篇文案都重新随机选择引流话术
+                    current_yinliu = yinliu_content
+                    if not self.yinliu_text.get("1.0", tk.END).strip() and flow_type in ["置顶引流", "橱窗引流"]:
+                        templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
+                        if templates:
+                            import random
+                            current_yinliu = random.choice(templates)
+                            self.log(f"[随机话术] 第{art_idx+1}篇使用：{current_yinliu[:30]}...")
+
                     # 生成仿写文案
                     result = self.generate_document(
-                        article, flow_type, yinliu_content,
+                        article, flow_type, current_yinliu,
                         product_name, product_material
                     )
 
@@ -2599,10 +2677,12 @@ class FangxieApp:
         """批量替换目录下所有txt文件的敏感词"""
         import glob
 
-        # 标题敏感词替换规则（5个）
+        # 标题敏感词替换规则（7个）
         TITLE_SENSITIVE_WORDS = {
             "贵人": "大佬",
             "高层": "上面那位",
+            "领导": "大佬",
+            "靠山": "后盾",
             "福报": "回报",
             "福气": "福泽",
             "好运": "吉祥"
@@ -2850,9 +2930,19 @@ class FangxieApp:
                 # 文件模式
                 input_path = self.input_path.get()
                 if os.path.isfile(input_path):
-                    with open(input_path, 'r', encoding='utf-8') as f:
-                        content = f.read()
-                    files_content = [(os.path.basename(input_path), content)]
+                    if input_path.lower().endswith('.xlsx'):
+                        import openpyxl
+                        wb = openpyxl.load_workbook(input_path)
+                        ws = wb.active
+                        files_content = []
+                        for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                            cell_val = row[0]
+                            if cell_val and str(cell_val).strip():
+                                files_content.append((str(cell_val).strip()[:20], str(cell_val).strip()))
+                    else:
+                        with open(input_path, 'r', encoding='utf-8') as f:
+                            content = f.read()
+                        files_content = [(os.path.basename(input_path), content)]
                 else:
                     files_content = []
                     for fname in os.listdir(input_path):
@@ -2860,6 +2950,15 @@ class FangxieApp:
                             fpath = os.path.join(input_path, fname)
                             with open(fpath, 'r', encoding='utf-8') as f:
                                 files_content.append((fname, f.read()))
+                        elif fname.endswith('.xlsx'):
+                            import openpyxl
+                            fpath = os.path.join(input_path, fname)
+                            wb = openpyxl.load_workbook(fpath)
+                            ws = wb.active
+                            for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                                cell_val = row[0]
+                                if cell_val and str(cell_val).strip():
+                                    files_content.append((str(cell_val).strip()[:20], str(cell_val).strip()))
 
             if not files_content:
                 self.log("错误：没有找到任何文案文件")
@@ -2868,6 +2967,14 @@ class FangxieApp:
 
             # 读取引流素材
             yinliu_content = self.yinliu_text.get("1.0", tk.END).strip()
+
+            # 如果引流话术为空，且是置顶/橱窗引流，则从配置中随机选择一个初始值
+            if not yinliu_content and flow_type in ["置顶引流", "橱窗引流"]:
+                templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
+                if templates:
+                    import random
+                    yinliu_content = random.choice(templates)
+                    self.log(f"[自动随机] 引流话术将从{len(templates)}条中随机选择")
 
             # 带货信息
             product_name = ""
@@ -2911,9 +3018,18 @@ class FangxieApp:
                     self.log(f"\n--- 处理第 {art_idx+1} 篇参考文案 ---")
                     self.update_status(f"正在生成第 {art_idx+1} 篇...")
 
+                    # 每篇文案都重新随机选择引流话术
+                    current_yinliu = yinliu_content
+                    if not self.yinliu_text.get("1.0", tk.END).strip() and flow_type in ["置顶引流", "橱窗引流"]:
+                        templates = self.config.get("yinliu_templates", ).get(flow_type, [])
+                        if templates:
+                            import random
+                            current_yinliu = random.choice(templates)
+                            self.log(f"[随机话术] 第{art_idx+1}篇使用：{current_yinliu[:30]}...")
+
                     # 生成仿写文案
                     result = self.generate_document(
-                        article, flow_type, yinliu_content,
+                        article, flow_type, current_yinliu,
                         product_name, product_material
                     )
 
@@ -3579,17 +3695,28 @@ class FangxieApp:
 【核心原则】
 - 标题必须制造悬念、冲突、事件感，而非直接给结论
 - 用"发生了什么事"代替"你是什么样的人"
-- 短促有力（10-18字），口语化，制造紧迫感
+- 短促有力（8-20字），口语化，制造紧迫感
+- **禁止鸡汤式陈述标题**（如"你吃的苦都在变成路"）
+- **必须包含：权威背书/紧迫感/悬念钩子/情绪爆发，至少2个**
+- **没有冲突、没有悬念、没有权威的标题=废品，绝不交付**
 
-【17大爆款公式】（扩充版）
+【公式使用要求】
+- **25种公式完全随机使用，不设占比限制**
+- **每篇5个标题必须使用5种不同的公式类型**
+- **尽量让25种公式都有机会被使用，保持标题多样化**
+- **避免连续多篇使用相同的公式组合**
+
+【25大爆款公式】（扩充版）
 1. 悬念冲突型：[注意/发现] + [你/某人] + [动作/状态] + [反转]
    - 示例结构：注意！你的XX瞒不住了
 2. 身份反转型：[权威/筛选] + [对你的决定] + [意外性]
    - 示例结构：XX已经把你XX了
 3. 秘密揭露型：[有人/某事] + [隐藏信息] + [关于你]
    - 示例结构：有人背着你XX
-4. 紧急警告型：[紧急词] + [你的处境] + [时间压力]
-   - 示例结构：XX马上XX了
+4. 紧急提醒型：[注意/发现/悄悄告诉你] + [你的处境] + [时间压力]
+   - 示例结构：注意了，XX马上XX了
+   - 示例结构：发现了，你身边有人XX
+   - 绝对禁止使用"警告"二字
 5. 第三方视角型：[权威人物] + [对你的态度/行动]
    - 示例结构：XX发话了：XX
 6. 反差震撼型：[表面认知] + [实际真相] + [反转]
@@ -3628,25 +3755,54 @@ class FangxieApp:
     - 示例结构：你知不知道，大家找你找疯了
     - 示例结构：你到底知不知道，你有多值钱
     - 示例结构：孩子，你可能不知道，你曾经化解了一道劫难
-21. 师傅点化型：[师傅/高人/大佬] + 点化/点拨/传话 + [关于你的真相]
-    - 示例结构：师傅点化：那个一直和你较劲的人，路走偏了
-    - 示例结构：高人点拨：你越冷漠，命就越好
-    - 示例结构：大佬传话：你不争而善胜，惊动了上面
+21. 权威揭秘型：[师傅/高人/大佬/长者/智者] + [看穿了/发话了/说了/认定了/透露了/揭秘了/算准了] + [关于你的真相]
+    - 示例结构：师傅看穿了，那个一直和你较劲的人路走偏了
+    - 示例结构：高人说了，你越冷漠命就越好
+    - 示例结构：大佬认定了，你不争而善胜惊动了上面
+    - 示例结构：长者透露了，你身边有人开始慌了
+    - 示例结构：智者发话了，你的沉默让他们坐不住了
+    - 禁止高频使用"点化、点拨、传话"（每10个标题最多出现1次）
 22. 有缘人型：[有缘人/信善之人] + [专属信息/留步]
     - 示例结构：有缘人，你不需要讨好任何人
     - 示例结构：信善之人，请留步片刻
     - 示例结构：有缘人，整个宇宙都在为你撑腰
+23. 他们情绪爆发型：[他们] + [情绪动词] + [因为你]
+    - 公式结构：他们 + [急了/怕了/慌了/傻眼了/后悔了] + 原因
+    - 示例结构：他们不是服你了，是被你吓住了
+    - 示例结构：他们着急了，真的开始对你动手了
+    - 禁止照抄示例，必须根据正文内容原创填充
+24. 低估你反转型：[他们低估] + [你的真实实力] + [反转]
+    - 公式结构：他们 + [低估/没想到] + 你的反转
+    - 示例结构：他们是真的低估了你
+    - 示例结构：他们没想到，你竟然不上当
+    - 禁止照抄示例，必须根据正文内容原创填充
+25. 偏偏对你型：[他谁都XX] + [但偏偏对你XX]
+    - 公式结构：对比反差，突出你的独特性
+    - 示例结构：他谁都看不上，但偏偏对你特别欣赏
+    - 示例结构：他谁都看不上，唯独对你特别欣赏
+    - 禁止照抄示例，必须根据正文内容原创填充
 
 **【每篇5个标题必须混合使用不同公式，不能全是同一类型！】**
+**【必须严格按照爆款公式生成，禁止自由发挥成鸡汤式标题！】**
 
-【标题原创性铁律】
-- 严禁照抄示例！示例仅用于理解公式结构！
-- 每个标题必须基于本篇正文的具体内容原创生成！
-- 同一次生成的所有标题不得重复或高度相似！
-- **字数硬限制：每个标题8-20字，超过20字必须精简，20字以内最佳**
+【标题原创性铁律】（最高优先级！）
+- **示例仅用于理解公式结构，严禁照抄示例的具体词汇！**
+- 每个标题必须基于本篇正文的具体内容原创生成
+- 必须根据正文提炼关键词后填入公式变量
+- 例如：公式是"大佬 + [对你的态度]"，要根据正文写成"大佬看穿了你的深不见底"，而不是抄示例
+- 同一次生成的所有标题不得重复或高度相似
+- **字数限制：每个标题8-20字**
 - **结尾绝对禁止任何标点符号（句号、感叹号、问号、省略号、顿号全部禁止）**
 - **禁止在标题中使用双引号（""）或单引号（''）**
 - 标题可以用逗号作为内部分隔，但结尾不得有任何标点
+- **禁止鸡汤式陈述标题**：没有权威背书、没有冲突、没有悬念、没有情绪爆发的标题=废品
+- **每个标题必须至少包含2个核心元素**：权威背书/紧迫感/悬念钩子/情绪爆发/对比反差
+
+【标题禁用词与多样化要求】
+- **绝对禁止**：警告（任何情况下都不得出现）
+- **严格限制**：点化、点拨、传话（每10个标题最多出现1次）
+- **多样化替代词库**：看穿了、发话了、说了、认定了、透露了、揭秘了、算准了、看明白了、识破了、察觉了
+- **开头词多样化**：避免连续使用相同的权威词（师傅、高人、大佬、长者要轮换使用）
 
 【第三方角色词库】（扩充到50个）
 - 权威大佬类：大佬、大人物、上面那位、高人、伯乐、长者、智者、明白人、老前辈、行家、师傅、过来人
@@ -3658,7 +3814,8 @@ class FangxieApp:
 【情绪动词词库】（爆款高频词）
 - 他们系列：急了、怕了、慌了、傻眼了、愣住了、炸锅了、急坏了、后悔了、嫉妒了、服了、认输了、闭嘴了、急得直冒烟、急死了、嫉妒疯了、沉不住气了、憋不住了、坐不住了、蒙圈了、崩溃了、绷不住了、慌神了、发抖了、失眠了、窒息了、心慌了、瞒不住了
 - 你系列：你被骗了、你稳住了、你被包围了、你被卷进来了、你被低估了、你扛住了、你赢了、你醒了、你看穿了
-- 开头爆破词（标题第一个词，直接制造紧迫感）：完蛋了、炸锅了、不好了、恭喜你、喜讯、悄悄告诉你、注意了、你知不知道、你到底知不知道、宇宙传讯、天选之人
+- 开头爆破词（标题第一个词，直接制造紧迫感）：完蛋了、炸锅了、不好了、恭喜你、喜讯、悄悄告诉你、注意了、你知不知道、你到底知不知道、宇宙传讯、天选之人、发现了
+- **绝对禁止的开头词**：警告、提醒（作为标题开头）
 """
 
         # 新增：文风关键词库（用于生成"安静/沉默"风格文案）
@@ -3727,13 +3884,28 @@ class FangxieApp:
 - 示例结尾："点开我的头像，去主页看置顶视频。那里有我为你准备的答案，愿你早日找回属于自己的力量。"
 - 禁止只有祝福，必须有引流动作
 
-【规则6：第三方角色使用规则（最重要！）】
-- 每段都必须有第三方视角
-- 平均每150-200字必须出现一次第三方角色
-- 制造"你 VS 他们"的对立
-- 制造"权威认可你"的爽感
-- 降低"他们"使用频率到60%（不是每篇都要有）
-- 降低"你是不是"开头使用率到10%以下
+【规则6：场景视角分配（严格执行！）】
+
+生成多篇文案时，必须严格按照50%/50%交替分配两种类型：
+
+▶ 【A类：对立冲突型】占50%
+- 有明确的"他们"（那些看不起你/消耗你/算计你的人）
+- 制造"你 VS 他们"的对比和冲突感
+- 情绪节奏：他们欺负你 → 你不动声色 → 他们开始慌了/后悔了
+- 第三方权威（大佬/上面的人/智者）认可你，他们却看不懂你
+- 必须有情绪爆发点：他们急了、怕了、后悔了、傻眼了
+
+▶ 【B类：纯陪伴共鸣型】占50%
+- 不出现"他们"，没有任何对立人物
+- 情绪节奏：说出读者压抑的委屈（共鸣）→ 你其实有多厉害（反转）→ 你的好日子要来了（情绪爆发）
+- 必须有足够的钩子和情绪冲突，绝对不能平平无奇！
+- 可以加宏大国学/玄学风格：道友、乾坤、天选、宇宙、茫茫红尘、天选之人
+- 参考写法："你扛过的那些难，终会变成你的铠甲 / 像你这样默默撑着的人，真的太难得了 / 别人在躲的时候，你在扛，这就是你的厉害"
+- 禁止：流水账式平铺直叙，禁止没有情绪起伏的温吞文字
+
+执行方式（尽量保持均衡）：
+- 尽量让A类和B类保持50%/50%的均衡分布
+- 建议交替生成：一篇A类，一篇B类，避免连续多篇同一类型
 
 【规则7：语言风格硬规则】
 - 口语化：完蛋了、炸锅了、急死了、傻眼了
@@ -4537,7 +4709,7 @@ class FangxieApp:
         import glob as glob_module
 
         # 配置
-        BITBROWSER_API = "http://127.0.0.1:54345"
+        BITBROWSER_API = "http://127.0.0.1:54902"
         BROWSER_ID = "fd66587b053346ddb01a3892cea21ceb"
         CHROMEDRIVER_PATH = r"C:\Users\Administrator\AppData\Roaming\BitBrowser\chromedriver\140\chromedriver.exe"
         DOWNLOAD_DIR = r"C:\Users\Administrator\Downloads\11"
