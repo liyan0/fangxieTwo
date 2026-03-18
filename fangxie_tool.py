@@ -336,6 +336,12 @@ CONFIG_FILE = os.path.join(os.path.dirname(__file__), "fangxie_config.json")
 DEFAULT_CONFIG = {
     "use_stream": True,  # 是否使用流式调用
     "similarity_threshold": 0.76,  # 生成文案相似度阈值（越低越严格）
+    # 路径配置
+    "input_path": r"d:\A百家号带货文案库\仿写文案.txt",
+    "output_path": r"D:\A百家号带货视频\带货文案",
+    "txt_output_path": r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案",
+    "voice_input_path": r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案",
+    "voice_output_path": r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频配音/流量语音",
     # 流式调用 - 主模型配置
     "stream_main_url": "https://api.aifuwu.icu/v1",
     "stream_main_key": "sk-hc6yUaXg89eK5UgUii10DPWmdaJZdPXqPbPcKSRbmWgxeeDK",
@@ -521,7 +527,7 @@ class FangxieApp:
         # 文件选择区域
         self.file_input_frame = ttk.Frame(input_frame)
         self.file_input_frame.pack(fill=tk.X)
-        self.input_path = tk.StringVar(value=r"d:\A百家号带货文案库\仿写文案.txt")
+        self.input_path = tk.StringVar(value=self.config.get("input_path", r"d:\A百家号带货文案库\仿写文案.txt"))
         ttk.Entry(self.file_input_frame, textvariable=self.input_path, width=70).pack(side=tk.LEFT, fill=tk.X, expand=True)
         ttk.Button(self.file_input_frame, text="选择文件", command=self.select_input_file, width=10).pack(side=tk.LEFT, padx=5)
         ttk.Button(self.file_input_frame, text="选择文件夹", command=self.select_input_folder, width=10).pack(side=tk.LEFT)
@@ -538,7 +544,7 @@ class FangxieApp:
         output_frame = ttk.LabelFrame(main_frame, text="输出保存路径", padding="10")
         output_frame.pack(fill=tk.X, pady=5)
 
-        self.output_path = tk.StringVar(value=r"D:\A百家号带货视频\带货文案")
+        self.output_path = tk.StringVar(value=self.config.get("output_path", r"D:\A百家号带货视频\带货文案"))
         ttk.Entry(output_frame, textvariable=self.output_path, width=70).pack(side=tk.LEFT, fill=tk.X, expand=True)
         ttk.Button(output_frame, text="选择文件夹", command=self.select_output_folder, width=10).pack(side=tk.LEFT, padx=5)
 
@@ -546,7 +552,7 @@ class FangxieApp:
         txt_output_frame = ttk.LabelFrame(main_frame, text="流量文案保存路径（生成流量文案按钮使用）", padding="10")
         txt_output_frame.pack(fill=tk.X, pady=5)
 
-        self.txt_output_path = tk.StringVar(value=r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案")
+        self.txt_output_path = tk.StringVar(value=self.config.get("txt_output_path", r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案"))
         ttk.Entry(txt_output_frame, textvariable=self.txt_output_path, width=70).pack(side=tk.LEFT, fill=tk.X, expand=True)
         ttk.Button(txt_output_frame, text="选择文件夹", command=self.select_txt_output_folder, width=10).pack(side=tk.LEFT, padx=5)
 
@@ -581,7 +587,7 @@ class FangxieApp:
         voice_row2 = ttk.Frame(voice_config_frame)
         voice_row2.pack(fill=tk.X, pady=2)
         ttk.Label(voice_row2, text="文案目录:").pack(side=tk.LEFT)
-        self.voice_input_path = tk.StringVar(value=r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案")
+        self.voice_input_path = tk.StringVar(value=self.config.get("voice_input_path", r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案"))
         ttk.Entry(voice_row2, textvariable=self.voice_input_path, width=60).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
         ttk.Button(voice_row2, text="选择", command=self.select_voice_input_folder, width=6).pack(side=tk.LEFT)
 
@@ -589,7 +595,7 @@ class FangxieApp:
         voice_row3 = ttk.Frame(voice_config_frame)
         voice_row3.pack(fill=tk.X, pady=2)
         ttk.Label(voice_row3, text="输出目录:").pack(side=tk.LEFT)
-        self.voice_output_path = tk.StringVar(value=r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频配音/流量语音")
+        self.voice_output_path = tk.StringVar(value=self.config.get("voice_output_path", r"D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频配音/流量语音"))
         ttk.Entry(voice_row3, textvariable=self.voice_output_path, width=60).pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
         ttk.Button(voice_row3, text="选择", command=self.select_voice_output_folder, width=6).pack(side=tk.LEFT)
 
@@ -2115,6 +2121,8 @@ class FangxieApp:
         )
         if file_path:
             self.input_path.set(file_path)
+            self.config["input_path"] = file_path
+            save_config(self.config)
 
     def select_input_folder(self):
         current = self.input_path.get()
@@ -2122,6 +2130,8 @@ class FangxieApp:
         folder_path = filedialog.askdirectory(title="选择参考文案文件夹", initialdir=initial_dir)
         if folder_path:
             self.input_path.set(folder_path)
+            self.config["input_path"] = folder_path
+            save_config(self.config)
 
     def select_output_folder(self):
         current = self.output_path.get()
@@ -2129,6 +2139,8 @@ class FangxieApp:
         folder_path = filedialog.askdirectory(title="选择输出保存文件夹", initialdir=initial_dir)
         if folder_path:
             self.output_path.set(folder_path)
+            self.config["output_path"] = folder_path
+            save_config(self.config)
 
     def select_txt_output_folder(self):
         """选择TXT保存文件夹"""
@@ -2137,6 +2149,8 @@ class FangxieApp:
         folder_path = filedialog.askdirectory(title="选择TXT保存文件夹", initialdir=initial_dir)
         if folder_path:
             self.txt_output_path.set(folder_path)
+            self.config["txt_output_path"] = folder_path
+            save_config(self.config)
 
     def select_voice_input_folder(self):
         """选择语音合成的文案输入目录"""
@@ -2145,6 +2159,8 @@ class FangxieApp:
         folder_path = filedialog.askdirectory(title="选择文案目录", initialdir=initial_dir)
         if folder_path:
             self.voice_input_path.set(folder_path)
+            self.config["voice_input_path"] = folder_path
+            save_config(self.config)
 
     def select_voice_output_folder(self):
         """选择语音合成的输出目录"""
@@ -2153,6 +2169,8 @@ class FangxieApp:
         folder_path = filedialog.askdirectory(title="选择配音输出目录", initialdir=initial_dir)
         if folder_path:
             self.voice_output_path.set(folder_path)
+            self.config["voice_output_path"] = folder_path
+            save_config(self.config)
 
     def log(self, message, level="normal"):
         """添加日志"""
@@ -2338,6 +2356,11 @@ class FangxieApp:
                 self.finish_txt_task()
                 return
 
+            # 记录是否为Excel文件（用于最后汇总）
+            is_excel_input = input_path.lower().endswith('.xlsx') if input_mode != "paste" else False
+            total_excel_success = 0
+            total_excel_failed = 0
+
             # 读取引流素材
             yinliu_content = self.yinliu_text.get("1.0", tk.END).strip()
 
@@ -2430,9 +2453,26 @@ class FangxieApp:
                 else:
                     self.log(f"失败: 0 篇")
 
+                # 累计Excel汇总
+                if is_excel_input:
+                    total_excel_success += success_count
+                    total_excel_failed += len(failed_list)
+
             self.update_progress(100)
             self.log("\n" + "="*50)
             self.log("全部处理完成！")
+
+            # Excel文件最终汇总
+            if is_excel_input:
+                self.log(f"\n{'='*50}")
+                self.log(f"【Excel文件最终汇总】")
+                self.log(f"Excel总行数: {len(files_content)} 行")
+                self.log(f"成功生成: {total_excel_success} 篇")
+                self.log(f"失败: {total_excel_failed} 篇")
+                if total_excel_failed == 0:
+                    self.log(f"✓ Excel文件全部处理成功！")
+                else:
+                    self.log(f"✗ 有 {total_excel_failed} 篇处理失败")
 
             # 自动替换敏感词
             if success_count > 0:
@@ -4710,9 +4750,9 @@ class FangxieApp:
 
         # 配置
         BITBROWSER_API = "http://127.0.0.1:54902"
-        BROWSER_ID = "fd66587b053346ddb01a3892cea21ceb"
+        BROWSER_ID = "562f804e98b3403eb409a2a0be0dc3e9"
         CHROMEDRIVER_PATH = r"C:\Users\Administrator\AppData\Roaming\BitBrowser\chromedriver\140\chromedriver.exe"
-        DOWNLOAD_DIR = r"C:\Users\Administrator\Downloads\11"
+        DOWNLOAD_DIR = r"C:\Users\Administrator\Downloads\170"
         SAVE_DIR = save_dir
         STEP_DELAY = 2
 

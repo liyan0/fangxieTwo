@@ -15,10 +15,10 @@
   "non_stream_main_key": "sk-fUfL8SIUOEDliYgQ0oKx8bPsaDBXcSJfsOu2Mu3VO8NzBAZd",
   "non_stream_main_model": "gemini-2.5-pro-c",
   "non_stream_main_max_tokens": 16000,
-  "non_stream_backup_url": "https://hkcn2.dpdns.org/api/v1",
-  "non_stream_backup_key": "sk-3ynxxtreen3q8vjqaffnechlhhaw1094o3pshz0epcj5xdw3",
-  "non_stream_backup_model": "claude-sonnet-4-6",
-  "non_stream_backup_max_tokens": 16000,
+  "non_stream_backup_url": "https://api.diandian.cc.cd/v1",
+  "non_stream_backup_key": "sk-hS4yNf309pYHdbpjysGsJydZ74yLQddjxjqSRrMqbVpdhWOv",
+  "non_stream_backup_model": "claude-opus-4-5-20251101",
+  "non_stream_backup_max_tokens": 10000,
   "yinliu_templates": {
     "置顶引流": [
       "关于怎么彻底走出这个困局，我在主页置顶视频里讲得很透。那里有一套方法，是我这些年摸爬滚打总结出来的，不适合在这里公开讲。你要是真想改变，点我头像，去看置顶第一条，看完你就明白该怎么做了。",
@@ -58,5 +58,8 @@
       "现在就点击下方通道，把这款好物带回家。这不是花钱，是对自己的投资，是给自己的礼物。",
       "别再犹豫了，点击左下角把它请回家。你为别人付出了那么多，是时候对自己好一点了。"
     ]
-  }
+  },
+  "input_path": "d:\\A百家号带货文案库\\仿写文案.txt",
+  "output_path": "D:\\A百家号带货视频\\带货文案",
+  "txt_output_path": "D:/AIDownloadFiles/国学json/百家号带货视频/baijiadaihuo/input/视频文案/流量文案"
 }
