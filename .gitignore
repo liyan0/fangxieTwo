@@ -1,0 +1,33 @@
+# 测试文件
+test_*.py
+
+# 临时文件
+temp_*.txt
+nul
+
+# 大数据文件
+baokuan_all.txt
+baokuan_texts.json
+
+# 系统/工具目录
+%USERPROFILE%/
+.claude/
+__pycache__/
+*.pyc
+
+# 图片目录
+jianying_images/
+peiyinshenqi_images/
+
+# 备份目录
+fangxie_backup_20260311/
+backups/
+
+# Claude工具文件
+SKILL.md
+
+# 无关目录
+百家号带货视频/
+四年级下册学习规划/
+故事3(3).0打包版-0206流式API版本/
+百家号带货视频/

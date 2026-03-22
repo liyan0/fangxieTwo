@@ -1,0 +1,1743 @@
+{
+  "name": "百家号国学故事生成老款-子 （自用）",
+  "nodes": [
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": " ",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "=# 角色\n\n你是一个标题悬疑点提取专家，你能够从我给你的标题中提取出设置的悬疑点出来\n\n## 目标\n\n- 将我给你的原标题里的悬疑点提取出来\n\n## **输出要求**\n\n只输出悬疑点，不要有其他任何的说明性文字\n\n## 参考案例\n\n1. - 原标题：为何野猫总爱跟着你？地藏王：身上有这3种福报的人，猫一眼就能认出\n    - 悬疑点：3种福报是哪3种\n2. - 原标题：夫妻埋一起来世还能再见吗？月老：若有这3种红线兆，轮回也拆不散\n    - 悬疑点：3种红线兆是哪3种\n3. - 原标题：家中有亡魂徘徊？孟婆点破：猫会出现这4种表现，务必警惕不可大意\n    - 悬疑点：猫会出现的4种表现是哪4种\n4. - 原标题：地藏王说：真正有慧根的人，不是天天诵经，而是体现出这4种境界\n    - 悬疑点：4种境界是哪4种\n5. - 原标题：为何婴儿的第一声啼哭如此重要？阎王说它决定了灵魂能否成功入体\n    - 悬疑点：婴儿的第一声啼哭重要在哪\n\n## 输入信息\n\n原标题：{{ $('编辑参数-选择标题输入2').first().json['选择标题输入'] }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -224,
+        864
+      ],
+      "id": "a07b0565-4c86-4c48-bcae-1eff621fd8ec",
+      "name": "写悬疑点1",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "da792093-1eca-4594-b114-ed0e70503f9b",
+              "name": "选择标题输入",
+              "value": "={{ $('notion-获取页面数据').item.json.properties['新标题'].rich_text[0].text.content }}",
+              "type": "string"
+            },
+            {
+              "id": "f6c9e3cf-da7c-4709-a92d-fc8d59906367",
+              "name": "名字库",
+              "value": "王摩诘、时方悟、应逢意、穆云徊、季柠薇、林觉是、辛夷坞、伍法象、祝夏彤、宿恋苗、常忘筌、云杳极、流潋紫、诗苏耽、郁东篱、苍杨子、徐宁渡、步广庭、水云树、景与还、彦星文、郁花桐、尤行舒、任境生、雪纯芳、危英绵、林泉漾、秋山月、茅松风、甘吹黛、幸照琴、宋问樵、万娑织、朱星笹、徐诗蔚、师芜萱、柏蓝染、方渐青、金无想、卫沧东、柳湖白、凤印觉、宣习静、吴观槿、邬清斋、章露葵、裘白石、赵春涧、庄月钊、李浥尘、孟郁浮、应风犀、楚淇原、俞泉镜、蓝萤书、苍松韵、云维白、卜果落、季木蔓、范秋鸣、韩萩居、顾爽斋、汪松跃、项竹喧、季浣溪、鱼莲舟、顾苏琉、方宴别、毕振鹏、吕汉瑟、阮漠烟、姜鹤林、卫燕容、江忆莲、徐渭丞、房箐柳、温阳舸、倪幽篁、顾篁里、宋琴啸、魏荏娴、南桂珞、周衫袅、施莳鸣、潘人语、燕空山、陆兆苔、殷豆生、汤君撷、齐梧思、解荆溪、臧耶溪、时渊湖、邹芝林、昌邃海、黎迦池、闵兴登、计空汁、舒看渊、南岐川、沈梅濯、严容牧、康澎澍、丁撷芬、瞿仙尤、袁君跃、于露淦、傅大年、娄泊禹、闻潮余、仲临渊、容珮光、刁沐颦、钟留韫、崔诗吾、苗翼孚、云飞陆、言茉甜、颜怡鸥、孔太尧、屈海盈、齐芸望、萧看蔼、陶峰变、谷壑殊、祝山陲、阮辛夷、苍山寒、尹翠薇、牧云瑾、濮潺曦、熊依依、刑羡翊、诗芙蓉、段红萼、兰寂涧、尹惬岚、乔以遐、纪尘拂、童屿歌、焦溯弋、敖壑参、奚响鹃、祝景畅、董菽河、邵葳扶、池沦涟、崔骋岗、荀麦荔、廖清淼、毛沱篁、聂金禾、喻孟珂、魏可希、鱼持瑚、秦玖微、沈青舸、高鸣苑、田悠湖、霍汩津、盛夏萄、邓芙轩、芦知远、江萍鹭、易莲池、虞谈奥、万旷悬、广祐衍、商粼浮、关柏采、于占泉、赵崆洲、吕莲衣、白语蘅、程婴宁、杭殷祝、支天青、宗秋槐、翁穹辽、湛鸣珂、颜肃舟、石乘空、陆天迥、边鸿雯、谢冠乔、宫素冰、罗逍丹、斯鹊镜、巫抱琴、苏慧瞻、陈渺漫、仇东林、萧且咏、薛润薮、惠敬亭、竺芳枝、贺金吾、水淼涵、易北宸、甘漾舟、胡林曙、何夕岚、卢涧芳、班澹迩、韦葭丛、施天真、姬幸予、玉霏薇、文幽亭、卿芦岛、柯衡岳、旷莲峰、陆化澄、叶涤繁、茹枫岸、狄芦洲、韩海波、闻古竺、朱暮臣、夏朱樱、司眠竹",
+              "type": "string"
+            },
+            {
+              "id": "dbf12eea-63d6-4298-a547-56d7df65c057",
+              "name": "引言库",
+              "value": "创作声明：本文为文学创作，情节人物均为虚构。故事灵感虽源自部分经典记载，但已进行大量艺术加工，旨在探讨人性与世情。内容不代表宣扬封建迷信，请读者朋友理性甄别，切勿与现实挂钩。图片源于网络，侵删。\n---\n创作声明：本文素材多来源于民间传说与乡土奇闻，旨在挖掘传统文化中的趣味性。故事仅供娱乐，不作为科学依据，亦不传播封建迷信。请读者以文化品读的视角看待。配图均来自网络，如有侵权请联系删除。\n---\n创作声明：本文借传统典籍中的元素，讲述世情故事，旨在传递积极向善的价值观。文中所有情节均为创作需要，并非宣扬封建迷信。望读者能辨证看待，汲取正能量。图片源于网络，侵删。\n---\n重要声明：本文所述内容基于部分传统文献资料进行文学创作，仅供人文交流与探讨。本平台不提倡任何形式的封建迷信活动，请读者保持独立思考与理性判断。文章配图均来自公共网络，版权归原作者，如有侵权请立即联系我们删除。\n---\n创作声明：本文内容涉及神话传说与志怪典籍，旨在展现古人丰富的想象力。所有情节均为文学幻想，不代表作者立场，更非传播封建迷信。请读者以审美和文化视角鉴赏。图片源于网络，侵删。\n---\n创作声明：本文故事背景参考了部分历史典籍，但情节与人物均为艺术演绎。文中对古人思想的展现仅为叙事服务，请读者朋友保持科学、理性的阅读态度，切勿迷信。图片源于网络，侵删。\n---\n创作声明：本文是对传统典籍及经典记载的一种现代人文解读和艺术再创作。我们倡导科学精神，坚决反对封建迷信。请读者朋友们带着批判性思维阅读。配图源自网络，如有侵权请联系删除。\n---\n创作声明：本文为文艺创作，内容多有演绎与虚构，旨在为读者提供娱乐。虽涉及传统文化元素，但与封建迷信思想划清界限。请勿当真，轻松阅读。图片源自网络，侵权即删。\n---\n创作声明：本文取材于传统典籍，旨在科普人文。请理性阅读，拒绝迷信。图片源网，侵删。\n---\n创作声明：本文内容情节灵感源自经典记载与传统文化，旨在以故事形式普及人文知识。我们坚决反对封建迷信，请读者朋友保持清醒理性的认知。文中图片均来自网络，若有侵权，烦请联系删除。",
+              "type": "string"
+            },
+            {
+              "id": "dd51eab8-ed77-4429-9556-4b11d3067ecd",
+              "name": "地点库",
+              "value": "天州、幽州、凉州、云州、庆州、安州、雍州、沅州、汀州、岚州、睦州、庐州、益州、郢州、苍州、衡州、泗州、澧州、宥州、洮州、湟州、华州、蕲州、安澜州、定襄州、镇北州、平朔州、抚湟州、望川州、栖云州、枕霞州、衔月州、摘星州、揽霞州、渡云州、枕流州、卧石州、望海州、临渊州、苍梧州、青鸾州、金乌州、烛龙州、扶摇州、云梦州、锦城、洛城、安城、遥城、青城、云城、风城、谷城、玄城、雾城、炎城、烟城、澜城、琉城、泉城、海城、星城、河城、锦城、溪城、宁城、阳城、落城、青岚城、安和城、丹霞城、紫烟城、苍梧城、翠微城、浣花城、锦官城、洛水城、清风城、栖霞城、落日城、明月城、幽篁城、灵犀城、星耀城、云澜城、灵霄城、玄冰城、长乐城、锦绣城、祥凤城、阴平城、玄郡、苍郡、雍郡、玄郡、青郡、丹郡、玉郡、炎郡、鸿郡、泗郡、朔郡、漠郡、苍郡、澜郡、瑶郡、衡郡、巫郡、明郡、潞郡、丹郡、广郡、梧郡、豫郡、观郡、平郡、观澜郡、雁门郡、望川郡、镇北郡、焚风郡、沐阳郡、定襄郡、安澜郡、广陵郡、云归郡、清河郡、昭关郡、泗水郡、苍梧郡、丹阳郡、九原郡、平朔郡、渔阳郡、豫章郡、庐江郡、武陵郡、鄱阳郡、益州郡、建宁郡、良镇、清镇、明镇、雁镇、龙镇、宁镇、杏镇、柳镇、浣镇、温镇、风镇、花镇、星镇、云镇、织镇、烟镇、风镇、瀑镇、源镇、隐镇、华镇、秋镇、万镇、苍镇、榕镇、安宁镇、明月镇、雁回镇、流泉镇、万木镇、桃源镇、砚池镇、柳溪镇、稻香镇、温泉镇、彩云镇、风语镇、苍岩镇、月鸣镇、星垂镇、云栖镇、雾隐镇、墟市镇、安澜镇、霜华镇、雪霁镇、定襄镇、平朔镇、秋枫镇、松县、青县、乐县、宁县、兰县、桃县、荣县、丰县、榕县、蒲县、康县、蒲县、怀县、枫县、祁县、矶县、华县、岫县、嶂县、峦县、昭县、明县、岩县、华县、裕县、青阳县、玉山县、日南县、乐安县、下邳县、象林县、东武县、西祁县、合浦县、左冯县、九真县、延庆县、怀安县、康宁县、郁林县、竹影县、云城县、兰谷县、承安县、青岚县、泰和县、起凤县、岫岩县、安和县",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        848,
+        160
+      ],
+      "id": "feb345f8-25ce-4014-af16-09a1dd46040f",
+      "name": "编辑参数-选择标题输入2"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "get",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "simple": false
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        432,
+        160
+      ],
+      "id": "8fad785c-1bfe-4197-a972-758bc63764bc",
+      "name": "notion-获取页面数据",
+      "retryOnFail": true,
+      "maxTries": 4,
+      "credentials": {
+        "notionApi": {
+          "id": "eajqulBFHmSdvFJS",
+          "name": "Notion account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "2acd268c-4f38-4e35-8bbe-9a7d5223c061",
+              "name": "整合后故事",
+              "value": "={{ $('上半段故事').item.json['上半部分'] }}\n\n{{ $json['下半部分'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        432,
+        1200
+      ],
+      "id": "76ba72a9-efa6-49be-a7ad-0ddc2c043fe9",
+      "name": "编辑参数-加入引言标题"
+    },
+    {
+      "parameters": {
+        "resource": "databasePage",
+        "operation": "update",
+        "pageId": {
+          "__rl": true,
+          "value": "={{ $('notion-获取页面数据').first().json.id }}",
+          "mode": "id"
+        },
+        "propertiesUi": {
+          "propertyValues": [
+            {
+              "key": "是否发布|select",
+              "selectValue": "未发布"
+            },
+            {
+              "key": "是否生成|select",
+              "selectValue": "已生成"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.notion",
+      "typeVersion": 2.2,
+      "position": [
+        1232,
+        1504
+      ],
+      "id": "7c4c5559-e4b6-4308-b1f1-ec642e26599e",
+      "name": "Update a database page",
+      "retryOnFail": true,
+      "maxTries": 4,
+      "executeOnce": true,
+      "credentials": {
+        "notionApi": {
+          "id": "eajqulBFHmSdvFJS",
+          "name": "Notion account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "21edd20d-fddc-42dd-bd1c-06504326652b",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "原标题",
+              "operator": {
+                "type": "string",
+                "operation": "notContains"
+              }
+            },
+            {
+              "id": "a2d385b9-d7cd-46a0-b104-eb4a80e472ea",
+              "leftValue": "={{ $json.text }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        128,
+        864
+      ],
+      "id": "ce2dd312-cc2b-458d-bf3e-0aa83d3e2bea",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f7c51ebf-e819-497f-b3c8-6f57438505dc",
+              "name": "故事生成提示词",
+              "value": "=# 角色：百家号国学短篇故事专家\n\n你是一位资深的故事创作者，擅长构建引人入胜的情节、塑造立体的人物形象，并能够营造出浓厚的历史、国学悬念氛围。你拥有丰富的文学创作经验和深厚的文字、故事功底，能够创作出既符合传统审美又具有现代可读性的高质量文学作品。专注于编写小说故事，每天撰写引人注目的小说故事，以提升内容的曝光率和互动率。\n\n## 目标：\n\n你的任务是根据给你的标题，写出一篇引人入胜、情节跌宕起伏、角度新颖的百家号传统国学、历史故事的**上半部分**。这部分内容需要营造出悬念的氛围，激发出人性深处的情感，并在结尾处设置一个强有力的悬念卡点，勾起中老年读者的付费欲望，让他们渴望阅读故事的后半部分。\n\n## 故事风格\n\n- 能激发人内心深处各种人性深处情感的国学、神话、历史民间、情感故事\n\n## 信息输入\n\n- 主人公：我给你一个名字，你参照这个名字，根据主角的性别、家境稍微修改一下，可规避一些不常见字，参考名字：{{ $('名字筛选').first().json.selectedName }}（如果标题中含有历史人物的名字，那么请忽略这一个参考名字，使用标题中的人物，历史人物名字不可改）\n- 地点：你参照这个地点，可稍微修改一下：{{ $('地点随机').first().json.randomLocation }}\n- 故事标题：**{{ $('编辑参数-选择标题输入2').first().json['选择标题输入'] }}**\n\n## 最高优先级指令：\n\n- 严格遵守文章的结构和字数规划。本次生成的内容由【引子】、【免费部分】、【卡点（付费点）】三个部分构成，位置和字数必须严格遵守，生成的总字数禁止低于4000字，禁止多于5500字。\n严格遵守上下总文章50%的卡点（付费点）位置。\n\n    - 如果是历史具体人物相关的标题，请先查询相关人物正史，所构建的虚拟历史故事，禁止和正史有逻辑、年代、人物关系错误上的冲突，如果不是历史人物相关标题，忽略此条\n\n## 任务具体要求：\n\n1. **构思故事框架**\n\n    - 根据标题和主人公，构思一个完整故事情节的前半段，确保3个内部章节的安排\n    - **思于原始民间故事的精神，允许适当的艺术加工，但不得天马行空，不得过于玄幻。**\n    - 如果标题中不涉及玄学、志怪元素，那么生成的正文内容中也不要涉及玄学、志怪元素，主要描写情感就行。\n    - 故事需要强情绪、强共鸣、强转化，故事要有反转、顿悟、高光时刻、推动情绪波动，能引起情感共鸣\n    - 每一小章节都必须有一个高潮，并且每一个章节都设置一个悬念，能够吸引读者兴趣。\n    - 每小节制造悬念，所有内容不要一次说出来，留有悬念同时设置下一段的吸引读者阅读的爽点，让人一直欲罢不能。\n    - 为故事主要悬念  **“{{ $json.text }}”**  做好充分铺垫，但禁止在卡点前揭晓。到卡点（付费点）时要根据标题的悬念留下一个足够的悬念，让人回味深长，激发读者好奇心，勾住人想看后边的内容。\n    - 突出核心点：故事必须紧紧围绕标题中的核心点来撰写，不得偏离核心点\n    - 把这故事当做真的有这样一个往事来写，文中不要出现“我来给大家讲一个**的故事”之类的字眼\n\n    **创作引子部分**\n    - 采用\"悬念式框架\"，首句以问句形式结合标题展开，吸引读者，开头就下一个钩子。\n    - 与正文衔接自然，不写具体场面和情景。\n    - 可引用相关的典籍（佛家经典、道家经典或其他等典籍）中的话语\n    - 开头引子部分不要着急引入故事，要紧扣标题和文章内容以具有哲理和深刻含义的陈述句来引起读者的兴趣。\n\n2. **创作免费部分**\n    - 免费部分禁止低于4000字，禁止多于5500字，在此部分根据章节均匀分布设置悬念。\n    - 刚开头，引入主角人物时就开始设置剧烈的悬念或冲突，以一个“异常”、“反常识”的开头引入，在故事正文的一开始就勾起读者的阅读兴趣。\n    - 快速切入剧情，开头就呈现强烈冲突或待解谜团，交代主角身份与事件起因，开头严禁出现标题悬念点。    \n    - 适当加入旁白视角，不要全是对话和情节。\n    - 免费部分章节：分为3个编号章节。\n\n3. **创作卡点（付费点）部分**\n    - 在本部分结尾处，撰写220字以上的卡点内容。\n    - 卡点部分的设置一定要留下悬念，让人感觉接下来的故事会更精彩更想读，针对标题设置卡点吸引人的谜题让人充满必须往下读的欲望。\n    - 卡点处要和标题的悬念点“{{ $('写悬疑点1').item.json.text }}”有关，但在此文章的上半段不能揭晓任何答案，答案需要留到下半段再揭晓\n    - 在卡点处不要揭晓任何一点答案，所有答案必须留到下半段文章再揭晓。\n    - 禁止以疑问句结束卡点\n    - 禁止在卡点处设置一堆的疑问句，留下悬念不是靠一堆的疑问句，不要太过生硬，而是刚好卡在内容最关键的地方，能让读者回味深长、产生悬念，上半部分文章卡点的结尾一定要过渡自然而有悬念，剩下的交给下半段文章\n\n## 行文风格\n\n- 通俗易懂：使用平易近人的语言，适合广大中老年读者的理解水平。\n- 增强代入感：让读者感同身受，增强他们与内容的情感链接，促使读者产生情感共鸣。\n- 逻辑清晰：按照时间线或事件发展的逻辑顺序进行讲述，层次分明，条理清晰。\n- 打造紧张氛围：通过描写紧张、悬念的情境，增加文章的悬念感。\n- 描写人物情绪、神态不要过于夸张，要自然\n- 语言优美、平实、有韵味\n- 情节反转：设计出人意料的情节反转，增加故事的戏剧性\n\n## 内容限制与约束\n\n- 文章中所有人物名字都要虚构，禁止跟历史、现实已有的人物名字雷同。\n- 故事不要出现写书传世情节。如果主人公是书生，禁止有科举情节。\n- **本次生成的总字数禁止低于4000字（引子不低于300字 + 免费部分不低于4000字 + 卡点不低于250字）。**\n- 全文不要出现“免费部分”“免费”“结尾”“引言”“卡点”“付费部分”等字眼。\n- 全文禁止涉及医疗健康养生相关。\n- 符合自媒体平台的规则，对于敏感词、限制词要进行规避。\n- 不用将故事标题写出来\n- 上半段结束时，禁止提到“请看下半段”“请付费再观看”之类的相关文字\n\n## 输出格式与内容要求：\n\n1. **全文结构构成**\n\n    - 按照\"**引子**（字体加粗）+ 正文内容 + **卡点内容**（字体加粗）\"的格式组织文章。\n2. **全文**\n\n    - 全文请以markdown格式输出。\n    - 只输出故事原文，不要有任何其他的说明性文字。\n    - 全文禁止出现任何的英文字符、字母，仅仅使用简体中文。\n    - **本次输出总字数禁止低于4000字，禁止多于5500字。**\n    - **全文输出采用\"每一到两句话为一段\"的形式输出**，增强阅读节奏感，不要直接输出一整段。\n    - 输出时不同段落之间必须换行\n    - 章节格式：章节编号（如：01、02）需单独成行。\n    - 章节编号只使用数字，不要有小标题\n3. **引子**\n\n    - 引子部分字体加粗，请注意引子部分每一分段独立加粗。\n    - 引子禁止直接输出一整段，采用\"每两到三句话一段\"的形式输出，分成多段。\n    - 引子部分禁止直接输出一整段，采用\"每一到两句话一段\"的形式输出，分成多段。\n    - 引子部分字数不低于300字。\n4. **卡点（付费点）部分**\n\n    - 字数不低于250字。\n    - 卡点部分字体加粗，请注意卡点部分每一分段独立加粗。\n    - 卡点部分禁止直接输出一整段，采用\"每一到两句话一段\"的形式输出，分成多段。\n5. **章节结尾符**\n    - 在每一章节结尾的地方插入章节结尾符\n    - 格式如下：在引言部分的最后一行插入<--00-->，在第01章节的最后一行插入<--01-->，在第二章节的最后一行插入<--02-->，但第03章节的章节结尾符<--03-->，需要插入在卡点加粗部分的前一行，禁止加在卡点加粗部分最后一行",
+              "type": "string"
+            },
+            {
+              "id": "ad98098d-8003-43ea-a110-078823f5bc9d",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        368,
+        864
+      ],
+      "id": "64317ad2-1719-42d0-99b1-740389d77ccd",
+      "name": "编辑参数-上半段提示词"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "efb8956d-fef3-48b8-8524-ba0b13a46ffa",
+              "name": "下半部分1",
+              "value": "={{ $json.full_story }}",
+              "type": "string"
+            },
+            {
+              "id": "ab4eb5e3-50c1-4859-a219-a9bbb8ac092c",
+              "name": "下半部分",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "09204a03-fa19-4a45-bb44-6d3a9b17028a",
+              "name": "下半部分2",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        208,
+        1200
+      ],
+      "id": "be2ba46a-f504-499f-8d49-48b1b3e6d4cc",
+      "name": "下半段故事"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "text",
+        "options": {
+          "fileName": "={{ $('编辑参数-选择标题输入2').first().json['选择标题输入'] }}.md"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        784,
+        1504
+      ],
+      "id": "dc54250a-971b-4251-a5ac-ed4d96adb1c0",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash",
+          "mode": "list"
+        },
+        "options": {
+          "timeout": 210000,
+          "maxRetries": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -256,
+        1008
+      ],
+      "id": "16778d9a-58f3-451f-920e-7aafc60f7841",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "68bc7206-090c-4889-86e7-328389f349a7",
+              "name": "下半段提示词",
+              "value": "=# 角色：百家号国学短篇故事专家\n\n你是一位资深的故事创作者，专注于编写民间小说故事，每天撰写引人注目的民间小说故事，以提升内容的曝光率和互动率。现在需要你**接续以下故事内容**，完成故事的后半部分。你需要完全代入以下情节、人物悬念氛围，将故事推向高潮并给出一个完整且令人回味的结局。\n\n##  **【故事上半部分内容输入处】**\n{{ $json['上半部分'] }}\n\n## 目标：\n\n你的任务是根据**以上你已阅读的故事**，创作出故事的**下半部分**，包括【付费部分】和【结尾】。你需要在这部分内容中，**完美地解开上半部分留下的所有悬念**，尤其是在卡点处还未揭晓的标题中的悬念点，确保故事情节的完整性和深度，最终为读者带来强烈的情感共鸣和满足感。\n\n## 故事风格\n\n- 能激发人内心深处各种人性正向情感的国学民间故事\n- 教授知识、使人向善\n\n## 最高优先级指令：\n\n严格遵守文章的结构和字数规划。本次生成的内容由【付费部分】和【结尾】两部分构成，并且必须与你已阅读的上半部分故事无缝衔接，下半段开头不要保留有上半段结尾的内容，下半段开头要直接无缝衔接。\n\n## 任务具体要求：\n\n1. **故事续写**\n\n    - 紧接着卡点的悬念，立刻展开付费部分的精彩情节，揭开谜底的过程要一波三折，充满**情节反转**，而不是平铺直叙。\n    - 将故事的主要悬念：  **“{{ $('写悬疑点1').item.json.text }}”**  ，在付费部分中作为开头、核心内容进行详细、生动的揭露和描写。确保这部分是全文最精彩、最核心的部分，并成为推动主人公**顿悟**和故事**高光时刻**的关键。\n    - 确保后半段故事有3个内部章节的安排，层层递进，**但不用写出章节名和章节序号**。\n    - **思于原始民间故事的精神，允许适当的艺术加工，但不得天马行空，不得过于玄幻。**\n    - 在揭晓悬念和故事发展中，持续**推动情绪波动**，最终落脚于**强情绪、强共鸣、强转化**，让读者感同身受。\n    - **突出核心点**：后半部分所有情节，特别是对“{{ $('写悬疑点1').item.json.text }}”的解读，必须紧紧围绕标题核心，不得偏离。\n    - 如果是历史相关的标题，请先查询相关正史，编撰的虚拟历史故事，不要和正史有太多逻辑上的冲突\n2. **创作付费部分**\n\n    - 撰写4000字左右的付费部分内容，禁止多于5500字。\n    - 将标题中的悬念点放在这里着重描写，揭秘的过程要充满画面感和冲击力，并蕴含深刻的人生哲理。\n    - 付费部分章节：分为三个编号章节:04、05、06，下半部分一开头就要以“04”章节编号开头\n3. **创作结尾部分**\n\n    - 在故事的最后，用400字左右的篇幅简洁总结全文，不用过多叙述。\n    - 结局不论好结局还是坏结局，都要**引人回味，留有余韵**。\n    - 故事结局不要出现写书传世情节。如果主人公是书生，不要有科举情节。\n\n## 行文风格\n\n- 通俗易懂：使用平易近人的语言，适合广大中老年读者的理解水平。\n- 增强代入感：让读者感同身受，增强他们与内容的情感链接，促使读者产生情感共鸣。\n- 生动有趣：通过生动的比喻、幽默的插话和生动的故事来吸引观众的注意力。\n- 深入浅出：虽然内容涉及深奥的文化知识，但讲解者会将其拆解成容易理解的部分，循序渐进地讲解。\n- 逻辑清晰：按照时间线或事件发展的逻辑顺序进行讲述，层次分明，条理清晰。\n- 打造紧张氛围：通过描写紧张、悬念的情境，增加文章的悬念感。\n- 描写人物情绪、神态不要过于夸张，要自然\n- 语言优美、平实、有韵味\n- 情节反转：设计出人意料的情节反转，增加故事的戏剧性\n\n## 内容限制与约束\n\n- **故事内容和人物必须严格延续上半部分，不能出现逻辑矛盾。**\n- 故事不要出现写书传世情节。如果主人公是书生，不要有科举情节。\n- **本次生成的总字数在4000字左右（付费部分约4000字，禁止多于5500字 + 结尾约400字）。**\n- 全文不要出现“免费部分”“免费”“结尾”“引言”“卡点”“付费部分”等字眼。\n- 全文禁止涉及医疗健康相关。\n\n## 输出格式与内容要求：\n\n1. **全文结构构成**\n\n    - 按照\"正文内容 + **结尾**（字体加粗）\"的格式组织文章。\n2. **全文**\n\n    - 全文请以markdown格式输出。\n    - 只输出故事原文，不要有任何其他的说明性文字。\n    - 全文禁止出现任何的英文字符、字母，仅仅使用简体中文。\n    - **本次输出总字数禁止低于4000字，禁止多于5500字。**\n    - **全文输出采用\"每一到两句话为一段\"的形式输出**，增强阅读节奏感，不要直接输出一整段。\n    - 输出时不同段落之间必须换行\n    - 章节格式：章节编号（如：04、05、06）需单独成行。\n3. **结尾**\n\n    - 结尾部分字体加粗，请注意结尾部分每一分段独立加粗。\n    - 字数在400字。\n4.  **章节结尾符**\n    - 在每一章节结尾的地方插入章节结尾符\n    - 格式如下：在第04章节的最后一行插入<--04-->，在第05章节的最后一行插入<--05-->，但第06章节的章节结尾符<--06-->，需要插入在结尾加粗部分的前一行",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1200,
+        864
+      ],
+      "id": "1d88d1a4-ef2e-4400-984e-fcf9c7377de8",
+      "name": "下半段故事提示词"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 1. 从上游节点读取字段“分行后故事”\nconst rawText = items[0].json['分行后故事'] || '';\n\n// 2. 切成 [段落, 分隔符, 段落, 分隔符, ...] 的交替数组\nconst parts = rawText.split(/(\\n{2,})/);\n\n// 3. 定义“长段”阈值\nconst LONG_THRESHOLD = 50;\n\n// 4. 遍历交替数组，去重长段\nconst seen = new Map();   // key: 段落内容\nconst keepParts = [];     // 要保留的段落或分隔符\n\nfor (let i = 0; i < parts.length; i++) {\n  const chunk = parts[i];\n  // 分隔符直接保留\n  if (/^\\n{2,}$/.test(chunk)) {\n    keepParts.push(chunk);\n    continue;\n  }\n  // 段落\n  const t = chunk.trim();\n  if (t.length < LONG_THRESHOLD) {\n    // 短段直接保留\n    keepParts.push(chunk);\n  } else {\n    // 长段只保留第一次\n    if (!seen.has(t)) {\n      seen.set(t, true);\n      keepParts.push(chunk);\n    }\n    // 重复长段直接丢弃\n  }\n}\n\n// 5. 拼回完整文本\nconst out = keepParts.join('');\n\n// 6. 向下游输出字段“删除重段后故事”\nreturn [{ json: { '删除重段后故事': out } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        1200
+      ],
+      "id": "147a15c7-f1d5-4083-a4c9-58b885bb6fde",
+      "name": "删除重段"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code 节点 － Run Once for All Items\n// 上游字段：清洗后故事\n// 下游字段：分行后故事\n\nconst src = items[0].json['整合后故事'] || '';\n\n// 把“已换行却无空行”的地方再补一个 \\n，让它成为 Markdown 的新段落\nconst out = src.replace(/([^\\n])\\n([^\\n])/g, '$1\\n\\n$2');\n\nitems[0].json['分行后故事'] = out;\nreturn items;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        656,
+        1200
+      ],
+      "id": "6609e289-1d38-47ba-8312-7f3d723add7a",
+      "name": "故事分行"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "=gemini-2.5-flash",
+          "mode": "id"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=我给你一篇国学短篇小说故事的标题，你深度理解这个标题，我要为这个标题做一个故事的封面，要求是突出标题中要表达的重点，你帮我为这个故事的封面写两个不同的提示词，每个提示词里各有四个与标题深度相关但各不相同的场景，四个场景以;分隔\n\n然后把两个提示词输出给我，要求每个场景描述精炼，不要有多余的描述词，每个场景描述30个字以内。严禁出现证件词：不得出现“身份证、结婚证、房产证、凭证”。请统一使用“泛黄的古籍、展开的丝绸卷轴、盖有朱砂印章的宣纸、精美的木质令牌”进行视觉平替。注意要符合即梦生图的审查机制，不要出现违规词和敏感词，\n\n严禁皇权敏感词：不得出现“龙袍、凤袍、五爪龙纹”。请统一使用“华丽的锦绣华服、缂丝金缕长袍、精致的绸缎官服、暗纹锦缎”进行视觉平替。\n\n严禁负面元素：严禁任何血腥、暴力、伤口、惊悚表情或封建迷信的词汇或祭祀场景。\n要把敏感词替换成不敏感的词语，要符合即梦或豆包模型的审查要求。\n如：生图提示词里如果有“黑白无常”那可替换为“身着古老黑白道袍的虚幻身影”或“两位神秘的仙人幻影”；\n\n输出语言为中文\n\n输出格式：输出为json格式，要求输出一个组合“return”，组合里必须有且只有2个items，每个item都包含Chapter和Prompt content两个字段,第一个键名字是“Chapter”，它的值只能是00和01；第二个键名字是“Prompt content”，内容是对应的生图提示词\n\njson格式（严格按照以下数组格式纯净的输出即可，不要有任何多余层级，不要用```包裹起来，不要有任何前缀、后缀）：\n\n[\n    {\n      \"Chapter\": \"00\",\n      \"Prompt content\": \"\"\n    },\n    {\n      \"Chapter\": \"01\",\n      \"Prompt content\": \"\"\n    }\n  ]\n",
+              "role": "system"
+            },
+            {
+              "content": "=标题文本：\n{{ $('编辑参数-选择标题输入2').first().json['选择标题输入'] }}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -224,
+        496
+      ],
+      "id": "f497ce30-1dac-46bc-8047-0755a4a9c999",
+      "name": "Gemini 2.5 pro-生图数组生成",
+      "retryOnFail": true,
+      "maxTries": 3,
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message.content.return",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        240,
+        384
+      ],
+      "id": "d5f517c4-415f-4fc6-a246-83eb3a58bc8b",
+      "name": "Split Out",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "fieldsToAggregate": {
+          "fieldToAggregate": [
+            {
+              "fieldToAggregate": "图片"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1552,
+        496
+      ],
+      "id": "77c17b9d-32e8-410c-bc75-560bd49cd34a",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 'items' 是 n8n 提供的包含所有输入数据的数组\n// 我们将遍历每个传入的项目\nconst outputItems = [];\n\nfor (const item of items) {\n  try {\n    // 1. 从当前项的 json 数据中获取 \"名字库\" 字段的内容\n    // item.json.名字库\n    const namesString = item.json.名字库;\n\n    // 2. 检查字段是否存在且为非空字符串\n    if (!namesString || typeof namesString !== 'string' || namesString.trim() === '') {\n      // 如果 \"名字库\" 字段无效，则在 item 中添加一个错误信息，然后继续处理下一项\n      item.json.error = \"未找到有效的'名字库'字段，或该字段为空。\";\n      outputItems.push(item);\n      continue;\n    }\n\n    // 3. 使用顿号 '、' 将字符串分割成一个名字数组\n    const namesArray = namesString.split('、');\n\n    // 4. 获取数组的长度\n    const arrayLength = namesArray.length;\n\n    // 5. 生成一个 0 到 (数组长度 - 1) 之间的随机整数索引\n    const randomIndex = Math.floor(Math.random() * arrayLength);\n\n    // 6. 使用随机索引从数组中获取一个名字\n    const randomName = namesArray[randomIndex];\n\n    // 7. 将选中的名字添加(或覆盖)到 item.json 的 'selectedName' 字段中\n    // 这样做会保留所有来自上一个节点的原始数据，并只添加新字段\n    item.json.selectedName = randomName;\n\n    // 8. 将修改后的 item 添加到输出数组中\n    outputItems.push(item);\n\n  } catch (error) {\n    // 捕获任何可能的错误（例如 item.json 不存在）\n    if (item.json) {\n      item.json.error = error.message;\n    }\n    outputItems.push(item);\n  }\n}\n\n// 9. 返回所有处理过的 items\nreturn outputItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1072,
+        160
+      ],
+      "id": "8d86ce67-bab8-4fd2-a4dc-2173a5b25045",
+      "name": "名字筛选"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 从指定的上游节点 '编辑参数-选择标题输入2' 获取数据\n// 这确保了无论有多少个节点连接到此节点，我们都只从目标节点读取数据\nconst inputData = $('编辑参数-选择标题输入2').first().json;\n\n// 用户指定的字段是 '引言库'\nconst fieldName = '引言库';\nlet inputString = inputData[fieldName];\n\n// 增加健壮性：如果 '引言库' 字段不存在，尝试 's引言库' (根据你示例中的可能笔误)\nif (!inputString && inputData['s引言库']) {\n  inputString = inputData['s引言库'];\n}\n\n// 检查输入是否有效\nif (!inputString || typeof inputString !== 'string') {\n  // 如果输入为空或不是字符串，返回一个空字符串或默认值，以避免后续节点出错\n  return [{\n    randomQuote: '' // 或者可以返回一个默认的引言，例如：randomQuote: '暂无引言。'\n  }];\n}\n\n// 使用 '---' 作为分隔符，将长字符串分割成一个引言数组\n// .map(item => item.trim()) 会在分割后立即清理每个元素首尾的空白字符\nconst quotesArray = inputString.split('---').map(quote => quote.trim());\n\n// 过滤掉可能因分割产生的空字符串（例如，如果输入以'---'开头或结尾）\nconst validQuotes = quotesArray.filter(quote => quote.length > 0);\n\n// 如果过滤后数组为空，说明输入内容只有分隔符，返回空字符串\nif (validQuotes.length === 0) {\n  return [{\n    randomQuote: ''\n  }];\n}\n\n// 生成一个随机索引，范围从 0 到 (数组长度 - 1)\nconst randomIndex = Math.floor(Math.random() * validQuotes.length);\n\n// 根据随机索引从数组中挑选一个引言\nconst selectedQuote = validQuotes[randomIndex];\n\n// n8n 的 Code 节点需要返回一个对象数组\n// 我们将挑选出的引言放在 'randomQuote' 字段中，以便下一个节点使用\nreturn [{\n  randomQuote: selectedQuote\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        160
+      ],
+      "id": "12737b48-e6a7-4d5f-a9fa-07970d0207b2",
+      "name": "引言随机"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 从上游节点获取输入数据\n// 'items' 是 n8n 传入的数据数组，我们处理第一个元素 (items[0])\nconst inputData = items[0].json;\n\n// 检查 '地点库' 字段是否存在且不为空\nif (!inputData['地点库'] || inputData['地点库'].trim() === '') {\n  // 如果输入无效，可以返回一个空值或一个错误信息\n  // 这里我们返回一个带有空字符串的字段，方便下游节点处理\n  return [{\n    json: {\n      randomLocation: '',\n      error: '输入的地点库为空或不存在'\n    }\n  }];\n}\n\n// 获取地点字符串\nconst locationString = inputData['地点库'];\n\n// 使用中文顿号 '、' 将字符串分割成一个数组\n// 使用 .map() 清理每个地点名周围可能存在的空格\nconst locationsArray = locationString.split('、').map(loc => loc.trim());\n\n// 从数组中随机选择一个地点\n// 1. 生成一个 0 到 1 之间的随机数\n// 2. 乘以数组长度得到一个 0 到 length 之间的随机浮点数\n// 3. 使用 Math.floor() 向下取整，得到一个有效的数组索引\nconst randomIndex = Math.floor(Math.random() * locationsArray.length);\nconst selectedLocation = locationsArray[randomIndex];\n\n// n8n 的 Code 节点需要返回一个对象数组\n// 我们将结果放在 'randomLocation' 字段中，方便下游节点引用\nreturn [{\n  json: {\n    randomLocation: selectedLocation\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1296,
+        160
+      ],
+      "id": "f0941071-ea05-4af4-88d9-2824ab473ca5",
+      "name": "地点随机"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "message.content",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        240,
+        496
+      ],
+      "id": "a35877c6-8cf7-440c-abcc-13424c13fc07",
+      "name": "Split Out1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.content.return }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "array",
+                      "operation": "exists",
+                      "singleValue": true
+                    },
+                    "id": "e4377d5b-2750-4e2e-baa9-f1c3748a13ad"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "return"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "loose",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "0c1e40cf-9264-42e2-95ab-0cf927ee2419",
+                    "leftValue": "={{ $json.message.content }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "array",
+                      "operation": "exists",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "content"
+            }
+          ]
+        },
+        "looseTypeValidation": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        16,
+        480
+      ],
+      "id": "54c89d38-1180-41f2-8146-8be07f6c6d10",
+      "name": "Switch",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "68bc7206-090c-4889-86e7-328389f349a7",
+              "name": "系统提示词",
+              "value": "=我给你一篇文章，\n\n任务一：里边如果有不合适的英文或符号存在，请遍历全文检查出他们，并改正，并且只需要修正不合适的部分，其他的内容禁止修改，保留markdown格式相关的符号（但是分隔符“***”“---”需要删除）。\n如果是形似<--01-->这样的占位符，需要保留。\n如果没有不合适的英文或符号存在，则不用执行此任务。\n\n任务二：文章分为引言以及6个章节部分，请检查所有的章节序号，是否按照顺序排列，是否重复，如果章节序号不对，请修改序号。\n有的序号会被某些字符包裹，例如：0<em>1</em>，或其他字符，这种情况下，将章节序号提取出来，多余字符去掉。\n\n任务三：文章前边如果有大段空白混合着一些不明所以的中英文字符和没有用的符号的，需要去除。如果没有，则不需要执行此任务\n\n任务四：如果文章前边有类似于大模型输出的说明性文字，请将其删除掉，文章的免责声明或创作声明不用删\n\n任务五：全文中，禁止出现“免费部分”“免费”“结尾”“引言”“卡点”“付费部分”“正文”等类似的字眼，如果出现了，请删除\n\n任务六：禁止将段落内容都放到一行中，如果发现有段落超过三句话都在同一行中，请将其每一两句就进行分行，如果没有，则忽略此任务\n\n任务七：如有英文内容，请将其转换成中文\n\n任务八：如发现全文被**加粗，请将所有的加粗符号去掉，如果只是开头，文章中间卡点部分，结尾部分被加粗，则忽略此任务\n\n任务九：检查全文的章节名格式，只能使用如“01”“02”这样的数字格式，禁止出现“第一章”“第一节”这样的格式，如有，请修正，如果没有，则忽略此任务\n\n任务十：确保全文的文章占位符格式、位置正确\n格式如下：在引言部分的最后一行插入<--00-->，在第01章节的最后一行插入<--01-->，在第二章节的最后一行插入<--02-->，但第03章节的章节结尾符<--03-->，需要插入在卡点加粗部分的前一行。在第04章节的最后一行插入<--04-->，在第05章节的最后一行插入<--05-->，但第06章节的章节结尾符<--06-->，需要插入在结尾加粗部分的前一行。**必须保持结尾占位符的完整和格式，不得修改结尾占位符样式！**\n\n最后只需要输出纯净的修改后的文章，不需要其他的说明性文字，输出文字为简体中文。",
+              "type": "string"
+            },
+            {
+              "id": "a51ab9b1-1833-4f1e-a2a6-f8162e09e335",
+              "name": "用户提示词",
+              "value": "=文章：\n{{ $('编辑参数-加入引言标题').first().json['整合后故事'] }}\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1104,
+        1200
+      ],
+      "id": "72461b46-e9eb-4f62-9f57-28878c83b0d1",
+      "name": "文章检查提示词"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ✅ 最终修复版：直接提取有效数据，忽略语法错误\nconst sourceData = $('Gemini 2.5 pro-生图数组生成').first().json.message.content;\n\nif (!sourceData) {\n  throw new Error(\"❌ 无法读取 message.content 字段\");\n}\n\n// 1. 清理Markdown标记\nconst cleanString = sourceData\n  .replace(/^```json\\s*/, '')\n  .replace(/\\s*```$/, '')\n  .trim();\n\n// 2. 直接提取所有Chapter对象（无视外层JSON结构）\nconst chapterMatches = cleanString.matchAll(/\\{\\s*\"Chapter\":\\s*\"(\\d+)\",\\s*\"Prompt content\":\\s*\"[\\s\\S]*?\"\\s*\\}/g);\n\nconst chapters = [];\nfor (const match of chapterMatches) {\n  try {\n    chapters.push(JSON.parse(match[0]));\n  } catch (e) {\n    console.warn(`⚠️ 跳过无效章节: ${e.message}`);\n  }\n}\n\n// 3. 按章节号排序\nchapters.sort((a, b) => parseInt(a.Chapter) - parseInt(b.Chapter));\n\nif (chapters.length === 0) {\n  throw new Error(\"❌ 未找到任何有效章节数据\");\n}\n\n// 4. 返回n8n格式\nreturn chapters.map(item => ({ json: item }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        608
+      ],
+      "id": "de4e0b9a-c429-49e8-8943-574eb0b522ab",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取数据\nconst imageArray = $(\"Aggregate\").first().json[\"图片\"]; // 使用first()获取第一个元素\nconst article = $input.first().json['清洗后故事'];\n\n// 验证数据格式\nif (!Array.isArray(imageArray) || typeof article !== 'string') {\n  throw new Error(`数据格式错误: 图片类型=${typeof imageArray}, 文章类型=${typeof article}`);\n}\n\n// 构建图片映射对象\nconst imageMap = {};\nimageArray.forEach(item => {\n  // 处理字符串格式 \"00：url\"\n  if (typeof item === 'string') {\n    const parts = item.split('：').map(s => s.trim());\n    if (parts.length >= 2) {\n      const key = parts[0];\n      const url = parts[1];\n      if (key && url) {\n        imageMap[key] = url;\n      }\n    }\n  }\n});\n\n// 替换文章中的占位符\nconst result = article.replace(/<--(\\d{2})-->/g, (match, key) => {\n  const url = imageMap[key];\n  return url ? `![](${url})` : match;\n});\n\n// 返回结果\nreturn [{ json: { text: result } }];\n\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        1504
+      ],
+      "id": "cc33a6d6-611e-4678-9112-fc2105a1da89",
+      "name": "插入图片链接2"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.Chapter }}",
+                    "rightValue": "00",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "d83f2316-c93f-4d64-b0d1-59340559a28f"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "00"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "c2e2c2ae-7f28-40f3-a65f-b23742b3a70a",
+                    "leftValue": "={{ $json.Chapter }}",
+                    "rightValue": "01",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "01"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        432,
+        496
+      ],
+      "id": "9aeea657-6c18-4c8d-9f12-26d42be8a8f3",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "fieldsToMatchString": "data",
+        "joinMode": "keepEverything",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1104,
+        496
+      ],
+      "id": "558cdb25-57bd-4237-ade4-f2d153799b1a",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== 调试：打印上游数据实际结构 =====\nconsole.log(\"上游节点原始数据:\", JSON.stringify(items, null, 2));\n\n// ===== 安全地提取图片链接 =====\nlet imageUrls = [];\n\n// 情况1：如果上游数据在 items[0].json 中（数组格式）\nif (Array.isArray(items[0]?.json)) {\n  const upstreamData = items[0].json;\n  \n  // 尝试从每个item的 .data[] 中提取\n  upstreamData.forEach((item, idx) => {\n    if (item?.data && Array.isArray(item.data)) {\n      item.data.forEach(img => {\n        if (img?.url) imageUrls.push(img.url.trim());\n      });\n    }\n    // 情况2：如果直接是 .url 字段\n    else if (item?.url) {\n      imageUrls.push(item.url.trim());\n    }\n  });\n}\n\n// 情况3：如果数据直接在当前items中\nelse {\n  items.forEach(item => {\n    if (item?.json?.url) {\n      imageUrls.push(item.json.url.trim());\n    }\n    if (item?.json?.data && Array.isArray(item.json.data)) {\n      item.json.data.forEach(img => {\n        if (img?.url) imageUrls.push(img.url.trim());\n      });\n    }\n  });\n}\n\n// ===== 打印提取到的链接（调试用） =====\nconsole.log(\"提取到的图片链接:\", imageUrls);\n\n// ===== 处理逻辑：交替取图 =====\nconst result = [];\nconst totalNeeded = 7;\nconst imagesPerSet = 4;\n\n// 将链接分为两组（假设前两组交替）\nfor (let i = 0; i < imagesPerSet && result.length < totalNeeded; i++) {\n  // 第一组第i张\n  if (i < imagesPerSet && imageUrls[i]) {\n    result.push({\n      \"图片\": `${String(result.length).padStart(2, '0')}：${imageUrls[i]}`\n    });\n  }\n  \n  // 第二组第i张\n  const secondIdx = i + imagesPerSet;\n  if (result.length < totalNeeded && imageUrls[secondIdx]) {\n    result.push({\n      \"图片\": `${String(result.length).padStart(2, '0')}：${imageUrls[secondIdx]}`\n    });\n  }\n}\n\n// ===== 返回结果 =====\nreturn result.map(item => ({ json: item }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1328,
+        496
+      ],
+      "id": "ad55de51-3038-488a-81e3-b05906afdea2",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 白名单：保留字符（中文汉字、阿拉伯数字、换行/空格、Markdown符号、常见标点）\n// 说明：已剔除单引号，中文省略号…和英文省略号...将被额外处理\n// $input.first().json.choices[0].message.content || ''\n// $input.first().json.text\nconst reg = /[^-\\u4E00-\\u9FFF0-9\\s*#_>\\[\\]`()，。！？；：“”、（）.<]/g;\n\nreturn items.map(item => {\n  const raw = $input.first().json.text  || '';\n  // 第一步：剔除不在白名单中的字符\n  // 第二步：剔除中文省略号（……）和英文省略号（...）\n  const cleaned = raw.replace(reg, '').replace(/…+/g, '').replace(/\\.{3,}/g, '');\n  return { json: { '清洗后故事': cleaned } };\n});\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        128,
+        1504
+      ],
+      "id": "efdb378d-ef9e-4ac5-90b6-b1b565b1115e",
+      "name": "清洗字符"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "dDd9lV1MgbGhaZNN",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/dDd9lV1MgbGhaZNN",
+          "cachedResultName": "文章图片处理并上传-子"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        432
+      ],
+      "name": "Call 文章图片处理并上传-子",
+      "id": "1a601cc8-8cf9-4e8d-a4a4-d867314008f8",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "dDd9lV1MgbGhaZNN",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/dDd9lV1MgbGhaZNN",
+          "cachedResultName": "文章图片处理并上传-子"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        880,
+        560
+      ],
+      "name": "Call 文章图片处理并上传-子1",
+      "id": "4487aa2f-0ba1-464a-b7f8-3e45739ae99c",
+      "retryOnFail": true
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "EtXsVN7gLUq1xmq1",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/EtXsVN7gLUq1xmq1",
+          "cachedResultName": "即梦免费生图"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "提示词": "=生成四张图，分别是{{ $json['Prompt content'] }}，古风，国画风"
+          },
+          "matchingColumns": [
+            "提示词"
+          ],
+          "schema": [
+            {
+              "id": "提示词",
+              "displayName": "提示词",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        656,
+        432
+      ],
+      "name": "Call 即梦免费生图",
+      "id": "c66e688e-15cd-4b78-8328-4fc910d6bd8a"
+    },
+    {
+      "parameters": {
+        "workflowId": {
+          "__rl": true,
+          "value": "EtXsVN7gLUq1xmq1",
+          "mode": "list",
+          "cachedResultUrl": "/workflow/EtXsVN7gLUq1xmq1",
+          "cachedResultName": "即梦免费生图"
+        },
+        "workflowInputs": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "提示词": "=生成四张图，分别是{{ $json['Prompt content'] }}，古风，国画风"
+          },
+          "matchingColumns": [
+            "提示词"
+          ],
+          "schema": [
+            {
+              "id": "提示词",
+              "displayName": "提示词",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": true
+        },
+        "options": {
+          "waitForSubWorkflow": true
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflow",
+      "typeVersion": 1.2,
+      "position": [
+        656,
+        560
+      ],
+      "name": "Call 即梦免费生图1",
+      "id": "a922d407-b6c2-44a4-aa95-495bb818e89e"
+    },
+    {
+      "parameters": {
+        "workflowInputs": {
+          "values": [
+            {
+              "name": "id",
+              "type": "any"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.executeWorkflowTrigger",
+      "typeVersion": 1.1,
+      "position": [
+        160,
+        160
+      ],
+      "id": "c5018c1f-347f-46d1-ae00-825bea3cf408",
+      "name": "When Executed by Another Workflow"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "451f7216-130b-400c-8943-a21f253bbd95",
+              "name": "上半部分",
+              "value": "={{ $json.text }}",
+              "type": "string"
+            },
+            {
+              "id": "e2c854e3-6625-4da2-9a14-7dd5781139c8",
+              "name": "上半部分1",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1040,
+        864
+      ],
+      "id": "3ed869ee-022e-44b9-bff3-1c66ed0d4058",
+      "name": "上半段故事"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fd0f6010-7b19-4d9d-ade6-1af14d719b56",
+              "name": "01",
+              "value": "https://gemini-balance-01.zeabur.app;sk-2iiVm3BpRcZWdfSLZWjIwBEoJwYJJuK8njpJl4lxXTOyrNE3",
+              "type": "string"
+            },
+            {
+              "id": "5275410b-506b-4abb-b41f-fe559efd1fda",
+              "name": "02",
+              "value": "https://gemini-balance-02.zeabur.app;sk-d1UW7wRuEQ5R9j2FWxoa1gUH0HRBYBXEooZJH2we__uoQDxP",
+              "type": "string"
+            },
+            {
+              "id": "bfac9ddd-881e-4b28-b1bd-f2272b979b76",
+              "name": "03",
+              "value": "https://gemini-balance-03.zeabur.app;sk-15xnug6DcPNPLJYxDnCWDWxRDuC41qNCeoBxYbJGfZWbglHX",
+              "type": "string"
+            },
+            {
+              "id": "96825996-1729-4ece-a545-98f324297afd",
+              "name": "04",
+              "value": "https://gemini-balance-04.zeabur.app;sk-Sas7tQDTcHu24SHPTnAWWSsRd4Dw8g8bSseUMZ_xX1XELwNt",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        640,
+        160
+      ],
+      "id": "3a4873c2-f5b9-44a1-9e33-332c011a2c0b",
+      "name": "轮询账号存储"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1-mini-2025-04-14",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1-mini-2025-04-14"
+        },
+        "options": {
+          "timeout": 210000,
+          "maxRetries": 1
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -128,
+        1008
+      ],
+      "id": "40d23fca-f112-4756-88d5-32e68371951d",
+      "name": "OpenAI Chat Model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify($json[\"故事生成提示词\"]) }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "你是一个国学故事专家"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        624,
+        864
+      ],
+      "id": "3dbcde6d-e3ec-4f6e-841f-1da2b9e1070e",
+      "name": "GPT-Load",
+      "retryOnFail": false,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ $json['下半段提示词'] }}",
+        "messages": {
+          "messageValues": [
+            {
+              "message": "你是一个国学故事专家"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -256,
+        1200
+      ],
+      "id": "af74df74-8133-4151-a912-6b56e4661327",
+      "name": "GPT-Load1",
+      "retryOnFail": false,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "={{ JSON.stringify($json[\"用户提示词\"]) }}",
+        "needsFallback": true,
+        "messages": {
+          "messageValues": [
+            {
+              "message": "={{ JSON.stringify($json[\"系统提示词\"]) }}"
+            }
+          ]
+        },
+        "batching": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.7,
+      "position": [
+        -256,
+        1504
+      ],
+      "id": "ad7a0c36-d02f-4d5b-978f-2e5d0c5c0b04",
+      "name": "GPT-Load2",
+      "retryOnFail": false,
+      "maxTries": 2
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash-preview-09-2025-thinking",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-flash-preview-09-2025-thinking"
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -336,
+        1664
+      ],
+      "id": "adf2d485-88a2-4820-ad72-07ac1959906d",
+      "name": "OpenAI Chat Model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "dKaG2GOcAXCglIgm",
+          "name": "EulerAI"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-pro-thinking",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-pro-thinking"
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -384,
+        1344
+      ],
+      "id": "078fcf71-862c-42da-a27a-ff77a6219853",
+      "name": "OpenAI Chat Model6",
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-pro-thinking",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-pro-thinking"
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        560,
+        1008
+      ],
+      "id": "5d22a17a-0df0-4cc4-9a6f-885e7106b51c",
+      "name": "OpenAI Chat Model8",
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// 获取上游输入的文本\nconst inputText = $input.first().json.text;\n\n// 使用正则表达式匹配形如 <--00-->、<--01--> 的占位符\n// 模式解释：\n// \\<-- 匹配开头的 <--\n// \\d+ 匹配一个或多个数字\n// --\\> 匹配结尾的 -->\n// g 标志表示全局匹配（替换所有出现的）\nconst placeholderPattern = /<--\\d+-->/g;\n\n// 删除所有匹配的占位符，如果没有匹配项则返回原文\nconst cleanedText = inputText.replace(placeholderPattern, '');\n\n// 输出结果给下游\nreturn [{ json: { text: cleanedText } }];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        544,
+        1504
+      ],
+      "id": "e0763a79-ac69-45e4-b68e-550d258a2c94",
+      "name": "清理占位符"
+    },
+    {
+      "parameters": {
+        "operation": "upload",
+        "bucketName": "=tale-sinology",
+        "fileName": "={{ $('编辑参数-选择标题输入2').first().json['选择标题输入']\n  .replace(/[%+=!&$@#*(){}[\\]<>?/\\\\|~`^:;\"']/g, '_')\n  .slice(0, 80)\n}}.md",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.s3",
+      "typeVersion": 1,
+      "position": [
+        992,
+        1504
+      ],
+      "id": "73c20427-abf2-45bc-bd95-e6c8e07df5d5",
+      "name": "Upload a file",
+      "credentials": {
+        "s3": {
+          "id": "pAEy8HZsOCYUpHV6",
+          "name": "S3 account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gemini-2.5-flash-thinking",
+          "mode": "list",
+          "cachedResultName": "gemini-2.5-flash-thinking"
+        },
+        "options": {
+          "timeout": 600000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        -176,
+        1664
+      ],
+      "id": "bdda8122-7f8b-4737-9ca6-7b6d5ed4e6cc",
+      "name": "OpenAI Chat Model",
+      "credentials": {
+        "openAiApi": {
+          "id": "zli67z6JjZMKfwFx",
+          "name": "yunwu"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "When Executed by Another Workflow": [
+      {
+        "json": {
+          "id": "2bbed021-e5e2-80fe-b637-d6d5429f029d"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "写悬疑点1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "编辑参数-选择标题输入2": {
+      "main": [
+        [
+          {
+            "node": "名字筛选",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "notion-获取页面数据": {
+      "main": [
+        [
+          {
+            "node": "轮询账号存储",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "编辑参数-加入引言标题": {
+      "main": [
+        [
+          {
+            "node": "故事分行",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "编辑参数-上半段提示词",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "写悬疑点1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "编辑参数-上半段提示词": {
+      "main": [
+        [
+          {
+            "node": "GPT-Load",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "下半段故事": {
+      "main": [
+        [
+          {
+            "node": "编辑参数-加入引言标题",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Upload a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "写悬疑点1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "下半段故事提示词": {
+      "main": [
+        [
+          {
+            "node": "GPT-Load1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "删除重段": {
+      "main": [
+        [
+          {
+            "node": "文章检查提示词",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "故事分行": {
+      "main": [
+        [
+          {
+            "node": "删除重段",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gemini 2.5 pro-生图数组生成": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "写悬疑点1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "名字筛选": {
+      "main": [
+        [
+          {
+            "node": "地点随机",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "引言随机": {
+      "main": [
+        [
+          {
+            "node": "Gemini 2.5 pro-生图数组生成",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "地点随机": {
+      "main": [
+        [
+          {
+            "node": "引言随机",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out1": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Split Out1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "文章检查提示词": {
+      "main": [
+        [
+          {
+            "node": "GPT-Load2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "插入图片链接2": {
+      "main": [
+        [
+          {
+            "node": "清理占位符",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Call 即梦免费生图",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Call 即梦免费生图1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 文章图片处理并上传-子": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 文章图片处理并上传-子1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Call 即梦免费生图": {
+      "main": [
+        [
+          {
+            "node": "Call 文章图片处理并上传-子",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Call 即梦免费生图1": {
+      "main": [
+        [
+          {
+            "node": "Call 文章图片处理并上传-子1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "清洗字符": {
+      "main": [
+        [
+          {
+            "node": "插入图片链接2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "When Executed by Another Workflow": {
+      "main": [
+        [
+          {
+            "node": "notion-获取页面数据",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "上半段故事": {
+      "main": [
+        [
+          {
+            "node": "下半段故事提示词",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "轮询账号存储": {
+      "main": [
+        [
+          {
+            "node": "编辑参数-选择标题输入2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "写悬疑点1",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "GPT-Load": {
+      "main": [
+        [
+          {
+            "node": "上半段故事",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT-Load1": {
+      "main": [
+        [
+          {
+            "node": "下半段故事",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT-Load2": {
+      "main": [
+        [
+          {
+            "node": "清洗字符",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model1": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "GPT-Load2",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model6": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "GPT-Load1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "GPT-Load",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "清理占位符": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload a file": {
+      "main": [
+        [
+          {
+            "node": "Update a database page",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "GPT-Load2",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "e007c7c7-d976-4eb3-8e0d-20765d554af8",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "ed3946f2ffe8036b557b65550564fe2aa23054685fffd6442e28d25b4753b197"
+  },
+  "id": "iZtiAFEsSqNQYjOS",
+  "tags": []
+}
