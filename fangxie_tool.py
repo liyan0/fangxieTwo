@@ -2627,7 +2627,7 @@ class FangxieApp:
                         self.log(f"  标题{t_idx+1}: {t} ({len(t)}字)")
 
                     # 先过滤掉超过20字的标题
-                    valid_titles = [t for t in titles if len(t) <= 20]
+                    valid_titles = [t for t in titles if len(t) <= 20 and len(t) >= 4]
 
                     if not valid_titles:
                         # 如果5个都超过20字，选最短的那个
@@ -3330,7 +3330,7 @@ class FangxieApp:
         prompt = (
             "请根据以下文案内容，重新生成5个爆款标题。\n\n"
             "【硬性要求】\n"
-            "- 每个标题8-20字，结尾绝对禁止任何标点符号\n"
+            "- 每个标题4-20字，结尾绝对禁止任何标点符号\n"
             "- 禁止鸡汤式陈述标题，必须有悬念/冲突/事件感\n"
             "- 每个标题必须包含至少2个核心元素：权威背书/紧迫感/悬念钩子/情绪爆发/对比反差\n"
             "- 5个标题必须使用5种不同的公式类型（悬念冲突/身份反转/秘密揭露/紧急提醒/反差震撼等）\n"
@@ -3383,7 +3383,7 @@ class FangxieApp:
         except Exception:
             return set()
 
-    def check_title_duplicate(self, title, threshold=0.7):
+    def check_title_duplicate(self, title, threshold=0.8):
         """检查标题是否与历史标题重复"""
         from difflib import SequenceMatcher
 
@@ -3903,7 +3903,7 @@ class FangxieApp:
 - 必须根据正文提炼关键词后填入公式变量
 - 例如：公式是"大佬 + [对你的态度]"，要根据正文写成"大佬看穿了你的深不见底"，而不是抄示例
 - 同一次生成的所有标题不得重复或高度相似
-- **字数限制：每个标题8-20字**
+- **字数限制：每个标题4-20字**
 - **结尾绝对禁止任何标点符号（句号、感叹号、问号、省略号、顿号全部禁止）**
 - **禁止在标题中使用双引号（""）或单引号（''）**
 - 标题可以用逗号作为内部分隔，但结尾不得有任何标点
