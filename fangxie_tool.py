@@ -2393,10 +2393,12 @@ class FangxieApp:
                 self.log(f"识别到 {len(articles)} 篇参考文案")
 
                 # 把参考文案追加到素材库（改写前先检查去重）
-                for article in articles:
+                duplicate_indices = set()
+                for idx, article in enumerate(articles):
                     # 检查参考文章是否重复
                     if self.check_reference_duplicate(article):
-                        self.log(f"  跳过重复的参考文案")
+                        self.log(f"  跳过重复的参考文案（第{idx+1}篇）")
+                        duplicate_indices.add(idx)
                         continue
                     self.append_reference_to_library(article, flow_type)
 
@@ -2416,6 +2418,10 @@ class FangxieApp:
                 for art_idx, article in enumerate(articles):
                     if not self.is_running:
                         break
+
+                    # 跳过重复的参考文案
+                    if art_idx in duplicate_indices:
+                        continue
 
                     self.log(f"\n--- 处理第 {art_idx+1} 篇参考文案 ---")
                     self.update_status(f"正在生成第 {art_idx+1} 篇...")
@@ -2643,11 +2649,26 @@ class FangxieApp:
                     if self.check_title_duplicate(selected_title):
                         self.log(f"  → 标题重复，尝试选择其他标题")
                         # 尝试其他标题
+                        found_alt = False
                         for alt_title in titles:
                             if alt_title != selected_title and not self.check_title_duplicate(alt_title):
                                 selected_title = alt_title
                                 self.log(f"  → 改用标题: {selected_title}")
+                                found_alt = True
                                 break
+                        if not found_alt:
+                            self.log(f"  ⚠️ 所有备选标题均重复，尝试调用AI重新生成标题...")
+                            new_titles = self.regenerate_titles_for_article(article_content)
+                            for new_title in new_titles:
+                                if not self.check_title_duplicate(new_title):
+                                    selected_title = new_title
+                                    self.log(f"  → AI重新生成标题: {selected_title}")
+                                    found_alt = True
+                                    break
+                        if not found_alt:
+                            timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+                            selected_title = f"{selected_title}_{timestamp}"
+                            self.log(f"  ⚠️ AI重新生成的标题仍全部重复，使用时间戳命名: {selected_title}")
                     else:
                         self.log(f"  → 随机选中: {selected_title}")
 
@@ -2728,7 +2749,9 @@ class FangxieApp:
             "好运": "好事",
             "翻身": "翻盘",
             "长者": "大佬",
-            "死讯": "喜讯"
+            "死讯": "喜讯",
+            "转运": "发财",
+            "小人": "坏人"
         }
 
         # 内容敏感词替换规则（61个）
@@ -2753,6 +2776,7 @@ class FangxieApp:
             "天道": "规律",
             "命运": "人生",
             "转运": "改善",
+            "命数": "前途",
             "化解": "解决",
             "保佑": "守护",
             "显灵": "显现",
@@ -3041,10 +3065,12 @@ class FangxieApp:
                 self.log(f"识别到 {len(articles)} 篇参考文案")
 
                 # 把参考文案追加到素材库（改写前先检查去重）
-                for article in articles:
+                duplicate_indices = set()
+                for idx2, article in enumerate(articles):
                     # 检查参考文章是否重复
                     if self.check_reference_duplicate(article):
-                        self.log(f"  跳过重复的参考文案")
+                        self.log(f"  跳过重复的参考文案（第{idx2+1}篇）")
+                        duplicate_indices.add(idx2)
                         continue
                     self.append_reference_to_library(article, flow_type)
 
@@ -3058,6 +3084,10 @@ class FangxieApp:
                 for art_idx, article in enumerate(articles):
                     if not self.is_running:
                         break
+
+                    # 跳过重复的参考文案
+                    if art_idx in duplicate_indices:
+                        continue
 
                     self.log(f"\n--- 处理第 {art_idx+1} 篇参考文案 ---")
                     self.update_status(f"正在生成第 {art_idx+1} 篇...")
@@ -3295,6 +3325,44 @@ class FangxieApp:
                     return True
         return False
 
+    def regenerate_titles_for_article(self, article_content):
+        """当所有备选标题均重复时，单独调用AI重新生成5个爆款标题"""
+        prompt = (
+            "请根据以下文案内容，重新生成5个爆款标题。\n\n"
+            "【硬性要求】\n"
+            "- 每个标题8-20字，结尾绝对禁止任何标点符号\n"
+            "- 禁止鸡汤式陈述标题，必须有悬念/冲突/事件感\n"
+            "- 每个标题必须包含至少2个核心元素：权威背书/紧迫感/悬念钩子/情绪爆发/对比反差\n"
+            "- 5个标题必须使用5种不同的公式类型（悬念冲突/身份反转/秘密揭露/紧急提醒/反差震撼等）\n"
+            "- 禁止使用警告作为开头词，禁止双引号和单引号\n"
+            "- 每行只输出一个标题，共5行，不要加编号或前缀\n\n"
+            f"【文案内容】\n{article_content[:1500]}"
+        )
+        try:
+            use_stream = self.use_stream.get()
+            prefix = "stream_main" if use_stream else "non_stream_main"
+            url = getattr(self, f"{prefix}_url").get().strip()
+            key = getattr(self, f"{prefix}_key").get().strip()
+            model = getattr(self, f"{prefix}_model").get().strip()
+            if not url or not key or not model:
+                return []
+            import requests
+            api_url = f"{url.rstrip('/')}/chat/completions"
+            headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
+            data = {"model": model, "messages": [{"role": "user", "content": prompt}], "max_tokens": 300}
+            resp = requests.post(api_url, headers=headers, json=data, timeout=30)
+            if resp.status_code != 200:
+                self.log(f"  重新生成标题失败：{resp.status_code}")
+                return []
+            result = resp.json()
+            text = result.get("choices", [{}])[0].get("message", {}).get("content", "").strip()
+            titles = [line.strip() for line in text.splitlines() if line.strip() and 4 <= len(line.strip()) <= 25]
+            self.log(f"  重新生成了 {len(titles)} 个新标题")
+            return titles
+        except Exception as e:
+            self.log(f"  重新生成标题异常：{e}")
+            return []
+
     def get_generated_title_set(self):
         """读取已入库的生成标题，用于跨批次去重"""
         try:
@@ -3482,7 +3550,7 @@ class FangxieApp:
 
     def is_too_similar_to_recent(self, text):
         """检查与近期文案是否过于相似"""
-        corpus = self.get_recent_corpus_texts(max_files=60)
+        corpus = self.get_recent_corpus_texts(max_files=500)
         if not corpus:
             return False, "", 0.0
 
