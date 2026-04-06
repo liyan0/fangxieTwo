@@ -25,6 +25,12 @@ MATERIAL_LIBRARY_FILE = os.path.join(MATERIAL_LIBRARY_DIR, "爆款素材库.xlsx
 GENERATED_LIBRARY_FILE = os.path.join(MATERIAL_LIBRARY_DIR, "生成文案库.xlsx")
 GENERATED_LIBRARY_SHEET = "生成文案库"
 
+# 带书文案库路径
+DAISHU_MATERIAL_DIR = r"D:\A百家号带货视频\带货文案\爆款参考文案"
+DAISHU_MATERIAL_FILE = os.path.join(DAISHU_MATERIAL_DIR, "爆款素材库_带书.xlsx")
+DAISHU_GENERATED_FILE = os.path.join(DAISHU_MATERIAL_DIR, "生成文案库_带书.xlsx")
+DAISHU_GENERATED_SHEET = "生成文案库_带书"
+
 # 开头钩子库 - 用于随机选择
 HOOK_LIBRARY = {
     "A类-缘分命定型": [
@@ -329,6 +335,160 @@ def get_random_hooks(count=3):
             result.append({"type": t, "example": hook})
         return result
 
+# ===== 带书文案钩子库 =====
+DAISHU_HOOK_LIBRARY = {
+    "A类-命运感召型": [
+        "大千世界，芸芸众生，能停下来看这段话的，都不是普通人。",
+        "茫茫人海，你能刷到这里，说明你跟别人不一样，这段话就是说给你听的。",
+        "冥冥之中，你能看到这段话，或许是一种缘分，也或许是你早就该明白这件事了。",
+        "万千人中，你停在这里，说明你心里早就有了答案，只是还差一句话。",
+        "茫茫人海，你能刷到这段话，本身就是一种预兆。",
+        "能看到这段话的人，早已不是普通人，只是你还没意识到。",
+    ],
+    "B类-颠覆认知型": [
+        "我以前以为自己很懂这件事，后来读了一本书，才发现自己根本没想明白。",
+        "有一个道理，我活了这么多年才搞清楚，今天说出来，希望你能少走弯路。",
+        "大多数人都搞反了这件事，包括曾经的我，直到我看到这句话才恍然大悟。",
+        "你以为你懂，其实你不懂，但没关系，懂了也不晚。",
+        "我以为成熟就是能忍，后来才明白，真正的成熟是懂得选择。",
+        "很多人以为孤独是一种缺陷，其实是一种进化。",
+        "你以为你在原地踏步，其实你正在沉淀。",
+        "人性最深的秘密，从来不是善恶，而是这两个字。",
+    ],
+    "C类-共鸣切入型": [
+        "你有没有这样的感觉：明明很努力，却总感觉缺点什么？",
+        "很多人问过我同一个问题，我今天统一回答一次。",
+        "我知道你这些年有多不容易，但有些事，不说出来你可能真的不知道。",
+        "你有没有想过，为什么有些人活得越来越通透，有些人却越活越拧巴？",
+        "我见过太多人，把自己活得很累，其实根本没必要。",
+        "你是不是也有过这种感觉，付出了很多，却没人真正看见。",
+        "那种明明没做错什么，却莫名被孤立的感觉，你懂吗。",
+        "有些苦，你一直一个人扛着，从来没跟任何人说过。",
+    ],
+    "D类-玄学传讯型": [
+        "宇宙给你安排了这段话，千万别划走，这是专门说给你听的。",
+        "上面那位早就注意到你了，今天托我传你一句话。",
+        "道友，既然刷到了，就是缘分，这段话你一定要听完。",
+        "冥冥之中自有安排，你能看到这里，说明你需要这句话。",
+        "道家说，真正的强者，都经历过一段至暗时光。",
+        "佛说，一切苦的根源，不是命，是你还没想通这件事。",
+        "老祖宗留下一句话，看懂的人命运都顺了。",
+    ],
+    "E类-悬念引入型": [
+        "有件事我憋了很久，今天必须说出来。",
+        "有个规律，我观察了很多年才看透，今天说给你听。",
+        "接下来这段话，可能会让你不舒服，但我还是要说。",
+        "有个真相，很多人知道，但没人敢说，今天我来说。",
+        "这件事我犹豫了很久，今天终于决定说出来。",
+        "有些话，碍于篇幅我不能说得太明确，但你看完就懂了。",
+        "按常理来说，这些内容不太能流传于公开场合。",
+        "这些通天的道理，真理掌握在少数人手中，今天说给你听。",
+    ],
+    "F类-好消息型": [
+        "告诉你一个好消息，你等的那个答案，其实早就有了。",
+        "有件事想跟你说，说完你会觉得这些年的困惑值了。",
+        "你最近一直在想的那件事，今天我来给你一个不一样的角度。",
+        "告诉你一个好消息，你身上有一种很多人求都求不来的东西。",
+        "有件事我想跟你说，像你这样的人，以后一定越来越好。",
+    ],
+    "G类-引经据典型": [
+        "老祖宗留下一句话，几千年了，还是没人能反驳，今天这本书把它说透了。",
+        "有句老话讲得透，但很少有人真正理解它的意思，直到我读了这本书。",
+        "道德经里有一句话，我反复读了三遍，才算真正懂了，这本书帮我想明白的。",
+        "中国人讲了几千年的道理，浓缩成一句话，这本书用现代人听得懂的方式说清楚了。",
+        "古人说得好，有些话放在今天依然受用，这本书把这个道理讲得最透。",
+    ],
+    "H类-身份抬升型": [
+        "能独处的人，都不是一般人，你就是这种人。",
+        "像你这样的人，其实已经走在大多数人前面了，只是你自己没意识到。",
+        "你这种人，心里装的东西，比普通人多太多，所以才会有这些困惑。",
+        "真正有内涵的人，都有一个共同点，你有没有发现自己也有这个特点？",
+        "能走到独处这一步的人，年轻时往往热得过头了，是被现实锤打出来的。",
+        "安静的人从不解释，因为他们早就看透了，解释是多余的。",
+        "真正有悟性的人，都经历过一段极度孤独的时光。",
+    ],
+    "I类-预言好结果型": [
+        "像你这样能停下来思考的人，以后一定会越来越好。",
+        "你现在经历的这些，都是在为以后更好的自己打基础。",
+        "我见过太多人，熬过了最难的那段时间之后，全都翻身了。",
+        "你现在的坚持，以后都会有回报，这不是安慰，这是规律。",
+    ],
+    "J类-知识送礼型": [
+        "今天送你一句话，够你用一辈子。",
+        "把这个道理送给你，看完你会庆幸自己刷到了这条。",
+        "这段话我想了很久，今天说出来，就当送给你的礼物。",
+        "今天分享一个让我受益很深的道理，送给正在看的你。",
+    ],
+    "K类-紧急叫停型": [
+        "先别划走，这段话说完你可以再走，但现在先听我说完。",
+        "停一下，就一分钟，这件事你真的需要知道。",
+        "等等，就这一句话，听完你想走我绝不拦你。",
+    ],
+    "L类-反差转折型": [
+        "都说读书没用，但我认识一个人，就靠读书彻底改变了命运。",
+        "你以为那些通透的人是天生的？不，他们只是比你早想明白了一件事。",
+        "大多数人的问题不是不努力，而是方向错了，今天帮你校正一下。",
+        "那些活得通透的人，都有一本书没告诉你。",
+        "你以为你在原地踏步，其实你正在积累破局的能量。",
+    ],
+    "M类-揭秘剥光式": [
+        "把这件事剥光给你看，不准你来反驳我，建议点赞收藏随时翻阅。",
+        "今天把这个道理剥光了说，你听完可能不舒服，但句句是真的。",
+        "很多人不敢说透的事，今天我来说，不准划走，听我说完。",
+        "把人性剥光给你看，不绕弯子，直接说最核心的那一层。",
+        "这件事我见过太多人搞错，今天一次说清楚，建议收藏。",
+    ],
+    "N类-结论先行式": [
+        "能够独处的人绝对不是一般人，从心理学上看，这类人内心强大到普通人难以理解。",
+        "习惯性反驳别人，实际上是一种贫穷人格，今天把这件事说透。",
+        "一定要远离主动卖惨的人，这不是冷漠，这是自我保护最基本的底线。",
+        "善良不是傻，包容不是弱，真正厉害的人从来不会把这两件事搞混。",
+        "人性就这么简单，一旦看透，你会发现很多事根本不值得纠结。",
+    ],
+}
+
+DAISHU_HOOK_WEIGHTS = {
+    "D类-玄学传讯型": 5,
+    "B类-颠覆认知型": 5,
+    "H类-身份抬升型": 6,
+    "C类-共鸣切入型": 6,
+    "E类-悬念引入型": 6,
+    "A类-命运感召型": 5,
+    "L类-反差转折型": 5,
+    "G类-引经据典型": 5,
+    "I类-预言好结果型": 5,
+    "J类-知识送礼型": 5,
+    "F类-好消息型": 5,
+    "K类-紧急叫停型": 4,
+    "M类-揭秘剥光式": 6,
+    "N类-结论先行式": 6,
+}
+
+def get_daishu_random_hooks(count=3):
+    """随机选择带书文案开头钩子"""
+    all_types = list(DAISHU_HOOK_LIBRARY.keys())
+    weights = [DAISHU_HOOK_WEIGHTS.get(t, 3) for t in all_types]
+    selected_count = min(count, len(all_types))
+    selected_types = []
+    remaining_types = all_types[:]
+    remaining_weights = weights[:]
+    for _ in range(selected_count):
+        total = sum(remaining_weights)
+        r = random.uniform(0, total)
+        cumulative = 0
+        for i, w in enumerate(remaining_weights):
+            cumulative += w
+            if r <= cumulative:
+                selected_types.append(remaining_types[i])
+                remaining_types.pop(i)
+                remaining_weights.pop(i)
+                break
+    result = []
+    for t in selected_types:
+        hook = random.choice(DAISHU_HOOK_LIBRARY[t])
+        result.append({"type": t, "example": hook})
+    return result
+
 # 配置文件路径
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "fangxie_config.json")
 
@@ -441,13 +601,25 @@ class FangxieApp:
         # 创建主Notebook（标签页）
         self.main_notebook = ttk.Notebook(self.root)
         self.main_notebook.pack(fill=tk.BOTH, expand=True, padx=5, pady=5)
+        self._tab_mousewheel_func = None
+
+        def _on_tab_changed(event):
+            if self._tab_mousewheel_func:
+                self.root.unbind_all("<MouseWheel>")
+                self._tab_mousewheel_func = None
+        self.main_notebook.bind("<<NotebookTabChanged>>", _on_tab_changed)
 
         # === 标签页1：文案生成 ===
         self.article_page = ttk.Frame(self.main_notebook)
         self.main_notebook.add(self.article_page, text="  文案生成  ")
         self.create_article_page()
 
-        # === 标签页2：视频制作 ===
+        # === 标签页2：带书文案生成 ===
+        self.daishu_page = ttk.Frame(self.main_notebook)
+        self.main_notebook.add(self.daishu_page, text="  带书文案生成  ")
+        self.create_daishu_page()
+
+        # === 标签页3：视频制作 ===
         self.video_page = ttk.Frame(self.main_notebook)
         self.main_notebook.add(self.video_page, text="  视频制作  ")
         self.create_video_page()
@@ -465,6 +637,175 @@ class FangxieApp:
         self.last_product_name = ""
         self.last_product_material = ""
         self.similarity_threshold = float(self.config.get("similarity_threshold", 0.76))
+
+        # 带书文案独立运行状态
+        self.ds_is_running = False
+        self.ds_last_articles = []
+        self.ds_txt_generate_success = False
+
+    def create_daishu_page(self):
+        """创建带书文案生成页面"""
+        canvas = tk.Canvas(self.daishu_page)
+        scrollbar = ttk.Scrollbar(self.daishu_page, orient="vertical", command=canvas.yview)
+        scrollable_frame = ttk.Frame(canvas)
+        scrollable_frame.bind(
+            "<Configure>",
+            lambda e: canvas.configure(scrollregion=canvas.bbox("all"))
+        )
+        canvas_window = canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
+        canvas.configure(yscrollcommand=scrollbar.set)
+
+        def on_canvas_configure(event):
+            canvas.itemconfig(canvas_window, width=event.width)
+            canvas.itemconfig(canvas_window, height=max(event.height, scrollable_frame.winfo_reqheight()))
+        canvas.bind("<Configure>", on_canvas_configure)
+
+        def _on_mousewheel_ds(event):
+            widget = event.widget
+            widget_class = widget.winfo_class()
+            if widget_class in ('TCombobox', 'Combobox'):
+                return "break"
+            canvas.yview_scroll(int(-1 * (event.delta / 120)), "units")
+
+        def _bind_ds_scroll(event):
+            self.root.bind_all("<MouseWheel>", _on_mousewheel_ds)
+            self._tab_mousewheel_func = _on_mousewheel_ds
+        self.daishu_page.bind("<Visibility>", _bind_ds_scroll)
+        canvas.bind("<Enter>", lambda e: self.root.bind_all("<MouseWheel>", _on_mousewheel_ds))
+        canvas.bind("<Leave>", lambda e: self.root.unbind_all("<MouseWheel>"))
+
+        scrollbar.pack(side="right", fill="y")
+        canvas.pack(side="left", fill="both", expand=True)
+
+        # ── 1. 参考文案来源 ──
+        src_frame = ttk.LabelFrame(scrollable_frame, text="参考文案来源", padding=8)
+        src_frame.pack(fill="x", padx=10, pady=6)
+
+        self.ds_input_mode = tk.StringVar(value="file")
+        # 粘贴模式占位（保留变量供代码引用，不显示UI）
+        self.ds_paste_frame = ttk.Frame(src_frame)
+        self.ds_paste_text = tk.Text(self.ds_paste_frame, height=6, wrap="word")
+
+        self.ds_file_frame = ttk.Frame(src_frame)
+        self.ds_file_frame.pack(fill="x", pady=4)
+        path_row = ttk.Frame(self.ds_file_frame)
+        path_row.pack(fill="x")
+        ttk.Label(path_row, text="参考文案路径：").pack(side="left")
+        self.ds_input_path_var = tk.StringVar(value=self.config.get("daishu_input_path", r"D:\AIDownloadFiles\国学json\百家号带货视频\baijiadaihuo\input\提取的视频文案\带书文案待改写素材\带书文案待改写.xlsx"))
+        ttk.Entry(path_row, textvariable=self.ds_input_path_var).pack(side="left", padx=4, fill="x", expand=True)
+        ttk.Button(path_row, text="选择文件", command=lambda: self.ds_select_path("file")).pack(side="left", padx=2)
+        ttk.Button(path_row, text="选择文件夹", command=lambda: self.ds_select_path("dir")).pack(side="left", padx=2)
+
+        # ── 2. 带书引流类型 ──
+        flow_frame = ttk.LabelFrame(scrollable_frame, text="带书引流类型", padding=8)
+        flow_frame.pack(fill="x", padx=10, pady=6)
+
+        self.ds_flow_type = tk.StringVar(value="橱窗带书引流")
+        flow_types = ["橱窗带书引流", "纯夸赞"]
+        flow_row = ttk.Frame(flow_frame)
+        flow_row.pack(fill="x")
+        for ft in flow_types:
+            ttk.Radiobutton(flow_row, text=ft, variable=self.ds_flow_type, value=ft,
+                            command=self.ds_on_flow_type_change).pack(side="left", padx=8)
+
+        # 书名区（橱窗引流时显示，初始不pack，由ds_on_flow_type_change控制）
+        self.ds_book_frame = ttk.Frame(flow_frame)
+        ttk.Label(self.ds_book_frame, text="书名：").pack(side="left")
+        self.ds_book_name_var = tk.StringVar()
+        ttk.Entry(self.ds_book_frame, textvariable=self.ds_book_name_var, width=30).pack(side="left", padx=4)
+
+        # 结尾引流话术
+        self.ds_yinliu_frame = ttk.LabelFrame(scrollable_frame, text="结尾引流话术（橱窗带书引流时生效）", padding=8)
+
+        # 话术下拉框行
+        yinliu_row = ttk.Frame(self.ds_yinliu_frame)
+        yinliu_row.pack(fill="x", pady=(0, 4))
+        ttk.Label(yinliu_row, text="选择话术：").pack(side="left")
+        self.ds_yinliu_var = tk.StringVar(value="随机")
+        ds_yinliu_options = ["随机"] + list(self.config.get("daishu_yinliu_templates", {}).get("橱窗带书引流", []))
+        self.ds_yinliu_combo = ttk.Combobox(yinliu_row, textvariable=self.ds_yinliu_var,
+                                             values=ds_yinliu_options, state="readonly")
+        self.ds_yinliu_combo.pack(side="left", padx=4, fill="x", expand=True)
+        # 禁用Combobox鼠标滚轮，防止页面跟着滚动
+        def _ds_block_scroll(event):
+            return "break"
+        self.ds_yinliu_combo.bind("<MouseWheel>", _ds_block_scroll)
+        self.ds_yinliu_combo.bind("<Button-4>", _ds_block_scroll)
+        self.ds_yinliu_combo.bind("<Button-5>", _ds_block_scroll)
+        self.ds_yinliu_combo.bind("<<ComboboxSelected>>", self.ds_on_yinliu_select)
+
+        # 话术操作按钮行
+        yinliu_btn_row = ttk.Frame(self.ds_yinliu_frame)
+        yinliu_btn_row.pack(fill="x", pady=(0, 4))
+        ttk.Button(yinliu_btn_row, text="保存当前话术", command=self.ds_save_yinliu_template).pack(side="left", padx=2)
+        ttk.Button(yinliu_btn_row, text="删除选中", command=self.ds_delete_yinliu_template).pack(side="left", padx=2)
+
+        # 话术预览/编辑区
+        ttk.Label(self.ds_yinliu_frame, text="↓ 在此输入或预览结尾引流话术（AI会参考此风格，为每篇生成不同的结尾）：", foreground="gray").pack(anchor="w")
+        self.ds_yinliu_text = scrolledtext.ScrolledText(self.ds_yinliu_frame, height=4, wrap="word")
+        self.ds_yinliu_text.pack(fill="x", pady=(2, 4))
+
+        # 自定义话术输入行
+        custom_row = ttk.Frame(self.ds_yinliu_frame)
+        custom_row.pack(fill="x", pady=4)
+        ttk.Label(custom_row, text="自定义话术：").pack(side="left")
+        self.ds_custom_yinliu_var = tk.StringVar()
+        ttk.Entry(custom_row, textvariable=self.ds_custom_yinliu_var).pack(side="left", padx=4, fill="x", expand=True)
+        ttk.Button(custom_row, text="保存", command=self.ds_save_yinliu_template).pack(side="left", padx=2)
+        ttk.Button(custom_row, text="删除选中", command=self.ds_delete_yinliu_template).pack(side="left", padx=2)
+
+        # ── 3. 生成配置 ──
+        self.ds_cfg_frame = ttk.LabelFrame(scrollable_frame, text="生成配置", padding=8)
+        cfg_frame = self.ds_cfg_frame
+        cfg_frame.pack(fill="x", padx=10, pady=6)
+
+        cfg_row1 = ttk.Frame(cfg_frame)
+        cfg_row1.pack(fill="x")
+        ttk.Label(cfg_row1, text="并发数：").pack(side="left")
+        self.ds_concurrency_var = tk.StringVar(value="3")
+        ttk.Spinbox(cfg_row1, from_=1, to=10, textvariable=self.ds_concurrency_var, width=5).pack(side="left", padx=4)
+        ttk.Label(cfg_row1, text="篇数：").pack(side="left", padx=(12, 0))
+        self.ds_article_count_var = tk.StringVar(value="3")
+        ttk.Spinbox(cfg_row1, from_=1, to=20, textvariable=self.ds_article_count_var, width=5).pack(side="left", padx=4)
+        ttk.Label(cfg_row1, text="每篇字数：").pack(side="left", padx=(12, 0))
+        self.ds_word_count_var = tk.StringVar(value="1000")
+        ttk.Combobox(cfg_row1, textvariable=self.ds_word_count_var,
+                     values=["600", "700", "800", "900", "1000", "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800"], width=6).pack(side="left", padx=4)
+
+        # 带书文案保存路径
+        txt_row = ttk.Frame(cfg_frame)
+        txt_row.pack(fill="x", pady=4)
+        ttk.Label(txt_row, text="带书文案保存路径：").pack(side="left")
+        _default_daishu_path = self.config.get("daishu_txt_output_path", r"D:\AIDownloadFiles\国学json\百家号带货视频\baijiadaihuo\input\视频文案\带书文案")
+        self.ds_txt_output_var = tk.StringVar(value=_default_daishu_path)
+        ttk.Entry(txt_row, textvariable=self.ds_txt_output_var).pack(side="left", padx=4, fill="x", expand=True)
+        ttk.Button(txt_row, text="选择", command=lambda: self.ds_select_path("txt_dir")).pack(side="left", padx=2)
+
+        # ── 4. 操作按钮 ──
+        btn_frame = ttk.Frame(scrollable_frame)
+        btn_frame.pack(fill="x", padx=10, pady=8)
+        self.ds_start_btn = ttk.Button(btn_frame, text="生成带书文案", command=self.ds_start_generate)
+        self.ds_start_btn.pack(side="left", padx=6)
+        self.ds_stop_btn = ttk.Button(btn_frame, text="停止", command=self.ds_stop_generate, state="disabled")
+        self.ds_stop_btn.pack(side="left", padx=6)
+        ttk.Button(btn_frame, text="打开输出文件夹", command=lambda: self.ds_open_output_folder()).pack(side="left", padx=6)
+
+        # ── 5. 进度条 ──
+        self.ds_progress_var = tk.DoubleVar()
+        self.ds_progress_bar = ttk.Progressbar(scrollable_frame, variable=self.ds_progress_var, maximum=100)
+        self.ds_progress_bar.pack(fill="x", padx=10, pady=4)
+        self.ds_status_var = tk.StringVar(value="就绪")
+        ttk.Label(scrollable_frame, textvariable=self.ds_status_var).pack(anchor="w", padx=10)
+
+        # ── 6. 日志 ──
+        log_frame = ttk.LabelFrame(scrollable_frame, text="日志", padding=4)
+        log_frame.pack(fill="both", expand=True, padx=10, pady=6)
+        self.ds_log_text = scrolledtext.ScrolledText(log_frame, height=20, wrap="word", state="disabled")
+        self.ds_log_text.pack(fill="both", expand=True)
+
+        # 初始化显示状态
+        self.ds_on_flow_type_change()
+        self.ds_on_input_mode_change()
 
     def create_article_page(self):
         """创建文案生成页面"""
@@ -489,14 +830,14 @@ class FangxieApp:
             canvas.itemconfig(canvas_window, height=max(event.height, scrollable_frame.winfo_reqheight()))
         canvas.bind("<Configure>", on_canvas_configure)
 
-        def _on_mousewheel(event):
-            # 如果事件来源是Combobox，不滚动页面
+        def _on_mousewheel_article(event):
             widget = event.widget
             widget_class = widget.winfo_class()
             if widget_class in ('TCombobox', 'Combobox'):
                 return "break"
             canvas.yview_scroll(int(-1*(event.delta/120)), "units")
-        canvas.bind_all("<MouseWheel>", _on_mousewheel)
+        canvas.bind("<Enter>", lambda e: self.root.bind_all("<MouseWheel>", _on_mousewheel_article))
+        canvas.bind("<Leave>", lambda e: self.root.unbind_all("<MouseWheel>"))
 
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
@@ -569,6 +910,12 @@ class FangxieApp:
         article_count_combo = ttk.Combobox(txt_output_frame, textvariable=self.article_count, width=5, state="readonly")
         article_count_combo['values'] = ["1", "2", "3", "5", "8"]
         article_count_combo.pack(side=tk.LEFT, padx=5)
+
+        # 并发数选择
+        ttk.Label(txt_output_frame, text="  并发数:").pack(side=tk.LEFT)
+        self.concurrency = tk.StringVar(value="3")
+        concurrency_spinbox = ttk.Spinbox(txt_output_frame, from_=1, to=10, textvariable=self.concurrency, width=5)
+        concurrency_spinbox.pack(side=tk.LEFT, padx=5)
 
         # === 语音合成配置 ===
         voice_config_frame = ttk.LabelFrame(main_frame, text="语音合成配置（合成语音按钮使用）", padding="10")
@@ -816,6 +1163,11 @@ class FangxieApp:
 
         canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
         canvas.configure(yscrollcommand=scrollbar.set)
+
+        def _on_mousewheel_video(event):
+            canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+        canvas.bind("<Enter>", lambda e: self.root.bind_all("<MouseWheel>", _on_mousewheel_video))
+        canvas.bind("<Leave>", lambda e: self.root.unbind_all("<MouseWheel>"))
 
         canvas.pack(side="left", fill="both", expand=True)
         scrollbar.pack(side="right", fill="y")
@@ -2302,10 +2654,14 @@ class FangxieApp:
         thread.start()
 
     def generate_txt_task(self):
-        """生成TXT任务主函数"""
+        """生成TXT任务主函数（支持并发）"""
         try:
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+            import threading
+
             txt_output_path = self.txt_output_path.get()
             flow_type = self.flow_type.get()
+            concurrency = max(1, int(self.concurrency.get()))
 
             # 读取参考文案
             self.log("正在读取参考文案...")
@@ -2356,11 +2712,6 @@ class FangxieApp:
                 self.finish_txt_task()
                 return
 
-            # 记录是否为Excel文件（用于最后汇总）
-            is_excel_input = input_path.lower().endswith('.xlsx') if input_mode != "paste" else False
-            total_excel_success = 0
-            total_excel_failed = 0
-
             # 读取引流素材
             yinliu_content = self.yinliu_text.get("1.0", tk.END).strip()
 
@@ -2379,111 +2730,67 @@ class FangxieApp:
                 product_name = self.product_name.get().strip()
                 product_material = self.product_material.get("1.0", tk.END).strip()
 
-            total_files = len(files_content)
-            for idx, (fname, content) in enumerate(files_content):
-                if not self.is_running:
-                    break
-
-                self.log(f"\n{'='*50}")
-                self.log(f"处理文件 [{idx+1}/{total_files}]: {fname}")
-                self.update_progress((idx / total_files) * 100)
-
-                # 分割参考文案
+            # 解析所有参考文案
+            all_articles = []
+            for fname, content in files_content:
                 articles = self.parse_articles(content)
-                self.log(f"识别到 {len(articles)} 篇参考文案")
+                for article in articles:
+                    all_articles.append((fname, article))
 
-                # 把参考文案追加到素材库（改写前先检查去重）
-                duplicate_indices = set()
-                for idx, article in enumerate(articles):
-                    # 检查参考文章是否重复
-                    if self.check_reference_duplicate(article):
-                        self.log(f"  跳过重复的参考文案（第{idx+1}篇）")
-                        duplicate_indices.add(idx)
-                        continue
-                    self.append_reference_to_library(article, flow_type)
+            if not all_articles:
+                self.log("错误：没有识别到任何参考文案")
+                self.finish_txt_task()
+                return
 
-                # 保存最后一次生成的信息
-                self.last_articles = articles
-                self.last_flow_type = flow_type
-                self.last_yinliu_content = yinliu_content
-                self.last_product_name = product_name
-                self.last_product_material = product_material
+            self.log(f"共识别到 {len(all_articles)} 篇参考文案，并发数：{concurrency}")
 
-                # 用于记录已使用的标题，确保3篇不重复
-                used_titles = []
-                # 记录成功和失败的篇数
-                success_count = 0
-                failed_list = []
+            # 保存最后一次生成的信息（用于重新生成）
+            self.last_articles = [art for _, art in all_articles]
+            self.last_flow_type = flow_type
+            self.last_yinliu_content = yinliu_content
+            self.last_product_name = product_name
+            self.last_product_material = product_material
 
-                for art_idx, article in enumerate(articles):
+            total = len(all_articles)
+            success_count = 0
+            used_titles = []
+            used_titles_lock = threading.Lock()
+
+            # 并发执行
+            with ThreadPoolExecutor(max_workers=concurrency) as executor:
+                futures = {
+                    executor.submit(
+                        self.generate_single,
+                        idx, fname, article, flow_type, yinliu_content,
+                        product_name, product_material, txt_output_path,
+                        used_titles_lock, used_titles
+                    ): (idx, fname)
+                    for idx, (fname, article) in enumerate(all_articles)
+                    if self.is_running
+                }
+                for future in as_completed(futures):
                     if not self.is_running:
                         break
+                    try:
+                        ok, fn = future.result()
+                        if ok:
+                            success_count += 1
+                            self.txt_generate_success = True
+                    except Exception as e:
+                        self.log(f"并发任务异常：{e}", level="error")
 
-                    # 跳过重复的参考文案
-                    if art_idx in duplicate_indices:
-                        continue
+            fail_count = total - success_count
 
-                    self.log(f"\n--- 处理第 {art_idx+1} 篇参考文案 ---")
-                    self.update_status(f"正在生成第 {art_idx+1} 篇...")
-
-                    # 每篇文案都重新随机选择引流话术
-                    current_yinliu = yinliu_content
-                    if not self.yinliu_text.get("1.0", tk.END).strip() and flow_type in ["置顶引流", "橱窗引流"]:
-                        templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
-                        if templates:
-                            import random
-                            current_yinliu = random.choice(templates)
-                            self.log(f"[随机话术] 第{art_idx+1}篇使用：{current_yinliu[:30]}...")
-
-                    # 生成仿写文案
-                    result = self.generate_document(
-                        article, flow_type, current_yinliu,
-                        product_name, product_material
-                    )
-
-                    if result:
-                        # 保存为TXT，用标题命名
-                        self.save_as_txt(result, txt_output_path, used_titles)
-                        self.txt_generate_success = True
-                        success_count += 1
-                    else:
-                        self.log(f"第 {art_idx+1} 篇生成失败")
-                        failed_list.append(art_idx + 1)
-
-                # 输出汇总结果
-                self.log(f"\n{'='*50}")
-                self.log(f"【生成结果汇总】")
-                self.log(f"成功: {success_count} 篇")
-                if failed_list:
-                    self.log(f"失败: {len(failed_list)} 篇，分别是第 {', '.join(map(str, failed_list))} 篇")
-                else:
-                    self.log(f"失败: 0 篇")
-
-                # 累计Excel汇总
-                if is_excel_input:
-                    total_excel_success += success_count
-                    total_excel_failed += len(failed_list)
+            # 输出汇总结果
+            self.log(f"\n{'='*40}")
+            self.log(f"生成完成：成功 {success_count} 篇，失败/跳过 {fail_count} 篇，共处理 {total} 篇参考文案")
+            self.log(f"{'='*40}")
 
             self.update_progress(100)
-            self.log("\n" + "="*50)
-            self.log("全部处理完成！")
-
-            # Excel文件最终汇总
-            if is_excel_input:
-                self.log(f"\n{'='*50}")
-                self.log(f"【Excel文件最终汇总】")
-                self.log(f"Excel总行数: {len(files_content)} 行")
-                self.log(f"成功生成: {total_excel_success} 篇")
-                self.log(f"失败: {total_excel_failed} 篇")
-                if total_excel_failed == 0:
-                    self.log(f"✓ Excel文件全部处理成功！")
-                else:
-                    self.log(f"✗ 有 {total_excel_failed} 篇处理失败")
 
             # 自动替换敏感词
             if success_count > 0:
-                self.log("\n" + "="*50)
-                self.log("开始替换敏感词...")
+                self.log("\n正在替换敏感词...")
                 self.replace_sensitive_words_in_directory(txt_output_path)
                 self.log("敏感词替换完成！")
 
@@ -2496,19 +2803,19 @@ class FangxieApp:
             self.txt_generate_success = False
             self.finish_txt_task()
 
-    def split_articles_from_result(self, content):
+    def split_articles_from_result(self, content, log_func=None):
         """把生成的大文案拆分成多篇，返回列表 [(纯正文, [标题列表]), ...]"""
+        if log_func is None:
+            log_func = self.log
         articles = []
         # 按【第X篇】分割，支持多种格式（含或不含═分隔线，含或不含空行）
         pattern = r'(?:═+\s*\n*)?【第[一二三四五六七八九十\d]+篇】(?:\s*\n*═*)?'
         parts = re.split(pattern, content)
         # 调试：打印分割结果
         non_empty_parts = [p for p in parts if p and len(p.strip()) >= 100]
-        if hasattr(self, 'log'):
-            self.log(f"[分篇] 分隔符匹配到 {len(parts)-1} 处，有效分段 {len(non_empty_parts)} 篇")
-            if len(non_empty_parts) == 0:
-                # 打印前200字帮助诊断
-                self.log(f"[分篇] 内容前200字: {content[:200]}")
+        log_func(f"[分篇] 分隔符匹配到 {len(parts)-1} 处，有效分段 {len(non_empty_parts)} 篇")
+        if len(non_empty_parts) == 0:
+            log_func(f"[分篇] 内容前200字: {content[:200]}")
 
         for part in parts:
             part = part.strip()
@@ -2726,6 +3033,47 @@ class FangxieApp:
         else:
             messagebox.showwarning("提示", "生成失败，请查看日志了解详情")
 
+    def generate_single(self, idx, fname, ref_content, flow_type, yinliu_content,
+                        product_name, product_material, txt_output_path,
+                        used_titles_lock, used_titles):
+        """单篇参考文案的生成任务（供并发调用）"""
+        self.log(f"\n=== 处理第 {idx+1} 篇：{fname} ===")
+
+        # 1. 参考文案去重
+        if self.check_reference_duplicate(ref_content):
+            return False, fname
+
+        # 2. 每篇随机选引流话术（如果需要）
+        current_yinliu = yinliu_content
+        if not yinliu_content and flow_type in ["置顶引流", "橱窗引流"]:
+            templates = self.config.get("yinliu_templates", {}).get(flow_type, [])
+            if templates:
+                current_yinliu = random.choice(templates)
+                self.log(f"  [随机话术] 使用：{current_yinliu[:30]}...")
+
+        # 3. 生成仿写文案
+        result = self.generate_document(
+            ref_content, flow_type, current_yinliu,
+            product_name, product_material
+        )
+
+        if not result:
+            self.log(f"  生成失败", level="error")
+            return False, fname
+
+        # 4. 保存文案（含标题去重、入库）
+        with used_titles_lock:
+            saved = self.save_as_txt(result, txt_output_path, used_titles)
+
+        if not saved:
+            self.log(f"  保存失败", level="error")
+            return False, fname
+
+        # 5. 参考文案入库（生成成功后才追加）
+        self.append_reference_to_library(ref_content, flow_type)
+        self.log(f"  成功保存 {len(saved)} 篇文案")
+        return True, fname
+
     def stop_generate(self):
         """停止生成"""
         self.is_running = False
@@ -2734,8 +3082,828 @@ class FangxieApp:
         self.start_btn.config(state=tk.NORMAL)
         self.stop_btn.config(state=tk.DISABLED)
 
-    def replace_sensitive_words_in_directory(self, directory):
+    # ===== 带书文案Tab方法 =====
+
+    def ds_log(self, message, level="normal"):
+        """带书Tab日志输出"""
+        timestamp = datetime.now().strftime("%H:%M:%S")
+        log_line = f"[{timestamp}] {message}\n"
+
+        if not hasattr(self, '_ds_log_tags_configured'):
+            self.ds_log_text.tag_config("error", foreground="red")
+            self.ds_log_text.tag_config("warn", foreground="orange")
+            self._ds_log_tags_configured = True
+
+        self.ds_log_text.config(state="normal")
+        if level == "error":
+            self.ds_log_text.insert(tk.END, log_line, "error")
+        elif level == "warn":
+            self.ds_log_text.insert(tk.END, log_line, "warn")
+        else:
+            self.ds_log_text.insert(tk.END, log_line)
+        self.ds_log_text.config(state="disabled")
+        self.ds_log_text.see(tk.END)
+        self.root.update()
+
+    def ds_on_input_mode_change(self):
+        """切换参考文案输入方式"""
+        mode = self.ds_input_mode.get()
+        if mode == "file":
+            self.ds_paste_frame.pack_forget()
+            self.ds_file_frame.pack(fill="x")
+        else:
+            self.ds_file_frame.pack_forget()
+            self.ds_paste_frame.pack(fill="x")
+
+    def ds_select_path(self, mode):
+        """选择文件、文件夹或TXT输出路径"""
+        if mode == "file":
+            path = filedialog.askopenfilename(
+                title="选择参考文案文件",
+                filetypes=[("支持的文件", "*.txt *.xlsx"), ("文本文件", "*.txt"), ("Excel文件", "*.xlsx"), ("所有文件", "*.*")]
+            )
+            if path:
+                self.ds_input_path_var.set(path)
+                self.config["daishu_input_path"] = path
+                save_config(self.config)
+        elif mode == "dir":
+            path = filedialog.askdirectory(title="选择参考文案文件夹")
+            if path:
+                self.ds_input_path_var.set(path)
+                self.config["daishu_input_path"] = path
+                save_config(self.config)
+        elif mode == "txt_dir":
+            path = filedialog.askdirectory(title="选择TXT输出路径")
+            if path:
+                self.ds_txt_output_var.set(path)
+                self.config["daishu_txt_output_path"] = path
+                save_config(self.config)
+
+    def ds_on_flow_type_change(self):
+        """切换带书引流类型时显隐书名和话术区域"""
+        flow_type = self.ds_flow_type.get()
+        if flow_type == "橱窗带书引流":
+            self.ds_book_frame.pack(fill="x", pady=4)
+            self.ds_yinliu_frame.pack(fill="x", padx=10, pady=6, before=self.ds_cfg_frame)
+        else:
+            self.ds_book_frame.pack_forget()
+            self.ds_yinliu_frame.pack_forget()
+
+    def ds_on_yinliu_select(self, event=None):
+        """选择话术时填充到预览/编辑框"""
+        selected = self.ds_yinliu_var.get()
+        if selected == "随机":
+            return
+        templates = self.config.get("daishu_yinliu_templates", {}).get("橱窗带书引流", [])
+        if selected in templates:
+            self.ds_yinliu_text.delete("1.0", tk.END)
+            self.ds_yinliu_text.insert("1.0", selected)
+
+    def ds_save_yinliu_template(self):
+        """保存话术：优先从预览框读取，其次从自定义输入框读取"""
+        text = self.ds_yinliu_text.get("1.0", tk.END).strip()
+        if not text:
+            text = self.ds_custom_yinliu_var.get().strip()
+        if not text:
+            messagebox.showwarning("提示", "请先输入话术内容")
+            return
+        templates = self.config.setdefault("daishu_yinliu_templates", {}).setdefault("橱窗带书引流", [])
+        if text in templates:
+            messagebox.showinfo("提示", "该话术已存在")
+            return
+        templates.append(text)
+        save_config(self.config)
+        # 刷新下拉框
+        options = ["随机"] + templates
+        self.ds_yinliu_combo['values'] = options
+        self.ds_custom_yinliu_var.set("")
+        messagebox.showinfo("成功", "话术已保存")
+
+    def ds_delete_yinliu_template(self):
+        """删除选中的带书引流话术"""
+        selected = self.ds_yinliu_var.get()
+        templates = self.config.get("daishu_yinliu_templates", {}).get("橱窗带书引流", [])
+        if selected == "随机" or selected not in templates:
+            messagebox.showwarning("提示", "请先选择要删除的话术")
+            return
+        if messagebox.askyesno("确认", "确定要删除选中的话术吗？"):
+            templates.remove(selected)
+            save_config(self.config)
+            options = ["随机"] + templates
+            self.ds_yinliu_combo['values'] = options
+            self.ds_yinliu_var.set("随机")
+            messagebox.showinfo("成功", "话术已删除")
+
+    def ds_open_output_folder(self):
+        """打开TXT输出文件夹"""
+        path = self.ds_txt_output_var.get()
+        if path and os.path.exists(path):
+            os.startfile(path)
+        else:
+            messagebox.showwarning("提示", "输出路径不存在，请先选择路径")
+
+    def ds_start_generate(self):
+        """开始生成带书文案"""
+        flow_type = self.ds_flow_type.get()
+        txt_output = self.ds_txt_output_var.get().strip()
+
+        # 验证输入
+        input_mode = self.ds_input_mode.get()
+        if input_mode == "paste":
+            if not self.ds_paste_text.get("1.0", tk.END).strip():
+                messagebox.showerror("错误", "请粘贴参考文案内容")
+                return
+        else:
+            if not self.ds_input_path_var.get().strip():
+                messagebox.showerror("错误", "请选择参考文案文件或文件夹")
+                return
+
+        if not txt_output:
+            messagebox.showerror("错误", "请选择TXT输出路径")
+            return
+
+        if flow_type == "橱窗带书引流" and not self.ds_book_name_var.get().strip():
+            messagebox.showerror("错误", "请填写书名")
+            return
+
+        os.makedirs(txt_output, exist_ok=True)
+
+        self.ds_is_running = True
+        self.ds_start_btn.config(state="disabled")
+        self.ds_stop_btn.config(state="normal")
+        self.ds_log_text.config(state="normal")
+        self.ds_log_text.delete("1.0", tk.END)
+        self.ds_log_text.config(state="disabled")
+        self.ds_log("开始生成带书文案...")
+
+        thread = threading.Thread(target=self.ds_generate_task)
+        thread.daemon = True
+        thread.start()
+
+    def ds_stop_generate(self):
+        """停止带书文案生成"""
+        self.ds_is_running = False
+        self.ds_log("用户已停止生成")
+        self.ds_start_btn.config(state="normal")
+        self.ds_stop_btn.config(state="disabled")
+
+    def ds_check_reference_duplicate(self, reference_content, threshold=0.7):
+        """检查参考文案是否已在带书素材库中"""
+        from difflib import SequenceMatcher
+        import openpyxl
+        try:
+            if not os.path.exists(DAISHU_MATERIAL_FILE):
+                return False
+            wb = openpyxl.load_workbook(DAISHU_MATERIAL_FILE, read_only=True)
+            ws = wb.active
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                if not row or len(row) < 1:
+                    continue
+                material_content = str(row[0] or "").strip()
+                if not material_content:
+                    continue
+                similarity = SequenceMatcher(None, reference_content[:500], material_content[:500]).ratio()
+                if similarity >= threshold:
+                    self.ds_log(f"  参考文案重复（相似度{similarity:.2%}），跳过", level="warn")
+                    wb.close()
+                    return True
+            wb.close()
+            return False
+        except Exception as e:
+            self.ds_log(f"  检查参考文案去重失败: {e}", level="warn")
+            return False
+
+    def ds_append_reference_to_library(self, reference_content):
+        """将参考文案存入带书素材库Excel"""
+        import openpyxl
+        from openpyxl import Workbook
+        try:
+            if not os.path.exists(DAISHU_MATERIAL_DIR):
+                os.makedirs(DAISHU_MATERIAL_DIR)
+            if os.path.exists(DAISHU_MATERIAL_FILE):
+                wb = openpyxl.load_workbook(DAISHU_MATERIAL_FILE)
+                ws = wb.active
+            else:
+                wb = Workbook()
+                ws = wb.active
+                ws.title = "爆款素材库_带书"
+                ws.append(["正文", "入库时间"])
+            today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ws.append([reference_content, today])
+            wb.save(DAISHU_MATERIAL_FILE)
+        except Exception as e:
+            self.ds_log(f"  参考文案入库失败: {e}", level="warn")
+
+    def ds_append_generated_to_library(self, flow_type, title, article_content):
+        """将生成文案存入带书生成文案库Excel"""
+        import openpyxl
+        from openpyxl import Workbook
+        try:
+            if not os.path.exists(DAISHU_MATERIAL_DIR):
+                os.makedirs(DAISHU_MATERIAL_DIR)
+            if os.path.exists(DAISHU_GENERATED_FILE):
+                wb = openpyxl.load_workbook(DAISHU_GENERATED_FILE)
+                ws = wb[DAISHU_GENERATED_SHEET] if DAISHU_GENERATED_SHEET in wb.sheetnames else wb.active
+            else:
+                wb = Workbook()
+                ws = wb.active
+                ws.title = DAISHU_GENERATED_SHEET
+                ws.append(["日期", "引流类型", "标题", "正文", "正文字数"])
+            today = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            char_count = self.count_chinese_chars(article_content)
+            ws.append([today, flow_type, title, article_content, char_count])
+            wb.save(DAISHU_GENERATED_FILE)
+        except Exception as e:
+            self.ds_log(f"  生成文案入库失败: {e}", level="warn")
+
+    def ds_get_generated_title_set(self):
+        """获取带书生成文案库中已有标题集合"""
+        import openpyxl
+        try:
+            if not os.path.exists(DAISHU_GENERATED_FILE):
+                return set()
+            wb = openpyxl.load_workbook(DAISHU_GENERATED_FILE, read_only=True, data_only=True)
+            ws = wb[DAISHU_GENERATED_SHEET] if DAISHU_GENERATED_SHEET in wb.sheetnames else wb.active
+            titles = set()
+            for row in ws.iter_rows(min_row=2, values_only=True):
+                title = (row[2] or "") if len(row) >= 3 else ""
+                title = str(title).strip()
+                if title:
+                    titles.add(title)
+            wb.close()
+            return titles
+        except Exception:
+            return set()
+
+    def ds_get_recent_corpus_texts(self, max_files=500):
+        """获取带书历史生成文案语料，用于去重（只读生成文案库_带书.xlsx）"""
+        import openpyxl
+        results = []
+        try:
+            if os.path.exists(DAISHU_GENERATED_FILE):
+                wb = openpyxl.load_workbook(DAISHU_GENERATED_FILE, read_only=True, data_only=True)
+                ws = wb[DAISHU_GENERATED_SHEET] if DAISHU_GENERATED_SHEET in wb.sheetnames else wb.active
+                rows = list(ws.iter_rows(min_row=2, values_only=True))
+                wb.close()
+                for row in rows:
+                    if not row:
+                        continue
+                    content = str(row[3] or "").strip() if len(row) >= 4 else ""
+                    title = str(row[2] or "").strip() if len(row) >= 3 else ""
+                    if content:
+                        results.append((title or "excel", content))
+        except Exception:
+            pass
+        return results
+
+    def ds_build_prompt(self, ref_content, flow_type, yinliu, book_name, word_count, article_count=3):
+        """构建带书专用Prompt，动态篇数，风格完全不同"""
+        if flow_type == "橱窗带书引流" and book_name:
+            yinliu_part = f"\n\n【引流结尾话术参考】（必须根据正文内容和书名改写后使用，不能照抄原句，自然融入，3-6句即可）：\n{yinliu}" if yinliu else ""
+            book_part = f"""\n\n【推荐书籍】：《{book_name}》
+请根据书名联想这本书的核心主题（如：独处/人性/修心/觉醒/识人/因果/放下执念等），判断适合哪类读者，能解决什么实际困惑，在文案结尾自然过渡推书，让读者产生「这本书正是我需要的」的感觉。
+结尾带货3篇必须用不同写法：
+- 第1篇用「推荐+书的核心价值+读完会得到什么」写法
+- 第2篇用「修行引入+如果你也有这个困惑+书名+读完变化」写法
+- 第3篇用「技巧导入+把这些学深学透+书名+实用性」写法
+带货话术先给价值再提书名，书的价值要具体（说清能解决什么问题），不超过全文的15%。
+注意：【书名铁律】文案中必须严格使用用户指定的书名《{book_name}》，一字不差，禁止在书名中混入任何其他词汇（如橱窗、引流等平台运营词），严禁使用参考文案中出现的任何其他书名。"""
+            ending_instruction = f"自然过渡推书，先给价值再提书名《{book_name}》，不突兀，3-6句。{book_part}{yinliu_part}"
+        else:
+            yinliu_part = ""
+            book_part = ""
+            ending_instruction = "纯夸赞收束：用1-3句温暖有力的话鼓励读者、给予肯定和祝福，让读者感到被看见、被认可。严禁出现任何书名、商品名、橱窗、推荐阅读、购买链接等任何带货引导内容。"
+
+        target_word_count = int(word_count) + 100
+        min_word_count = int(word_count) + 100
+        max_word_count = int(word_count) + 200
+
+        # 使用带书钩子库（14类，按权重随机抽取，每篇分配不同类型）
+        random_hooks = get_daishu_random_hooks(article_count)
+
+        hooks_instruction = f"""\n【开头钩子指令（必须执行）】\n本次为{article_count}篇文案各随机分配了一个不同类型的开头钩子，每篇对应使用一个：\n- 保持钩子的情绪基调和意思，可以换一种说法，但不能照抄原句\n- 禁止白开水式开头，禁止用「今天讲」「我们来聊」「大家好」开头\n- 改写后的开头要与正文内容自然衔接\n\n"""
+        for i, hook in enumerate(random_hooks, 1):
+            hooks_instruction += f"第{i}篇钩子类型：{hook['type']}\n参考原句：{hook['example']}\n\n"
+
+        style_map = ["偏叙事故事型", "偏道理说理型", "偏情感共鸣型", "偏反问启发型", "偏对比反差型",
+                     "偏金句警句型", "偏场景代入型", "偏问题解答型", "偏励志正能量型", "偏悬念揭秘型"]
+        selected_styles = random.sample(style_map, min(article_count, len(style_map)))
+        num_to_chinese = {1: "一", 2: "二", 3: "三", 4: "四", 5: "五", 6: "六", 7: "七", 8: "八", 9: "九", 10: "十"}
+        article_formats = ""
+        for i in range(1, article_count + 1):
+            cn = num_to_chinese.get(i, str(i))
+            article_formats += f"═══════════════════════════════════════\n【第{cn}篇】\n═══════════════════════════════════════\n\n【标题】\n标题内容1\n标题内容2\n标题内容3\n标题内容4\n标题内容5\n\n---\n\n正文内容...（严格要求{min_word_count}~{max_word_count}字）\n\n"
+        style_desc = "、".join([f"第{i+1}篇{selected_styles[i]}" for i in range(article_count)])
+
+        if flow_type != "橱窗带书引流":
+            no_ads_instruction = "\n【最终检查】严禁在任何位置出现书名、商品名、橱窗、推荐阅读、购买链接等任何带货引导内容，违者视为任务失败。"
+        else:
+            no_ads_instruction = ""
+
+        return f"""你是一位专业的百家号短视频文案创作者，擅长国学/心理学/人性洞察类带书文案。
+
+请提炼以下【参考文案】的核心爆点、风格结构和情绪节奏，在保留核心爆点的基础上改写出{article_count}篇全新文案，换汤不换药。
+
+【参考文案】
+{ref_content}
+
+【改写规则】
+1. 先判断参考文案属于哪类爆点（身份拔高/人性真相列表/对立反转金句/玄学国学背书/悬念被选中感），新文案围绕同一爆点展开，但换角度、换例子、换开场
+2. 参考文案里的话术、句子、例子一律不能照抄，必须替换成其他例子
+3. 新文案必须有增量信息，与参考文案相似度不超过10%
+4. 参考文案若有错别字或同音错别字，自动纠正后改写，改写出来的文案不能有任何错别字
+5. 禁止出现任何英文和外文，不能有不吉利的用词，禁止使用破折号（——）、省略号（……）等特殊符号
+6. 语义通顺，情感真实，接地气
+7. 全程使用第二人称「你」直接对读者说话，禁止第一人称讲自己的故事（「我有个朋友/我认识一个人/有一次我」等），禁止第三人称讲具体人物故事（「张三怎么样/李四怎么样/邻居怎么样/七大姑八大姨怎么样」等），只允许用「他们」泛指来衬托「你」
+8. 禁止讲任何具体情节故事（买豆浆/坐公交/遇到什么人等），只用「你」描述读者的处境和感受
+9. 严禁提炼或保留参考文案中的任何书名、商品名、橱窗带货信息，参考文案的书名与本次生成无关
+{hooks_instruction}
+【文案结构（每篇必须按顺序包含以下5个部分）】
+① 开场共情：描述一个大众都有的感受或处境（孤独/被背叛/迷茫/不被理解/贫穷/失落），2-4句，让读者第一句就代入自己
+   → 写法：使用上方分配的开头钩子切入，不要用「今天讲」「我们来聊」开头，直接切入
+② 身份拔高：立刻告诉读者「有这种感受的人是不一般的人」，给读者贴正面标签（有悟性/有福气/已觉醒/被选中），产生优越感和自我认同
+   → 常用句式：「能有这种感受的人，早已不是普通人」「你走到这一步，本身就是一种天赋」
+③ 核心干货：3-5个观点，每个观点用对比/对偶句式表达，配国学/道家/佛家/心理学背书增加权威感
+   → 必用句式：「你越X，别人越Y」「不是X，而是Y」「A是B，C才是D」「顺境看X，逆境见Y」
+   → 背书举例：「道家讲……」「佛说……」「心理学研究发现……」「古人云……」
+   → 每个观点配1个具体例子或场景，不能只说道理不举例
+   → 严禁用「第一/第二/第三」「其一/其二/其三」「首先/其次/最后」等任何序号形式列举观点，必须用自然叙述、换行、金句过渡或情绪推进衔接各观点，让文案读起来像一篇流畅的文章而不是清单
+④ 情绪升华：用1段话（3-5句）将情绪推向最高点，制造顿悟感或被选中感
+   → 常用写法：「真理掌握在少数人手中」「只有0.001%的人真正懂得」「能看到这里的人，已经赢了大多数人」「按常理来说这些话不太能流传于公开场合」
+⑤ 结尾：{ending_instruction}
+
+【语言风格要求】
+- 少标点，多长句，适合视频朗读
+- 大量使用「你」直接代入读者
+- 重要观点用短句（3-7字），形成节奏感
+- 多用对偶/对比句，节奏感强，容易截图传播
+- 严禁用「第一/第二/第三」「其一/其二/其三」「首先/其次/最后」等任何序号列举，用自然叙述和换行过渡
+- 情绪递进：共情 → 分析 → 结论 → 升华
+
+【输出格式，严格遵守】
+{article_formats}
+【篇数与风格】
+- 必须输出{article_count}篇
+- 每篇正文字数严格控制在{min_word_count}~{max_word_count}字，不达{min_word_count}字的文案是废品，必须补充内容直到达标
+- {article_count}篇开场角度必须完全不同，开头第一句不能相似，每篇使用各自分配的钩子类型
+- 风格随机分配：{style_desc}
+
+【标题要求】
+每篇在【标题】区输出5个爆款标题，每行一个完整独立标题（4-20个字），不加编号，不拆行，5个覆盖至少3种不同公式：
+- 公式一【身份标签+反常识结论】：「真正[某特质]的人，[反常识结论]」「[某类人]绝对不是普通人」
+- 公式二【禁忌感/神秘感/被选中感】：「禁止[动词]」「这些话，我只能点到为止」「能刷到这条，说明你[与众不同]」
+- 公式三【数字+干货列表】：「[N]个让你[情绪反应]的[主题]真相」「早看懂这[N]条，早[好的结局]」
+- 公式四【颠覆认知反转】：「[常见事物]，原来[反常识结论]」「[主题]的顶级[境界/心态]：[金句]」
+- 公式五【命运承诺型】：「看懂这些，你的[命运/福气]会[好的变化]」「早悟[某道理]，[好处]」
+- 公式六【关系/结局型】：「所有关系只要你[行为]了局就解了」「这样的关系当断不断反受其乱」「人际交往的顶级心态：[金句]」
+- 公式七【祝福/旺运型】：「顺风顺水顺财神」「学会[行为]运气会主动找你」「安静下来，读懂悟透，你必是好命之人」
+标题要求：4-20个字，口语化，有情绪钩子（优越感优先，其次悬念/顿悟/命运/福报），不用问句开头，不加编号，不含任何英文和外文，标题中禁止使用双引号（""）、破折号（——）
+
+禁止输出任何解释、说明、分析文字，只输出{article_count}篇文案。
+{no_ads_instruction}"""
+
+    def ds_regenerate_titles(self, article_content):
+        """为带书文案重新生成标题（标题去重时备用）"""
+        prompt = (
+            "你是一位专业的百家号短视频标题创作者，擅长国学/心理学/人性洞察类带书视频。\n"
+            "请根据下方文案内容，生成5个高点击率爆款备选标题，5个必须覆盖至少3种不同公式。\n\n"
+            "【标题公式】\n"
+            "- 公式一【身份标签+反常识结论】：「真正[某特质]的人，[反常识结论]」「[某类人]绝对不是普通人」\n"
+            "- 公式二【禁忌感/神秘感/被选中感】：「禁止[动词]」「这些话，我只能点到为止」「能刷到这条，说明你[与众不同]」\n"
+            "- 公式三【数字+干货列表】：「[N]个让你[情绪反应]的[主题]真相」「早看懂这[N]条，早[好的结局]」\n"
+            "- 公式四【颠覆认知反转】：「[常见事物]，原来[反常识结论]」「[主题]的顶级[境界/心态]：[金句]」\n"
+            "- 公式五【命运承诺型】：「看懂这些，你的[命运/福气]会[好的变化]」「早悟[某道理]，[好处]」\n"
+            "- 公式六【关系/结局型】：「所有关系只要你[行为]了局就解了」「这样的关系当断不断反受其乱」「人际交往的顶级心态：[金句]」\n"
+            "- 公式七【祝福/旺运型】：「顺风顺水顺财神」「学会[行为]运气会主动找你」「安静下来，读懂悟透，你必是好命之人」\n\n"
+            "【标题规则】\n"
+            "1. 长度：4-20个字，不超过20字\n"
+            "2. 情绪钩子优先级：优越感 > 悬念/好奇 > 顿悟感 > 命运/福报\n"
+            "3. 口语化，有点击欲，让人看了就想点进来\n"
+            "4. 禁忌：不用问句开头，不加编号，不含任何英文和外文，不夸大虚假承诺\n\n"
+            "【输出格式】\n"
+            "第1行到第5行各输出一个标题，不加编号，不加任何说明或注释\n\n"
+            f"【文案内容】\n{article_content[:1500]}"
+        )
+        try:
+            use_stream = self.use_stream.get()
+            prefix = "stream_main" if use_stream else "non_stream_main"
+            url = self.config.get(f"{prefix}_url", "").strip()
+            key = self.config.get(f"{prefix}_key", "").strip()
+            model = self.config.get(f"{prefix}_model", "").strip()
+            max_tokens = self.config.get(f"{prefix}_max_tokens", 1000)
+            if not url or not key or not model:
+                return []
+            result = self.call_api(url, key, model, 300, prompt, False)
+            if not result:
+                return []
+            titles = [line.strip() for line in result.splitlines() if line.strip() and 4 <= len(line.strip()) <= 20]
+            self.ds_log(f"  重新生成了 {len(titles)} 个新标题")
+            return titles
+        except Exception as e:
+            self.ds_log(f"  重新生成标题异常：{e}")
+            return []
+
+    def ds_title_similarity(self, t1, t2):
+        """计算两个标题的相似度（字符级Jaccard）"""
+        s1 = set(t1)
+        s2 = set(t2)
+        if not s1 or not s2:
+            return 0.0
+        return len(s1 & s2) / len(s1 | s2)
+
+    def ds_save_as_txt(self, content, output_path, used_titles, flow_type):
+        """带书专用：拆分3篇并分别保存为TXT，含标题去重和入库"""
+        try:
+            articles = self.split_articles_from_result(content, log_func=self.ds_log)
+            if not articles:
+                self.ds_log("⚠️ 未能拆分出文章，整体保存", level="error")
+                timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+                filename = f"分割失败_{timestamp}.txt"
+                filepath = os.path.join(output_path, filename)
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(content)
+                return [filepath]
+
+            saved_files = []
+            self.ds_log(f"识别到 {len(articles)} 篇文章，开始分别保存...")
+            existing_titles = self.ds_get_generated_title_set()
+            TITLE_SIM_THRESHOLD = 0.8  # 标题相似度阈值80%
+
+            def title_too_similar(t):
+                for ht in existing_titles:
+                    score = self.ds_title_similarity(t, ht)
+                    if score >= TITLE_SIM_THRESHOLD:
+                        return True, ht, score
+                for ut in used_titles:
+                    score = self.ds_title_similarity(t, ut)
+                    if score >= TITLE_SIM_THRESHOLD:
+                        return True, ut, score
+                return False, "", 0.0
+
+            for idx, (article_content, titles) in enumerate(articles):
+                # 打印开头前10字追踪进度
+                preview = article_content.replace('\n', '').strip()[:10]
+                self.ds_log(f"\n-- 第{idx+1}篇开头：{preview}...")
+
+                if not titles:
+                    self.ds_log(f"  第{idx+1}篇未提取到标题，使用时间戳命名")
+                    timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+                    selected_title = f"未提取标题_{timestamp}_{idx+1}"
+                else:
+                    self.ds_log(f"  第{idx+1}篇提取到 {len(titles)} 个标题：")
+                    for t_idx, t in enumerate(titles):
+                        self.ds_log(f"    标题{t_idx+1}: {t} ({len(t)}字)")
+
+                    valid_titles = [t for t in titles if 4 <= len(t) <= 20]
+                    if not valid_titles:
+                        valid_titles = [min(titles, key=len)]
+                        self.ds_log(f"  所有标题超出长度限制，选最短的: {valid_titles[0]}")
+
+                    # 标题相似度去重（阈值80%）
+                    available_titles = []
+                    for t in valid_titles:
+                        too_sim, sim_ref, sim_score = title_too_similar(t)
+                        if too_sim:
+                            self.ds_log(f"  ⚠ 标题「{t}」与「{sim_ref}」相似度{sim_score:.0%}，跳过")
+                        else:
+                            available_titles.append(t)
+
+                    if not available_titles:
+                        self.ds_log("  所有标题与历史相似度过高，尝试AI重新生成...")
+                        new_titles = self.ds_regenerate_titles(article_content)
+                        for t in new_titles:
+                            too_sim, sim_ref, sim_score = title_too_similar(t)
+                            if not too_sim:
+                                available_titles.append(t)
+                            else:
+                                self.ds_log(f"  ⚠ AI新标题「{t}」仍与「{sim_ref}」相似度{sim_score:.0%}，跳过")
+
+                    if not available_titles:
+                        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
+                        selected_title = f"标题重复_{timestamp}_{idx+1}"
+                        self.ds_log(f"  ⚠ 重新生成标题仍全部重复，使用时间戳命名: {selected_title}")
+                    else:
+                        selected_title = random.choice(available_titles)
+                        self.ds_log(f"  → 选用标题：{selected_title}")
+
+                    used_titles.append(selected_title)
+                    existing_titles.add(selected_title)
+
+                safe_title = re.sub(r'[\\/:*?"<>|]', '', selected_title).strip()
+                if not safe_title:
+                    safe_title = f"文案_{datetime.now().strftime('%Y%m%d%H%M%S')}_{idx+1}"
+
+                filename = f"{safe_title}.txt"
+                filepath = os.path.join(output_path, filename)
+                # 文件名冲突处理
+                counter = 1
+                base_filepath = filepath
+                while os.path.exists(filepath):
+                    name_no_ext = os.path.splitext(base_filepath)[0]
+                    filepath = f"{name_no_ext}_{counter}.txt"
+                    counter += 1
+
+                with open(filepath, 'w', encoding='utf-8') as f:
+                    f.write(article_content)
+                saved_files.append(filepath)
+                self.ds_log(f"  已保存: {os.path.basename(filepath)}")
+
+                # 入库Excel
+                self.ds_append_generated_to_library(flow_type, selected_title, article_content)
+
+            return saved_files
+        except Exception as e:
+            self.ds_log(f"保存文案异常: {e}", level="error")
+            return []
+
+    def ds_generate_single(self, idx, fname, ref_content, flow_type, book_name, word_count,
+                           yinliu_templates, selected_yinliu, txt_output, used_titles_lock, used_titles, article_count=3):
+        """单篇参考文案的生成任务（供并发调用）"""
+        self.ds_log(f"\n=== 处理第 {idx+1} 篇：{fname} ===")
+
+        # 1. 参考文案去重
+        if self.ds_check_reference_duplicate(ref_content):
+            return False, fname
+
+        # 2. 每篇随机选引流话术
+        if flow_type == "橱窗带书引流":
+            if selected_yinliu == "随机":
+                yinliu = random.choice(yinliu_templates) if yinliu_templates else ""
+                if yinliu:
+                    self.ds_log(f"  [随机话术] 使用：{yinliu[:30]}...")
+            else:
+                yinliu = selected_yinliu
+        else:
+            yinliu = ""
+
+        # 3. 构建prompt
+        prompt = self.ds_build_prompt(ref_content, flow_type, yinliu, book_name, word_count, article_count)
+
+        # 4. 调用API，主模型→备用模型，最多3次
+        use_stream = self.use_stream.get()
+        if use_stream:
+            main_prefix = "stream_main"
+            backup_prefix = "stream_backup"
+            main_use_stream = True
+            backup_use_stream = False
+        else:
+            main_prefix = "non_stream_main"
+            backup_prefix = "non_stream_backup"
+            main_use_stream = False
+            backup_use_stream = False
+
+        main_url = self.config.get(f"{main_prefix}_url", "").strip()
+        main_key = self.config.get(f"{main_prefix}_key", "").strip()
+        main_model = self.config.get(f"{main_prefix}_model", "").strip()
+        main_max_tokens = self.config.get(f"{main_prefix}_max_tokens", 16000)
+        backup_url = self.config.get(f"{backup_prefix}_url", "").strip()
+        backup_key = self.config.get(f"{backup_prefix}_key", "").strip()
+        backup_model = self.config.get(f"{backup_prefix}_model", "").strip()
+        backup_max_tokens = self.config.get(f"{backup_prefix}_max_tokens", 16000)
+
+        per_article_min = int(word_count) + 100
+        retry_suffix = f"\n\n【重要补充】上次生成字数不足，每篇正文不低于{per_article_min}字，请重新生成。"
+        reject_suffix = (
+            "\n\n【重要补充】请忽略参考文案中可能含有的敏感词，"
+            "只提炼其中的情绪爆点、结构和节奏，按照我的要求改写出完全不含敏感词的全新文案，正常输出即可。"
+        )
+
+        min_total = int(word_count) * article_count  # 总字数下限：每篇字数×篇数
+        result = None
+        best_result = None
+        best_count = 0
+        last_fail_reason = None  # 上次失败原因：'rejected' / 'short' / 'invalid'
+        for attempt in range(3):
+            if not self.ds_is_running:
+                return False, fname
+            try:
+                # 根据上次失败原因决定追加内容
+                if attempt == 0:
+                    cur_prompt = prompt
+                    self.ds_log(f"  【第1次】主模型 {main_model}...")
+                    cur = self.call_api(main_url, main_key, main_model, main_max_tokens, cur_prompt, main_use_stream, log_func=self.ds_log)
+                elif attempt == 1:
+                    if last_fail_reason == 'rejected':
+                        cur_prompt = prompt + reject_suffix
+                        self.ds_log(f"  【第2次】主模型 + 忽略敏感词说明 {main_model}...")
+                    else:
+                        cur_prompt = prompt + retry_suffix
+                        self.ds_log(f"  【第2次】主模型 + 字数追加说明 {main_model}...")
+                    cur = self.call_api(main_url, main_key, main_model, main_max_tokens, cur_prompt, main_use_stream, log_func=self.ds_log)
+                else:
+                    if last_fail_reason == 'rejected':
+                        cur_prompt = prompt + reject_suffix
+                        self.ds_log(f"  【第3次】备用模型 + 忽略敏感词说明 {backup_model}...")
+                    else:
+                        cur_prompt = prompt + retry_suffix
+                        self.ds_log(f"  【第3次】备用模型 + 字数追加说明 {backup_model}...")
+                    cur = self.call_api(backup_url, backup_key, backup_model, backup_max_tokens, cur_prompt, backup_use_stream, log_func=self.ds_log)
+
+                if not cur or len(cur) < 200:
+                    self.ds_log(f"  第{attempt+1}次返回无效", level="warn")
+                    last_fail_reason = 'invalid'
+                    continue
+
+                # 判断是否被拒绝
+                reject_keywords = ["抱歉", "无法", "不能", "拒绝", "违反", "政策", "sorry", "cannot", "can't"]
+                is_rejected = any(kw in cur.lower() for kw in reject_keywords) and len(cur) < 500
+                if is_rejected:
+                    self.ds_log(f"  第{attempt+1}次被AI拒绝", level="warn")
+                    last_fail_reason = 'rejected'
+                    continue
+
+                # 判断字数是否足够
+                cur_count = self.count_chinese_chars(cur)
+                self.ds_log(f"  第{attempt+1}次生成字数：{cur_count}（下限{min_total}）")
+                if cur_count > best_count:
+                    best_result = cur
+                    best_count = cur_count
+                if cur_count >= min_total:
+                    result = cur
+                    break
+                else:
+                    self.ds_log(f"  字数不足，继续重试...", level="warn")
+                    last_fail_reason = 'short'
+            except Exception as e:
+                self.ds_log(f"  第{attempt+1}次失败：{e}", level="warn")
+                last_fail_reason = 'invalid'
+
+        if not result:
+            if best_result:
+                self.ds_log(f"  ⚠️ 3次字数均不足{min_total}，选择字数最多的结果（{best_count}字）", level="warn")
+                result = best_result
+            else:
+                self.ds_log(f"  生成失败，跳过", level="error")
+                return False, fname
+
+        # 4.5 正文相似度去重（与历史带书生成文案对比）
+        corpus = self.ds_get_recent_corpus_texts(max_files=500)
+        best_score = 0.0
+        best_name = ""
+        for name, old_text in corpus:
+            score = self.text_similarity_score(result, old_text)
+            if score > best_score:
+                best_score = score
+                best_name = name
+        if best_score >= self.similarity_threshold:
+            self.ds_log(f"  ⚠ 生成文案与历史文案「{best_name}」相似度过高（{best_score:.2f}），跳过保存", level="warn")
+            return False, fname
+        else:
+            self.ds_log(f"  文案相似度检查通过（最高{best_score:.2f}，阈值{self.similarity_threshold}）")
+
+        # 5. 保存文案（含标题去重、入库）
+        with used_titles_lock:
+            saved = self.ds_save_as_txt(result, txt_output, used_titles, flow_type)
+
+        if not saved:
+            self.ds_log(f"  保存失败", level="error")
+            return False, fname
+
+        # 6. 参考文案入库
+        self.ds_append_reference_to_library(ref_content)
+        self.ds_log(f"  成功保存 {len(saved)} 篇文案")
+        return True, fname
+
+    def ds_generate_task(self):
+        """带书文案生成主任务（线程内运行）"""
+        try:
+            from concurrent.futures import ThreadPoolExecutor, as_completed
+            import threading
+
+            flow_type = self.ds_flow_type.get()
+            txt_output = self.ds_txt_output_var.get().strip()
+            book_name = self.ds_book_name_var.get().strip()
+            word_count = self.ds_word_count_var.get()
+            article_count = max(1, int(self.ds_article_count_var.get()))
+            concurrency = max(1, int(self.ds_concurrency_var.get()))
+
+            # 获取引流话术配置
+            selected_yinliu = ""
+            yinliu_templates = []
+            if flow_type == "橱窗带书引流":
+                selected_yinliu = self.ds_yinliu_var.get()
+                yinliu_templates = self.config.get("daishu_yinliu_templates", {}).get("橱窗带货引流", [])
+
+            # 读取参考文案
+            self.ds_log("正在读取参考文案...")
+            input_mode = self.ds_input_mode.get()
+            files_content = []
+
+            if input_mode == "paste":
+                paste_content = self.ds_paste_text.get("1.0", tk.END).strip()
+                # 支持「参考文案：」分隔符拆分
+                parts = re.split(r'参考文案[：:]', paste_content)
+                valid_parts = [p.strip() for p in parts if p.strip() and len(p.strip()) > 50]
+                if len(valid_parts) > 1:
+                    files_content = [(f"粘贴文案_{i+1}", p) for i, p in enumerate(valid_parts)]
+                else:
+                    files_content = [("粘贴文案", paste_content)]
+            else:
+                input_path = self.ds_input_path_var.get().strip()
+                if os.path.isfile(input_path):
+                    if input_path.lower().endswith('.xlsx'):
+                        import openpyxl
+                        wb = openpyxl.load_workbook(input_path)
+                        ws = wb.active
+                        for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                            cell_val = row[0]
+                            if cell_val and str(cell_val).strip():
+                                txt = str(cell_val).strip()
+                                files_content.append((txt[:20], txt))
+                        wb.close()
+                    else:
+                        with open(input_path, 'r', encoding='utf-8') as f:
+                            raw = f.read()
+                        # 支持「参考文案：」分隔符
+                        parts = re.split(r'参考文案[：:]', raw)
+                        valid_parts = [p.strip() for p in parts if p.strip() and len(p.strip()) > 50]
+                        if len(valid_parts) > 1:
+                            files_content = [(f"{os.path.basename(input_path)}_{i+1}", p) for i, p in enumerate(valid_parts)]
+                        else:
+                            files_content = [(os.path.basename(input_path), raw)]
+                elif os.path.isdir(input_path):
+                    for fn in sorted(os.listdir(input_path)):
+                        fpath = os.path.join(input_path, fn)
+                        if fn.endswith('.xlsx'):
+                            import openpyxl
+                            wb = openpyxl.load_workbook(fpath)
+                            ws = wb.active
+                            for row in ws.iter_rows(min_row=2, min_col=1, max_col=1, values_only=True):
+                                cell_val = row[0]
+                                if cell_val and str(cell_val).strip():
+                                    txt = str(cell_val).strip()
+                                    files_content.append((txt[:20], txt))
+                            wb.close()
+                        elif fn.endswith('.txt'):
+                            with open(fpath, 'r', encoding='utf-8') as f:
+                                raw = f.read()
+                            parts = re.split(r'参考文案[：:]', raw)
+                            valid_parts = [p.strip() for p in parts if p.strip() and len(p.strip()) > 50]
+                            if len(valid_parts) > 1:
+                                for i, p in enumerate(valid_parts):
+                                    files_content.append((f"{fn}_{i+1}", p))
+                            else:
+                                files_content.append((fn, raw))
+
+            if not files_content:
+                self.ds_log("未找到任何参考文案文件", level="error")
+                self.root.after(0, lambda: self.ds_start_btn.config(state="normal"))
+                self.root.after(0, lambda: self.ds_stop_btn.config(state="disabled"))
+                return
+
+            self.ds_log(f"共读取到 {len(files_content)} 篇参考文案，并发数：{concurrency}")
+            total = len(files_content)
+            success_count = 0
+            used_titles = []
+            used_titles_lock = threading.Lock()
+
+            # 并发执行
+            with ThreadPoolExecutor(max_workers=concurrency) as executor:
+                futures = {
+                    executor.submit(
+                        self.ds_generate_single,
+                        idx, fname, ref_content, flow_type, book_name, word_count,
+                        yinliu_templates, selected_yinliu, txt_output,
+                        used_titles_lock, used_titles, article_count
+                    ): (idx, fname)
+                    for idx, (fname, ref_content) in enumerate(files_content)
+                    if self.ds_is_running
+                }
+                for future in as_completed(futures):
+                    if not self.ds_is_running:
+                        break
+                    try:
+                        ok, fn = future.result()
+                        if ok:
+                            success_count += 1
+                        else:
+                            fail_count = (futures.__len__() if hasattr(futures, '__len__') else total) - success_count
+                    except Exception as e:
+                        self.ds_log(f"并发任务异常：{e}", level="error")
+
+            fail_count = total - success_count
+            self.ds_log(f"\n{'='*40}")
+            self.ds_log(f"生成完成：成功 {success_count} 篇，失败/跳过 {fail_count} 篇，共处理 {total} 篇参考文案")
+            self.ds_log(f"{'='*40}")
+
+            # 敏感词替换
+            if success_count > 0:
+                self.ds_log("\n正在替换敏感词...")
+                self.replace_sensitive_words_in_directory(txt_output, log_func=self.ds_log)
+
+        except Exception as e:
+            self.ds_log(f"生成出错：{e}", level="error")
+            import traceback
+            self.ds_log(traceback.format_exc(), level="error")
+        finally:
+            self.ds_is_running = False
+            self.root.after(0, lambda: self.ds_start_btn.config(state="normal"))
+            self.root.after(0, lambda: self.ds_stop_btn.config(state="disabled"))
+
+    def replace_sensitive_words_in_directory(self, directory, log_func=None):
         """批量替换目录下所有txt文件的敏感词"""
+        if log_func is None:
+            log_func = self.log
         import glob
 
         # 标题敏感词替换规则（9个）
@@ -2838,10 +4006,10 @@ class FangxieApp:
             txt_files = glob.glob(os.path.join(directory, "*.txt"))
 
             if not txt_files:
-                self.log("  未找到txt文件")
+                log_func("  未找到txt文件")
                 return
 
-            self.log(f"  找到 {len(txt_files)} 个txt文件")
+            log_func(f"  找到 {len(txt_files)} 个txt文件")
 
             # 1. 先处理标题（文件名）
             for filepath in txt_files:
@@ -2859,7 +4027,7 @@ class FangxieApp:
                     new_filepath = os.path.join(directory, new_filename)
                     os.rename(filepath, new_filepath)
                     title_replaced_count += 1
-                    self.log(f"  重命名: {old_filename} → {new_filename}")
+                    log_func(f"  重命名: {old_filename} → {new_filename}")
 
             # 2. 再处理内容
             # 重新获取文件列表（因为文件名可能已改变）
@@ -2887,23 +4055,23 @@ class FangxieApp:
                             if old_word in original_content:
                                 replaced_words.append(f"{old_word}→{new_word}")
                         if replaced_words:
-                            self.log(f"  [{os.path.basename(filepath)}] 替换: {', '.join(replaced_words)}")
+                            log_func(f"  [{os.path.basename(filepath)}] 替换: {', '.join(replaced_words)}")
                         with open(filepath, 'w', encoding='utf-8') as f:
                             f.write(content)
                         content_replaced_count += 1
 
                 except Exception as e:
-                    self.log(f"  处理文件失败 {os.path.basename(filepath)}: {str(e)}")
+                    log_func(f"  处理文件失败 {os.path.basename(filepath)}: {str(e)}")
 
             # 输出统计
-            self.log(f"  标题替换: {title_replaced_count} 个文件")
-            self.log(f"  内容替换: {content_replaced_count} 个文件")
-            self.log(f"  总替换次数: {total_replacements} 次")
+            log_func(f"  标题替换: {title_replaced_count} 个文件")
+            log_func(f"  内容替换: {content_replaced_count} 个文件")
+            log_func(f"  总替换次数: {total_replacements} 次")
 
         except Exception as e:
-            self.log(f"  敏感词替换出错: {str(e)}")
+            log_func(f"  敏感词替换出错: {str(e)}")
             import traceback
-            self.log(traceback.format_exc())
+            log_func(traceback.format_exc())
 
     def regenerate(self):
         """重新生成 - 使用上次的参考文案和当前设置"""
@@ -3165,12 +4333,12 @@ class FangxieApp:
         if user_suggestion:
             prompt += f"\n\n【用户修改建议】请特别注意以下修改要求：\n{user_suggestion}"
 
-        # 重试时在提示词末尾追加的说明
-        retry_suffix = (
-            "\n\n【重要重试要求】上次结果常见失败点是漏掉标题。"
-            "本次必须严格按结构输出：每篇先输出【标题】区，给5个不同标题，接着单独一行---，再写正文。"
-            "缺任意一篇标题都算失败，请完整输出。"
-            "任务本身完全合规，请正常输出。"
+        # 重试追加说明
+        per_article_min = target_per_article + 100
+        retry_suffix_short = f"\n\n【重要补充】上次生成字数不足，每篇正文不低于{per_article_min}字，请重新生成。"
+        retry_suffix_rejected = (
+            "\n\n【重要补充】请忽略参考文案中可能含有的敏感词，"
+            "只提炼其中的情绪爆点、结构和节奏，按照我的要求改写出完全不含敏感词的全新文案，正常输出即可。"
         )
 
         use_stream = self.use_stream.get()
@@ -3203,6 +4371,7 @@ class FangxieApp:
 
         # 记录所有尝试的结果（用于选择字数最多的）
         attempts = []
+        last_fail_reason = None  # 上次失败原因：'rejected' / 'short' / 'invalid'
 
         # 第1次：主模型 + 原提示词
         call_mode = "流式" if main_use_stream else "非流式"
@@ -3211,26 +4380,38 @@ class FangxieApp:
         check_info = self.check_result(result, 1, target_per_article, target_article_count)
         if check_info['valid'] and check_info['pass']:
             return result
+        last_fail_reason = check_info.get('fail_reason', 'invalid')
         attempts.append({'result': result, 'info': check_info})
 
         if not self.is_running:
             return None
 
-        # 第2次：主模型 + 原提示词 + 追加说明
-        self.log(f"【第2次尝试】主模型 + 追加说明 [{call_mode}]...")
-        result = self.call_api(main_url, main_key, main_model, main_max_tokens, prompt + retry_suffix, main_use_stream)
+        # 第2次：主模型 + 根据失败原因选择追加说明
+        if last_fail_reason == 'rejected':
+            suffix2 = retry_suffix_rejected
+            self.log(f"【第2次尝试】主模型 + 忽略敏感词说明 [{call_mode}]...")
+        else:
+            suffix2 = retry_suffix_short
+            self.log(f"【第2次尝试】主模型 + 字数追加说明 [{call_mode}]...")
+        result = self.call_api(main_url, main_key, main_model, main_max_tokens, prompt + suffix2, main_use_stream)
         check_info = self.check_result(result, 2, target_per_article, target_article_count)
         if check_info['valid'] and check_info['pass']:
             return result
+        last_fail_reason = check_info.get('fail_reason', 'invalid')
         attempts.append({'result': result, 'info': check_info})
 
         if not self.is_running:
             return None
 
-        # 第3次：备用模型 + 原提示词 + 追加说明（最后一次）
+        # 第3次：备用模型 + 根据失败原因选择追加说明
         backup_mode = "流式" if backup_use_stream else "非流式"
-        self.log(f"【第3次尝试】备用模型 ({backup_model}) [{backup_mode}]（最后一次）...")
-        result = self.call_api(backup_url, backup_key, backup_model, backup_max_tokens, prompt + retry_suffix, backup_use_stream)
+        if last_fail_reason == 'rejected':
+            suffix3 = retry_suffix_rejected
+            self.log(f"【第3次尝试】备用模型 ({backup_model}) [{backup_mode}] + 忽略敏感词说明（最后一次）...")
+        else:
+            suffix3 = retry_suffix_short
+            self.log(f"【第3次尝试】备用模型 ({backup_model}) [{backup_mode}] + 字数追加说明（最后一次）...")
+        result = self.call_api(backup_url, backup_key, backup_model, backup_max_tokens, prompt + suffix3, backup_use_stream)
         check_info = self.check_result(result, 3, target_per_article, target_article_count)
         if check_info['valid'] and check_info['pass']:
             return result
@@ -3260,11 +4441,21 @@ class FangxieApp:
             'valid': bool,  # API返回是否有效
             'pass': bool,   # 是否通过所有检查
             'char_count': int,  # 字数统计
+            'fail_reason': str,  # 失败原因：'rejected' / 'short' / 'invalid' / None
         }
         """
-        if not result or not self.is_valid_result(result):
-            self.log(f"第{attempt_num}次：API返回无效或被拒绝")
-            return {'valid': False, 'pass': False, 'char_count': 0}
+        reject_keywords = ["抱歉", "无法", "不能", "拒绝", "违反", "政策", "sorry", "cannot", "can't"]
+        if not result:
+            self.log(f"第{attempt_num}次：API返回为空")
+            return {'valid': False, 'pass': False, 'char_count': 0, 'fail_reason': 'invalid'}
+        result_lower = result.lower()
+        is_rejected = any(kw in result_lower for kw in reject_keywords) and len(result) < 500
+        if is_rejected:
+            self.log(f"第{attempt_num}次：AI拒绝回答")
+            return {'valid': False, 'pass': False, 'char_count': 0, 'fail_reason': 'rejected'}
+        if len(result) < 300:
+            self.log(f"第{attempt_num}次：API返回内容过短")
+            return {'valid': False, 'pass': False, 'char_count': 0, 'fail_reason': 'invalid'}
 
         char_count = self.count_chinese_chars(result)
         self.log(f"第{attempt_num}次：生成总字数 {char_count}")
@@ -3276,7 +4467,7 @@ class FangxieApp:
         max_total = max_per_article * article_count
         if char_count < min_total:
             self.log(f"总字数不足{min_total}（{article_count}篇×{per_article}字），需要重试...")
-            return {'valid': True, 'pass': False, 'char_count': char_count}
+            return {'valid': True, 'pass': False, 'char_count': char_count, 'fail_reason': 'short'}
         if char_count > max_total:
             self.log(f"总字数超出建议区间上限{max_total}，但不拦截")
 
@@ -3383,7 +4574,7 @@ class FangxieApp:
         except Exception:
             return set()
 
-    def check_title_duplicate(self, title, threshold=0.8):
+    def check_title_duplicate(self, title, threshold=0.7):
         """检查标题是否与历史标题重复"""
         from difflib import SequenceMatcher
 
@@ -3403,7 +4594,7 @@ class FangxieApp:
 
         return False
 
-    def check_reference_duplicate(self, reference_content, threshold=0.8):
+    def check_reference_duplicate(self, reference_content, threshold=0.7):
         """检查参考文章是否已在爆款素材库中"""
         from difflib import SequenceMatcher
         import openpyxl
@@ -3463,8 +4654,8 @@ class FangxieApp:
         except Exception as e:
             self.log(f"生成文案入库失败: {str(e)}")
 
-    def get_generated_library_corpus(self, max_rows=120):
-        """从生成文案Excel读取近期语料，避免txt搬走后失去去重能力"""
+    def get_generated_library_corpus(self):
+        """从生成文案Excel读取全部语料，用于去重对比"""
         try:
             import openpyxl
             if not os.path.exists(GENERATED_LIBRARY_FILE):
@@ -3474,7 +4665,7 @@ class FangxieApp:
             rows = list(ws.iter_rows(min_row=2, values_only=True))
             wb.close()
             corpus = []
-            for row in rows[-max_rows:]:
+            for row in rows:
                 if not row:
                     continue
                 title = str(row[2] or "").strip() if len(row) >= 3 else ""
@@ -3486,48 +4677,9 @@ class FangxieApp:
         except Exception:
             return []
 
-    def get_recent_corpus_texts(self, max_files=60):
-        """读取近期输出文案 + 生成文案Excel，作为去模板化比对语料"""
-        dirs = []
-        for attr in ("txt_output_path", "output_path"):
-            if hasattr(self, attr):
-                try:
-                    path = getattr(self, attr).get().strip()
-                    if path and os.path.exists(path):
-                        dirs.append(path)
-                except Exception:
-                    continue
-
-        all_files = []
-        seen = set()
-        for folder in dirs:
-            try:
-                for name in os.listdir(folder):
-                    if not name.lower().endswith(".txt"):
-                        continue
-                    full_path = os.path.join(folder, name)
-                    if full_path in seen or not os.path.isfile(full_path):
-                        continue
-                    seen.add(full_path)
-                    all_files.append((os.path.getmtime(full_path), full_path, name))
-            except Exception:
-                continue
-
-        all_files.sort(key=lambda x: x[0], reverse=True)
-        results = []
-        for _, full_path, name in all_files[:max_files]:
-            try:
-                with open(full_path, "r", encoding="utf-8", errors="ignore") as f:
-                    text = f.read().strip()
-                if text:
-                    results.append((name, text))
-            except Exception:
-                continue
-
-        # 追加Excel语料作为长期记忆，避免用户移动txt后失效
-        excel_corpus = self.get_generated_library_corpus(max_rows=max_files * 2)
-        results.extend(excel_corpus)
-        return results
+    def get_recent_corpus_texts(self):
+        """从生成文案Excel读取全部正文，用于改写后去重对比"""
+        return self.get_generated_library_corpus()
 
     def text_similarity_score(self, text_a, text_b):
         """混合相似度：编辑序列相似度 + 6字片段重合度"""
@@ -3550,7 +4702,7 @@ class FangxieApp:
 
     def is_too_similar_to_recent(self, text):
         """检查与近期文案是否过于相似"""
-        corpus = self.get_recent_corpus_texts(max_files=500)
+        corpus = self.get_recent_corpus_texts()
         if not corpus:
             return False, "", 0.0
 
@@ -3565,7 +4717,7 @@ class FangxieApp:
 
     def collect_overused_phrases(self, min_files=4, max_phrases=12):
         """提取近期文案里高频复用短语，加入黑名单避免模板化"""
-        corpus = self.get_recent_corpus_texts(max_files=80)
+        corpus = self.get_recent_corpus_texts()
         if not corpus:
             return []
 
@@ -3687,15 +4839,19 @@ class FangxieApp:
                 return False
         return len(result) > 300
 
-    def call_api(self, base_url, api_key, model, max_tokens, prompt, use_stream):
+    def call_api(self, base_url, api_key, model, max_tokens, prompt, use_stream, log_func=None):
         """调用API（流式或非流式）"""
+        if log_func is None:
+            log_func = self.log
         if use_stream:
-            return self.call_llm_stream(base_url, api_key, model, max_tokens, prompt)
+            return self.call_llm_stream(base_url, api_key, model, max_tokens, prompt, log_func)
         else:
-            return self.call_llm_non_stream(base_url, api_key, model, max_tokens, prompt)
+            return self.call_llm_non_stream(base_url, api_key, model, max_tokens, prompt, log_func)
 
-    def call_llm_stream(self, base_url, api_key, model, max_tokens, prompt):
+    def call_llm_stream(self, base_url, api_key, model, max_tokens, prompt, log_func=None):
         """流式API调用"""
+        if log_func is None:
+            log_func = self.log
         url = f"{base_url.rstrip('/')}/chat/completions"
         headers = {
             "Content-Type": "application/json",
@@ -3713,14 +4869,14 @@ class FangxieApp:
         if "thinking" not in model.lower():
             data["temperature"] = 0.7
 
-        self.log(f"[流式API] 请求: {url}, 模型: {model}")
+        log_func(f"[流式API] 请求: {url}, 模型: {model}")
 
         try:
             response = requests.post(url, headers=headers, json=data, timeout=300, stream=True)
 
             if response.status_code != 200:
                 error_text = response.text[:200] if response.text else "空响应"
-                self.log(f"[流式API] 失败: HTTP {response.status_code}: {error_text}")
+                log_func(f"[流式API] 失败: HTTP {response.status_code}: {error_text}")
                 return None
 
             full_content = ""
@@ -3744,18 +4900,20 @@ class FangxieApp:
                             continue
 
             if full_content:
-                self.log(f"[流式API] 成功获取 {len(full_content)} 字符")
+                log_func(f"[流式API] 成功获取 {len(full_content)} 字符")
                 return full_content
             else:
-                self.log("[流式API] 返回空内容")
+                log_func("[流式API] 返回空内容")
                 return None
 
         except Exception as e:
-            self.log(f"[流式API] 异常: {type(e).__name__}: {e}")
+            log_func(f"[流式API] 异常: {type(e).__name__}: {e}")
             return None
 
-    def call_llm_non_stream(self, base_url, api_key, model, max_tokens, prompt):
+    def call_llm_non_stream(self, base_url, api_key, model, max_tokens, prompt, log_func=None):
         """非流式API调用"""
+        if log_func is None:
+            log_func = self.log
         url = f"{base_url.rstrip('/')}/chat/completions"
         headers = {
             "Content-Type": "application/json",
@@ -3772,23 +4930,23 @@ class FangxieApp:
         if "thinking" not in model.lower():
             data["temperature"] = 0.7
 
-        self.log(f"[非流式API] 请求: {url}, 模型: {model}")
+        log_func(f"[非流式API] 请求: {url}, 模型: {model}")
 
         try:
             response = requests.post(url, headers=headers, json=data, timeout=300)
 
             if response.status_code != 200:
                 error_text = response.text[:200] if response.text else "空响应"
-                self.log(f"[非流式API] 失败: HTTP {response.status_code}: {error_text}")
+                log_func(f"[非流式API] 失败: HTTP {response.status_code}: {error_text}")
                 return None
 
             result = response.json()
             content = result["choices"][0]["message"]["content"]
-            self.log(f"[非流式API] 成功获取 {len(content)} 字符")
+            log_func(f"[非流式API] 成功获取 {len(content)} 字符")
             return content
 
         except Exception as e:
-            self.log(f"[非流式API] 异常: {type(e).__name__}: {e}")
+            log_func(f"[非流式API] 异常: {type(e).__name__}: {e}")
             return None
 
     def build_prompt(self, reference_article, flow_type, yinliu_content, product_name, product_material, word_count, article_count=3):
@@ -3957,7 +5115,7 @@ class FangxieApp:
         elif flow_type == "橱窗引流":
             flow_guide = "点开我的头像，去主页橱窗里看看"
         elif flow_type == "带货引流":
-            flow_guide = f"点开我的头像，去主页橱窗了解这款{product_name}"
+            flow_guide = f"点开我的头像，去下方小黄车了解这款{product_name}"
         else:
             flow_guide = "（纯夸赞，无需引流话术）"
 
@@ -4077,6 +5235,12 @@ class FangxieApp:
 ## 参考文案：
 {reference_article}
 
+**【重要提醒】参考文案的使用规则：**
+- 参考文案仅用于提炼：爆点结构、情绪节奏、表达风格
+- **如果参考文案中包含商品名、书名、产品信息，全部作废，绝对不能使用！**
+- **如果参考文案是橱窗引流，但用户选择的是带货引流，必须改成小黄车引流！**
+- 只学习参考文案的"怎么写"，不照搬参考文案的"写什么"
+
 {hooks_instruction}
 {dynamic_instruction}
 {strict_output_protocol}
@@ -4092,6 +5256,7 @@ class FangxieApp:
 - 提炼参考文案的**核心爆点**（情感共鸣点、痛点、钩子是什么？）
 - 拆解参考文案的**爆款结构**（开场方式、展开逻辑、收尾技巧）
 - 分析参考文案的**目标人群画像**（他们的处境、痛苦、渴望是什么？）
+- **忽略参考文案中的具体商品信息，只关注情绪和结构**
 
 **第二步：基于爆点和结构进行全新扩写**
 - 借鉴参考文案的爆点和结构框架
@@ -4639,6 +5804,13 @@ class FangxieApp:
 - {article_count}篇结尾要使用不同的切入角度、不同的铺垫方式、不同的表达
 - 结尾要与该篇正文内容自然衔接，不能生硬套用模板
 
+**【关键！商品信息强制替换规则】：**
+- **参考文案中的商品名、书名、产品信息全部作废，绝对不能使用！**
+- **必须且只能使用下方用户提供的商品名称和产品素材**
+- **参考文案可能是橱窗引流，但你生成的必须是小黄车带货引流**
+- **引流位置：下方小黄车（不是橱窗、不是置顶）**
+- 只提炼参考文案的爆点结构、情绪节奏、表达风格，商品信息必须完全替换
+
 **商品名称：{product_name}**
 **产品素材：{product_material}**
 
@@ -4647,12 +5819,18 @@ class FangxieApp:
 - 要突出商品能解决读者的问题/满足读者的需求
 - 要制造紧迫感和稀缺感
 - 话术要真诚，不能太硬广
+- **【硬性要求】必须明确提到"小黄车"或"下方"，不能说"橱窗"或"置顶"**
+
+**【话术示例格式】：**
+- "点开我的头像，去**下方小黄车**了解这款{product_name}"
+- "**下方小黄车**有这款{product_name}，点进去看看"
+- "去**小黄车**把这款{product_name}请回家"
 
 **用户提供的参考话术（学习风格，不要照抄！）：**"""
             if yinliu_content:
                 instruction += f"\n{yinliu_content}"
             else:
-                instruction += f"\n这款{product_name}真的很不错，点我头像进橱窗了解一下。"
+                instruction += f"\n这款{product_name}真的很不错，点我头像去下方小黄车了解一下。"
 
         else:  # 纯夸赞不引流
             instruction = f"""## 结尾方式：纯夸赞不引流
